@@ -162,6 +162,15 @@ package.</p>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>By default <code><a href='https://rdrr.io/pkg/blockCV/man/spatialBlock.html'>blockCV::spatialBlock()</a></code> does not allow the creation of multiple
+repetitions. <code>mlr3spatiotempcv</code> adds support for this when using the <code>range</code>
+argument for fold creation. When supplying a vector of <code><a href='https://rdrr.io/r/base/length.html'>length(repeats)</a></code> for
+argument <code>range</code>, these different settings will be used to create folds which
+differ among the repetitions.</p>
+<p>Multiple repetitions are not possible when using the "row &amp; cols" approach
+because the created folds will always be the same.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Valavi R, Elith J, Lahoz-Monfort JJ, Guillera-Arroita G (2018).
