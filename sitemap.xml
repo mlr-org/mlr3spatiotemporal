@@ -13,6 +13,9 @@
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingRepeatedSpCVEnv.html</loc>
   </url>
   <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingRepeatedSptCVCluto.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingSpCVBlock.html</loc>
   </url>
   <url>
@@ -23,6 +26,9 @@
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingSpCVEnv.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingSptCVCluto.html</loc>
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/TaskClassifST.html</loc>
@@ -50,5 +56,8 @@
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/articles/mlr3spatiotempcv.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/articles/spatiotemp-viz.html</loc>
   </url>
 </urlset>

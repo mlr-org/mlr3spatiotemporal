@@ -59,6 +59,18 @@
 <li>
   <a href="../articles/mlr3spatiotempcv.html">Get started</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/spatiotemp-viz.html">Spatiotemporal Visualization</a>
+    </li>
+  </ul>
+</li>
         <li>
   <a href="https://github.com/mlr-org/mlr3spatiotempcv/">
     <span class="fab fa fab fa-github fa-lg"></span>
@@ -154,14 +166,16 @@
 <span class="co">#&gt;  4:              holdout                                   ratio     1</span>
 <span class="co">#&gt;  5:             insample                                             1</span>
 <span class="co">#&gt;  6:  repeated-spcv-block folds,repeats,rows,cols,range,selection    10</span>
-<span class="co">#&gt;  7: repeated-spcv-coords                           folds,repeats    10</span>
-<span class="co">#&gt;  8:    repeated-spcv-env                  folds,repeats,features    10</span>
-<span class="co">#&gt;  9:          repeated_cv                           repeats,folds   100</span>
-<span class="co">#&gt; 10:           spcv-block         folds,rows,cols,range,selection    10</span>
-<span class="co">#&gt; 11:          spcv-buffer               theRange,spDataType,addBG     0</span>
-<span class="co">#&gt; 12:          spcv-coords                                   folds    10</span>
-<span class="co">#&gt; 13:             spcv-env                          folds,features    10</span>
-<span class="co">#&gt; 14:          subsampling                           repeats,ratio    30</span></pre></body></html></div>
+<span class="co">#&gt;  7:  repeated-spcv-cluto                           folds,repeats    10</span>
+<span class="co">#&gt;  8: repeated-spcv-coords                           folds,repeats    10</span>
+<span class="co">#&gt;  9:    repeated-spcv-env                  folds,repeats,features    10</span>
+<span class="co">#&gt; 10:          repeated_cv                           repeats,folds   100</span>
+<span class="co">#&gt; 11:           spcv-block         folds,rows,cols,range,selection    10</span>
+<span class="co">#&gt; 12:          spcv-buffer               theRange,spDataType,addBG     0</span>
+<span class="co">#&gt; 13:           spcv-cluto                                   folds    10</span>
+<span class="co">#&gt; 14:          spcv-coords                                   folds    10</span>
+<span class="co">#&gt; 15:             spcv-env                          folds,features    10</span>
+<span class="co">#&gt; 16:          subsampling                           repeats,ratio    30</span></pre></body></html></div>
 <p>Currently, the following resampling methods are implemented:</p>
 <table class="table">
 <colgroup>
@@ -232,10 +246,10 @@ Please make sure that your dataset comes with coordinates since they are needed 
 In addition, one can specify whether the coordinates should be used as features during the modeling.
 By default, coordinates are not used as features and will be removed from the feature dataset after the coordinates have been added as a method to the task.
 For optional plotting purposes, it is recommended to also pass the PROJ string specifying the used coordinate reference system via the <code>crs</code> argument.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">data</span> <span class="kw">=</span> <span class="kw pkg">mlr3</span><span class="kw ns">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/as_data_backend.html">as_data_backend</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"ecuador.rda"</span>,
-  <span class="kw">package</span> <span class="kw">=</span> <span class="st">"mlr3spatiotempcv"</span>)))
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">data</span> <span class="kw">=</span> <span class="kw pkg">mlr3</span><span class="kw ns">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/as_data_backend.html">as_data_backend</a></span>(<span class="no">ecuador</span>)
 
-<span class="no">ecuador</span> <span class="kw">=</span> <span class="no">TaskClassifST</span>$<span class="fu">new</span>(<span class="kw">id</span> <span class="kw">=</span> <span class="st">"ecuador"</span>, <span class="kw">backend</span> <span class="kw">=</span> <span class="no">data</span>, <span class="kw">target</span> <span class="kw">=</span> <span class="st">"slides"</span>,
+<span class="no">ecuador</span> <span class="kw">=</span> <span class="no">TaskClassifST</span>$<span class="fu">new</span>(
+  <span class="kw">id</span> <span class="kw">=</span> <span class="st">"ecuador"</span>, <span class="kw">backend</span> <span class="kw">=</span> <span class="no">data</span>, <span class="kw">target</span> <span class="kw">=</span> <span class="st">"slides"</span>,
   <span class="kw">positive</span> <span class="kw">=</span> <span class="st">"TRUE"</span>, <span class="kw">coordinate_names</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="kw">coords_as_features</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
   <span class="kw">crs</span> <span class="kw">=</span> <span class="st">"+proj=utm +zone=17 +south +datum=WGS84 +units=m +no_defs"</span>)</pre></body></html></div>
 <p>The “ecuador” dataset consists of a response variable named <code>slides</code> (boolean; see Figure <a href="#fig:lsl">1.1</a>) and various predictor variables that might have an influence on the occurrence of landslides such as slope, curvature or catchment area.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
@@ -277,7 +291,8 @@ To predict landslide occurence, we will use a simple decision tree.
 To emphasize that common, i.e., non-spatial, cross-validation is usually over-optimistic, we will first execute a 5-repeated 5-fold cross-validation with the help of the <code>"repeated-cv"</code> resampling method.</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">learner</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.rpart"</span>, <span class="kw">maxdepth</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">predict_type</span> <span class="kw">=</span> <span class="st">"prob"</span>)
 <span class="no">resampling_nsp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span>(<span class="st">"repeated_cv"</span>, <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">repeats</span> <span class="kw">=</span> <span class="fl">5</span>)
-<span class="no">rr_nsp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(<span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>, <span class="kw">learner</span> <span class="kw">=</span> <span class="no">learner</span>,
+<span class="no">rr_nsp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(
+  <span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>, <span class="kw">learner</span> <span class="kw">=</span> <span class="no">learner</span>,
   <span class="kw">resampling</span> <span class="kw">=</span> <span class="no">resampling_nsp</span>)
 
 <span class="no">rr_nsp</span>$<span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(<span class="kw">measures</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
@@ -291,12 +306,13 @@ For a gentle introduction to spatial cross-validation, please refer to Chapter 1
 Hence, let’s do the cross-validation again, this time taking into account the spatial dimension.</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">resampling_sp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span>(<span class="st">"repeated-spcv-coords"</span>, <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">repeats</span> <span class="kw">=</span> <span class="fl">5</span>)
 
-<span class="no">rr_sp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(<span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>, <span class="kw">learner</span> <span class="kw">=</span> <span class="no">learner</span>,
+<span class="no">rr_sp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(
+  <span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>, <span class="kw">learner</span> <span class="kw">=</span> <span class="no">learner</span>,
   <span class="kw">resampling</span> <span class="kw">=</span> <span class="no">resampling_sp</span>)
 
 <span class="no">rr_sp</span>$<span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(<span class="kw">measures</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
 <span class="co">#&gt; classif.ce </span>
-<span class="co">#&gt;  0.4058174</span></pre></body></html></div>
+<span class="co">#&gt;  0.3974651</span></pre></body></html></div>
 <p>We see that the classical non-spatial CV performs better.
 However, “better” in this case actually means overoptimistic and biased <span class="citation">(Burman, Chow, and Nolan <a href="#ref-burman1994" role="doc-biblioref">1994</a>; Cliff and Ord <a href="#ref-cliff1970" role="doc-biblioref">1970</a>; Racine <a href="#ref-racine2000" role="doc-biblioref">2000</a>; Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>.
 Hence, it is highly recommended to <strong>not</strong> use classical CV methods with spatiotemporal data but rather choose an appropriate spatiotemporal method.</p>

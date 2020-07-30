@@ -105,6 +105,18 @@ not used as features. This can be changed by setting coords_as_features = TRUE."
 <li>
   <a href="../articles/mlr3spatiotempcv.html">Get started</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/spatiotemp-viz.html">Spatiotemporal Visualization</a>
+    </li>
+  </ul>
+</li>
         <li>
   <a href="https://github.com/mlr-org/mlr3spatiotempcv/">
     <span class="fab fa fab fa-github fa-lg"></span>
@@ -288,9 +300,7 @@ The variables names of the coordinates in the data.</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>data</span> <span class='kw'>=</span> <span class='kw pkg'>data.table</span><span class='kw ns'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>readRDS</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>,
-  <span class='st'>"ecuador.rda"</span>,
-  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"mlr3spatiotempcv"</span>)))
+    <pre class="examples"><div class='input'><span class='no'>data</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/as_data_backend.html'>as_data_backend</a></span>(<span class='no'>ecuador</span>)
 <span class='no'>task</span> <span class='kw'>=</span> <span class='no'>TaskClassifST</span>$<span class='fu'>new</span>(<span class='st'>"ecuador"</span>,
   <span class='kw'>backend</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>target</span> <span class='kw'>=</span> <span class='st'>"slides"</span>,
   <span class='kw'>positive</span> <span class='kw'>=</span> <span class='st'>"TRUE"</span>, <span class='kw'>coordinate_names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>))

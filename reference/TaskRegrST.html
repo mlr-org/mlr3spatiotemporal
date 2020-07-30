@@ -105,6 +105,18 @@ This can be changed by setting coords_as_features = TRUE." />
 <li>
   <a href="../articles/mlr3spatiotempcv.html">Get started</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/spatiotemp-viz.html">Spatiotemporal Visualization</a>
+    </li>
+  </ul>
+</li>
         <li>
   <a href="https://github.com/mlr-org/mlr3spatiotempcv/">
     <span class="fab fa fab fa-github fa-lg"></span>
@@ -247,7 +259,8 @@ Whether the coordinates should also be used as features.
 Default is <code>FALSE</code>.</p></dd>
 
 <dt><code>crs</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Coordinates reference system</p></dd>
+Coordinate reference system. Either a PROJ string or an
+<a href='https://epsg.io/'>EPSG</a> code.</p></dd>
 
 <dt><code>coordinate_names</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(2)</a></code><br />
 The variables names of the coordinates in the data.</p></dd>
