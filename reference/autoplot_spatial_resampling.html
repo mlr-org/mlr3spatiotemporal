@@ -76,7 +76,7 @@ ResamplingSpCVBuffer and ResamplingSpCVCoords." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9005</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9006</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -388,48 +388,66 @@ is used to display all partitions. If you want to change the colors,
 call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#####</span>
+    <pre class="examples"><div class='input'><span class='co'>##########</span>
 <span class='co'># SpCVBlock</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-block"</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
 
 <span class='co'>## Visualize all partitions</span>
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+
 <span class='co'>## Visualize the train/test split of a single fold</span>
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+
 <span class='co'>## Visualize train/test splits of multiple folds</span>
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))</div><div class='img'><img src='autoplot_spatial_resampling-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># return only a list of ggplot2 resamplings</span>
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+
+<span class='co'># list of ggplot2 resamplings</span>
 <span class='no'>plot_list</span> <span class='kw'>=</span> <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>,
-  <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
-<span class='co'>#####</span>
+  <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+}
+<span class='co'>##########</span>
 <span class='co'># SpCVEnv</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>features</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"dem"</span>))
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>features</span> <span class='kw'>=</span> <span class='st'>"dem"</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># autoplot(resampling, task, c(1, 2, 3, 4))</span>
-<span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># SpCVBuffer</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-buffer"</span>, <span class='kw'>theRange</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># autoplot(resampling, task, c(1, 2, 3, 4))</span>
-<span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># SpCVCoords</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-coords"</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># autoplot(resampling, task, c(1, 2, 3, 4))</span>
-<span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># SptCVCluto</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
@@ -443,38 +461,63 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fl'>1</span>)
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
 }
-<span class='co'>#####</span>
+<span class='co'>##########</span>
 <span class='co'># Non-Spatial CV</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"cv"</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-9.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-10.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># autoplot(resampling, task, c(1, 2, 3, 4))</span>
-<span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># Repeated Non-Spatial CV</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated_cv"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-11.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-12.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='autoplot_spatial_resampling-13.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># autoplot(resampling, task, c(1, 2, 3, 4))</span>
-<span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># RepeatedSpCVCoords</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"diplodia"</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-spcv-coords"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-14.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-15.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='autoplot_spatial_resampling-16.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># autoplot(resampling, task, c(1, 2, 3, 4))</span>
-<span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># RepeatedSpCVEnv</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-spcv-env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-17.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-18.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='autoplot_spatial_resampling-19.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))</div><div class='img'><img src='autoplot_spatial_resampling-20.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># RepeatedSpCVBlock</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
 <span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-spcv-block"</span>,
@@ -482,9 +525,15 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
   <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1000</span>, <span class='fl'>1500</span>)
 )
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)</div><div class='img'><img src='autoplot_spatial_resampling-21.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)</div><div class='img'><img src='autoplot_spatial_resampling-22.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='autoplot_spatial_resampling-23.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))</div><div class='img'><img src='autoplot_spatial_resampling-24.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#####</span>
+
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
 <span class='co'># RepeatedSptCVCluto</span>
-<span class='co'>#####</span>
+<span class='co'>##########</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
@@ -493,7 +542,6 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
 
 <span class='co'># plot</span>
-<span class='co'># resampling = readRDS("inst/spt-plotting-data.rda")</span>
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>)
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fl'>1</span>, <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))

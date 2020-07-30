@@ -87,7 +87,7 @@ below." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9005</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9006</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -214,10 +214,11 @@ without warranty of any kind, either expressed or implied.
 The downloading, or executing any part of this software constitutes an
 implicit agreement to these terms. These terms and conditions are subject to
 change at any time without prior notice.</p>
-<p>In addition, a different seed is used in every repetition to enforce
-different clusters for each repetition. By default, all repetitions would use
-the same seed and hence be identical. Note that setting an R seed has no
-effect here.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>FIXME: correct?
+Ying Zhao and George Karypis. 11th Conference of Information and Knowledge
+Management (CIKM), pp. 515-524, 2002.</p>
     <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
     <p><code><a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a></code> -&gt; <code>ResamplingRepeatedSptCVCluto</code></p>
@@ -333,26 +334,26 @@ Whether to show <code>vcluster</code> progress and summary output.</p></dd>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
-  <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
+<span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
 
-  <span class='co'># Instantiate Resampling</span>
-  <span class='no'>rrcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-spcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-  <span class='no'>rrcv</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>, <span class='kw'>time_var</span> <span class='kw'>=</span> <span class='st'>"Date"</span>)
+<span class='co'># Instantiate Resampling</span>
+<span class='no'>rrcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-spcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>rrcv</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>, <span class='kw'>time_var</span> <span class='kw'>=</span> <span class='st'>"Date"</span>)
 
-  <span class='co'># Individual sets:</span>
-  <span class='no'>rrcv</span>$<span class='no'>iters</span>
-  <span class='no'>rrcv</span>$<span class='fu'>folds</span>(<span class='fl'>1</span>:<span class='fl'>6</span>)
-  <span class='no'>rrcv</span>$<span class='fu'>repeats</span>(<span class='fl'>1</span>:<span class='fl'>6</span>)
+<span class='co'># Individual sets:</span>
+<span class='no'>rrcv</span>$<span class='no'>iters</span>
+<span class='no'>rrcv</span>$<span class='fu'>folds</span>(<span class='fl'>1</span>:<span class='fl'>6</span>)
+<span class='no'>rrcv</span>$<span class='fu'>repeats</span>(<span class='fl'>1</span>:<span class='fl'>6</span>)
 
-  <span class='co'># Individual sets:</span>
-  <span class='no'>rrcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)
-  <span class='no'>rrcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='no'>rrcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>), <span class='no'>rrcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>))
+<span class='co'># Individual sets:</span>
+<span class='no'>rrcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)
+<span class='no'>rrcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='no'>rrcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>), <span class='no'>rrcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>))
 
-  <span class='co'># Internal storage:</span>
-  <span class='no'>rrcv</span>$<span class='no'>instance</span> <span class='co'># table</span>
+<span class='co'># Internal storage:</span>
+<span class='no'>rrcv</span>$<span class='no'>instance</span> <span class='co'># table</span>
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
