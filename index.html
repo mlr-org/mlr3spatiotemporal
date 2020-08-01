@@ -13,8 +13,8 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <link href="extra.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Spatiotemporal Resampling Methods for mlr3">
-<meta property="og:description" content="Implements spatio-temporal methods to enhance the experience
-    of mlr3.">
+<meta property="og:description" content="Implements spatio-temporal methods to enhance the
+    experience of mlr3.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -159,37 +159,43 @@ The package is in very early stages and breaking changes withour further notice 
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><code>rsmp("spcv-cluto")</code></td>
+<td><code>rsmp("sptcv-cluto")</code></td>
 </tr>
 <tr class="even">
+<td>Leave-Location-and-Time-Out</td>
+<td>CAST</td>
+<td>Meyer 2018</td>
+<td><code>rsmp("sptcv-cast")</code></td>
+</tr>
+<tr class="odd">
 <td>—</td>
 <td>—</td>
 <td>—</td>
 <td>—</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Repeated Spatial Blocking</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
 <td><code>rsmp("repeated-spcv-block")</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Repeated Spatial CV</td>
 <td>sperrorest</td>
 <td>Brenning 2012</td>
 <td><code>rsmp("repeated-spcv-coords")</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Repeated Env Blocking</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
 <td><code>rsmp("repeated-spcv-env")</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><code>rsmp("repeated-spcv-cluto")</code></td>
+<td><code>rsmp("repeated-sptcv-cluto")</code></td>
 </tr>
 </tbody>
 </table>
