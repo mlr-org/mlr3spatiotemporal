@@ -221,6 +221,24 @@ ResamplingSpCVBuffer and ResamplingSpCVCoords." />
   <span class='no'>...</span>
 )
 
+<span class='co'># S3 method for ResamplingSptCVCstf</span>
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(
+  <span class='no'>object</span>,
+  <span class='no'>task</span>,
+  <span class='kw'>fold_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>repeats_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>train_color</span> <span class='kw'>=</span> <span class='st'>"#0072B5"</span>,
+  <span class='kw'>test_color</span> <span class='kw'>=</span> <span class='st'>"#E18727"</span>,
+  <span class='kw'>tickformat_date</span> <span class='kw'>=</span> <span class='st'>"%Y-%m"</span>,
+  <span class='kw'>crs</span> <span class='kw'>=</span> <span class='fl'>4326</span>,
+  <span class='kw'>nticks_x</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>nticks_y</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>axis_label_fontsize</span> <span class='kw'>=</span> <span class='fl'>11</span>,
+  <span class='no'>...</span>
+)
+
 <span class='co'># S3 method for ResamplingCV</span>
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(
   <span class='no'>object</span>,
@@ -457,6 +475,21 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 
 <span class='co'># plot</span>
 <span class='co'># resampling = readRDS("inst/spt-plotting-data.rda")</span>
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fl'>1</span>)
+<span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+}
+<span class='co'>##########</span>
+<span class='co'># SptCVCstf</span>
+<span class='co'>##########</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
+<span class='no'>task_st</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
+
+<span class='co'># plot</span>
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>)
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fl'>1</span>)
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task_st</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
