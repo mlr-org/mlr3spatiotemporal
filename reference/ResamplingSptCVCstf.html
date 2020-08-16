@@ -192,6 +192,8 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <ul>
 <li><p><a href='#method-new'><code>ResamplingSptCVCstf$new()</code></a></p></li>
+<li><p><a href='#method-folds'><code>ResamplingSptCVCstf$folds()</code></a></p></li>
+<li><p><a href='#method-repeats'><code>ResamplingSptCVCstf$repeats()</code></a></p></li>
 <li><p><a href='#method-instantiate'><code>ResamplingSptCVCstf$instantiate()</code></a></p></li>
 <li><p><a href='#method-clone'><code>ResamplingSptCVCstf$clone()</code></a></p></li>
 </ul>
@@ -208,12 +210,34 @@ values stored in the <code>param_set</code>.</p></dd>
 <hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Create a "Spacetime Folds" resampling instance.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>ResamplingSptCVCstf</span>$<span class='fu'>new</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"spcv-cstf"</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>ResamplingSptCVCstf</span>$<span class='fu'>new</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"sptcv-cstf"</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
 <dt><code>id</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
 Identifier for the resampling strategy.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-folds"></a></p><h3>Method <code>folds()</code></h3>
+<p>Translates iteration numbers to fold number.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ResamplingSptCVCstf</span>$<span class='fu'>folds</span>(<span class='no'>iters</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>iters</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code><br />
+Iteration number.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-repeats"></a></p><h3>Method <code>repeats()</code></h3>
+<p>Translates iteration numbers to repetition number.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>ResamplingSptCVCstf</span>$<span class='fu'>repeats</span>(<span class='no'>iters</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>iters</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code><br />
+Iteration number.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
@@ -259,72 +283,73 @@ Column name identifying a class unit (e.g. land cover).</p></dd>
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
 
 <span class='co'># Instantiate Resampling</span>
-<span class='no'>rcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>rcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv-cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>rcv</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>, <span class='kw'>time_var</span> <span class='kw'>=</span> <span class='st'>"Date"</span>, <span class='kw'>space_var</span> <span class='kw'>=</span> <span class='st'>"SOURCEID"</span>)
 
 <span class='co'># Individual sets:</span>
-<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]  17  23  35  40  41  50  62  67  78  91  92  96 101 108 113 116 120 122 123
-#&gt; [20] 126 128 131 139 142 151 154 157 170 178 181 193 204 205 212 213 218 230 233
-#&gt; [39] 243 254 259 260 262 263 266 273 282 287 290 296 311 317 331 332 339 345 355
-#&gt; [58] 358 359 370 371 374 375 378 393 396 406 412 413 417 419 423 441 446 458 461
-#&gt; [77] 465 475 483 488 490 500</div><div class='input'><span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   4  14  22  24  38  42  86  89 165 180 220 245 280 285 307 342 349 362 380
-#&gt; [20] 422 429 459 473</div><div class='input'><span class='co'># check that no obs are in both sets</span>
+<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   7  12  23  27  42  47  50  67  71  74  86  93  98 110 125 135 136 141 155
+#&gt; [20] 157 160 162 169 178 181 200 203 204 213 220 223 228 234 240 243 245 247 261
+#&gt; [39] 262 265 267 275 277 279 285 286 317 328 329 332 335 340 346 351 353 360 365
+#&gt; [58] 371 374 375 381 385 389 392 393 406 439 442 445 447 452 453 454 462 467 471
+#&gt; [77] 480 482 483 493 497</div><div class='input'><span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   1  28  37  56  58  70 103 105 119 127 142 186 196 208 258 295 307 350 358
+#&gt; [20] 378 411 473 485</div><div class='input'><span class='co'># check that no obs are in both sets</span>
 <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>), <span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)) <span class='co'># good!</span></div><div class='output co'>#&gt; integer(0)</div><div class='input'>
 <span class='co'># Internal storage:</span>
 <span class='no'>rcv</span>$<span class='no'>instance</span> <span class='co'># table</span></div><div class='output co'>#&gt; $test
 #&gt; $test[[1]]
-#&gt;  [1]   4  14  22  24  38  42  86  89 165 180 220 245 280 285 307 342 349 362 380
-#&gt; [20] 422 429 459 473
+#&gt;  [1]   1  28  37  56  58  70 103 105 119 127 142 186 196 208 258 295 307 350 358
+#&gt; [20] 378 411 473 485
 #&gt; 
 #&gt; $test[[2]]
-#&gt;  [1]   8  12  20  32  43  84 112 146 209 302 346 356 381 410 439 454 472 484
+#&gt;  [1]  24  30  36  73 129 153 164 165 173 180 216 231 233 264 268 297 344 348 349
+#&gt; [20] 362 398 408 412 448
 #&gt; 
 #&gt; $test[[3]]
-#&gt;  [1]  44  80 118 186 197 225 240 281 286 291 316 318 329 338 403 424 460 476 486
-#&gt; [20] 495 496
+#&gt;  [1]  26  43  63  82  94 113 116 167 185 241 288 369 390 402 414 421 423 428 470
+#&gt; [20] 476
 #&gt; 
 #&gt; $test[[4]]
-#&gt;  [1]   3  11  15  29  72  87 107 109 140 174 183 228 235 253 255 284 369 383 385
-#&gt; [20] 444 453 491
+#&gt;  [1]   3  16  33 109 111 115 146 151 156 158 159 175 252 299 321 382 446 456
 #&gt; 
 #&gt; $test[[5]]
-#&gt;  [1]  21  25  36  53  85  90 103 105 150 182 221 238 257 298 328 330 352 353 357
-#&gt; [20] 384 411 415 418 430 487
+#&gt;  [1]   2  13  18  41  97 143 174 229 248 249 278 296 343 379 384 441
 #&gt; 
 #&gt; 
 #&gt; $train
 #&gt; $train[[1]]
-#&gt;  [1]  17  23  35  40  41  50  62  67  78  91  92  96 101 108 113 116 120 122 123
-#&gt; [20] 126 128 131 139 142 151 154 157 170 178 181 193 204 205 212 213 218 230 233
-#&gt; [39] 243 254 259 260 262 263 266 273 282 287 290 296 311 317 331 332 339 345 355
-#&gt; [58] 358 359 370 371 374 375 378 393 396 406 412 413 417 419 423 441 446 458 461
-#&gt; [77] 465 475 483 488 490 500
+#&gt;  [1]   7  12  23  27  42  47  50  67  71  74  86  93  98 110 125 135 136 141 155
+#&gt; [20] 157 160 162 169 178 181 200 203 204 213 220 223 228 234 240 243 245 247 261
+#&gt; [39] 262 265 267 275 277 279 285 286 317 328 329 332 335 340 346 351 353 360 365
+#&gt; [58] 371 374 375 381 385 389 392 393 406 439 442 445 447 452 453 454 462 467 471
+#&gt; [77] 480 482 483 493 497
 #&gt; 
 #&gt; $train[[2]]
-#&gt;  [1]   2   7  10  30  31  34  51  52  58  64  79  88  97  98 102 104 110 115 119
-#&gt; [20] 124 153 158 161 162 169 175 191 192 194 195 196 200 210 211 215 226 229 231
-#&gt; [39] 237 244 256 261 288 294 295 300 301 321 322 325 327 333 336 348 354 365 367
-#&gt; [58] 373 382 386 392 416 420 425 426 438 450 451 455 463 464 468 482 489 497 499
+#&gt;  [1]   5  19  22  31  38  49  57  62  68  75  79  80  85  87  88  99 101 108 114
+#&gt; [20] 118 121 124 130 144 152 154 177 182 190 198 202 212 217 221 225 236 237 242
+#&gt; [39] 257 259 263 266 270 281 282 284 290 293 302 303 311 318 323 330 336 338 341
+#&gt; [58] 342 359 368 370 391 396 399 400 403 404 407 417 418 427 436 457 460 465 466
+#&gt; [77] 477 488 498
 #&gt; 
 #&gt; $train[[3]]
-#&gt;  [1]   5   9  16  19  26  27  37  46  47  48  49  68  71  74  77  82  93  99 111
-#&gt; [20] 114 121 127 132 135 143 147 148 149 152 155 164 167 168 176 190 202 216 217
-#&gt; [39] 239 241 246 252 264 267 270 274 276 278 279 297 306 310 313 320 323 335 341
-#&gt; [58] 344 351 376 379 387 394 398 405 408 409 421 437 442 447 448 456 467 478 479
-#&gt; [77] 492 494
+#&gt;  [1]   9  20  21  32  39  44  45  46  53  55  60  61  66  92 100 104 126 132 133
+#&gt; [20] 140 147 149 150 161 163 168 170 187 189 191 195 201 214 218 219 224 227 235
+#&gt; [39] 238 244 246 251 253 254 274 280 283 287 289 292 298 310 313 322 327 347 352
+#&gt; [58] 367 373 376 377 386 387 394 395 409 416 430 433 444 449 450 459 472 474 475
+#&gt; [77] 479 491 495
 #&gt; 
 #&gt; $train[[4]]
-#&gt;  [1]   1  13  18  39  45  54  56  60  63  66  69  70  73  76 106 125 133 134 138
-#&gt; [20] 141 145 160 173 179 184 188 198 201 208 214 222 227 234 242 247 248 251 258
-#&gt; [39] 271 275 292 293 305 308 309 319 324 334 337 340 361 364 372 377 391 397 400
-#&gt; [58] 401 414 427 431 432 434 435 440 452 462 466 469 470 480 481 493 498
+#&gt;  [1]   4   6  10  11  15  29  34  35  40  54  59  64  65  69  72  78  84  90  96
+#&gt; [20] 123 128 131 137 145 166 183 192 193 197 199 210 211 232 239 250 255 256 260
+#&gt; [39] 269 271 272 276 294 300 301 305 306 309 312 316 320 333 337 357 361 363 364
+#&gt; [58] 366 383 397 405 410 413 419 420 424 426 429 432 435 438 458 463 464 486 487
+#&gt; [77] 499 500
 #&gt; 
 #&gt; $train[[5]]
-#&gt;  [1]   6  28  33  55  57  59  61  65  75  81  83  94  95 100 117 129 130 136 137
-#&gt; [20] 144 156 159 163 166 171 172 177 185 187 189 199 203 206 207 219 223 224 232
-#&gt; [39] 236 249 250 265 268 269 272 277 283 289 299 303 304 312 314 315 326 343 347
-#&gt; [58] 350 360 363 366 368 388 389 390 395 399 402 404 407 428 433 436 443 445 449
-#&gt; [77] 457 471 474 477 485
+#&gt;  [1]   8  14  17  25  48  51  52  76  77  81  83  89  91  95 102 106 107 112 117
+#&gt; [20] 120 122 134 138 139 148 171 172 176 179 184 188 194 205 206 207 209 215 222
+#&gt; [39] 226 230 273 291 304 308 314 315 319 324 325 326 331 334 339 345 354 355 356
+#&gt; [58] 372 380 388 401 415 422 425 431 434 437 440 443 451 455 461 468 469 478 481
+#&gt; [77] 484 489 490 492 494 496
 #&gt; 
 #&gt; </div></pre>
   </div>

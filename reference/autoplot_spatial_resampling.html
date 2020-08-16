@@ -470,7 +470,7 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
 <span class='no'>task_st</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
 
 <span class='co'># plot</span>
@@ -486,7 +486,7 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
 <span class='no'>task_st</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv-cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
 
 <span class='co'># plot</span>
@@ -571,7 +571,7 @@ call <code>&lt;plot&gt; + &lt;color-palette&gt;()</code></p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
 <span class='no'>task_st</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-spcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"repeated-sptcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>repeats</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
 
 <span class='co'># plot</span>
