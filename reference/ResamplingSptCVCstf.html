@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create spatio-temporal Folds Using Predefined Groups — ResamplingSptCVCstf • mlr3spatiotempcv</title>
+<title>Create Spatio-Temporal Folds Using Predefined Groups — ResamplingSptCVCstf • mlr3spatiotempcv</title>
 
 
 <!-- jquery -->
@@ -40,7 +40,7 @@
 
 
 
-<meta property="og:title" content="Create spatio-temporal Folds Using Predefined Groups — ResamplingSptCVCstf" />
+<meta property="og:title" content="Create Spatio-Temporal Folds Using Predefined Groups — ResamplingSptCVCstf" />
 <meta property="og:description" content="Implementation of CAST::CreateSpaceTimeFolds()." />
 <meta name="twitter:card" content="summary" />
 
@@ -149,7 +149,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create spatio-temporal Folds Using Predefined Groups</h1>
+    <h1>Create Spatio-Temporal Folds Using Predefined Groups</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/ResamplingSptCVCstf.R'><code>R/ResamplingSptCVCstf.R</code></a></small>
     <div class="hidden name"><code>ResamplingSptCVCstf.Rd</code></div>
     </div>
@@ -287,69 +287,65 @@ Column name identifying a class unit (e.g. land cover).</p></dd>
 <span class='no'>rcv</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>, <span class='kw'>time_var</span> <span class='kw'>=</span> <span class='st'>"Date"</span>, <span class='kw'>space_var</span> <span class='kw'>=</span> <span class='st'>"SOURCEID"</span>)
 
 <span class='co'># Individual sets:</span>
-<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   7  12  23  27  42  47  50  67  71  74  86  93  98 110 125 135 136 141 155
-#&gt; [20] 157 160 162 169 178 181 200 203 204 213 220 223 228 234 240 243 245 247 261
-#&gt; [39] 262 265 267 275 277 279 285 286 317 328 329 332 335 340 346 351 353 360 365
-#&gt; [58] 371 374 375 381 385 389 392 393 406 439 442 445 447 452 453 454 462 467 471
-#&gt; [77] 480 482 483 493 497</div><div class='input'><span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   1  28  37  56  58  70 103 105 119 127 142 186 196 208 258 295 307 350 358
-#&gt; [20] 378 411 473 485</div><div class='input'><span class='co'># check that no obs are in both sets</span>
+<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   1   3  11  16  20  21  25  31  32  33  34  53  55  56  59  76  92 116 149
+#&gt; [20] 155 156 168 173 174 178 179 192 200 210 221 236 237 239 240 242 256 264 270
+#&gt; [39] 274 287 288 301 302 304 309 314 316 317 333 338 340 342 351 353 355 357 364
+#&gt; [58] 389 395 396 403 406 409 411 413 417 420 421 424 430 431 434 445 450 453 454
+#&gt; [77] 456 469 475 479 485 489 490</div><div class='input'><span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]  82 117 122 134 139 140 160 164 171 203 222 223 228 253 415 429</div><div class='input'><span class='co'># check that no obs are in both sets</span>
 <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>), <span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)) <span class='co'># good!</span></div><div class='output co'>#&gt; integer(0)</div><div class='input'>
 <span class='co'># Internal storage:</span>
 <span class='no'>rcv</span>$<span class='no'>instance</span> <span class='co'># table</span></div><div class='output co'>#&gt; $test
 #&gt; $test[[1]]
-#&gt;  [1]   1  28  37  56  58  70 103 105 119 127 142 186 196 208 258 295 307 350 358
-#&gt; [20] 378 411 473 485
+#&gt;  [1]  82 117 122 134 139 140 160 164 171 203 222 223 228 253 415 429
 #&gt; 
 #&gt; $test[[2]]
-#&gt;  [1]  24  30  36  73 129 153 164 165 173 180 216 231 233 264 268 297 344 348 349
-#&gt; [20] 362 398 408 412 448
+#&gt;  [1]  19  30  79 109 130 151 167 209 261 319 365 387 394 462 473
 #&gt; 
 #&gt; $test[[3]]
-#&gt;  [1]  26  43  63  82  94 113 116 167 185 241 288 369 390 402 414 421 423 428 470
-#&gt; [20] 476
+#&gt;  [1]  63  64 125 163 169 205 207 225 249 298 318 343 366 370 412 426 448 460
 #&gt; 
 #&gt; $test[[4]]
-#&gt;  [1]   3  16  33 109 111 115 146 151 156 158 159 175 252 299 321 382 446 456
+#&gt;  [1]   2  42  48  87 110 114 127 142 147 170 181 219 230 268 289 311 376 378 379
+#&gt; [20] 384 386 392 443 481 484
 #&gt; 
 #&gt; $test[[5]]
-#&gt;  [1]   2  13  18  41  97 143 174 229 248 249 278 296 343 379 384 441
+#&gt;  [1]   4  67  86  93 187 189 198 215 320 323 332 347 358 361 383 400 432 449 459
 #&gt; 
 #&gt; 
 #&gt; $train
 #&gt; $train[[1]]
-#&gt;  [1]   7  12  23  27  42  47  50  67  71  74  86  93  98 110 125 135 136 141 155
-#&gt; [20] 157 160 162 169 178 181 200 203 204 213 220 223 228 234 240 243 245 247 261
-#&gt; [39] 262 265 267 275 277 279 285 286 317 328 329 332 335 340 346 351 353 360 365
-#&gt; [58] 371 374 375 381 385 389 392 393 406 439 442 445 447 452 453 454 462 467 471
-#&gt; [77] 480 482 483 493 497
+#&gt;  [1]   1   3  11  16  20  21  25  31  32  33  34  53  55  56  59  76  92 116 149
+#&gt; [20] 155 156 168 173 174 178 179 192 200 210 221 236 237 239 240 242 256 264 270
+#&gt; [39] 274 287 288 301 302 304 309 314 316 317 333 338 340 342 351 353 355 357 364
+#&gt; [58] 389 395 396 403 406 409 411 413 417 420 421 424 430 431 434 445 450 453 454
+#&gt; [77] 456 469 475 479 485 489 490
 #&gt; 
 #&gt; $train[[2]]
-#&gt;  [1]   5  19  22  31  38  49  57  62  68  75  79  80  85  87  88  99 101 108 114
-#&gt; [20] 118 121 124 130 144 152 154 177 182 190 198 202 212 217 221 225 236 237 242
-#&gt; [39] 257 259 263 266 270 281 282 284 290 293 302 303 311 318 323 330 336 338 341
-#&gt; [58] 342 359 368 370 391 396 399 400 403 404 407 417 418 427 436 457 460 465 466
-#&gt; [77] 477 488 498
+#&gt;  [1]  13  17  22  23  41  44  45  46  49  51  60  62  74  77  90  94  96 103 104
+#&gt; [20] 112 119 123 132 133 135 137 143 148 165 184 188 191 194 195 202 208 216 220
+#&gt; [39] 227 232 238 243 246 252 254 263 266 278 279 284 290 292 294 308 310 321 324
+#&gt; [58] 334 336 348 349 359 372 385 393 397 398 399 401 416 423 425 438 444 447 452
+#&gt; [77] 458 463 466 468 474 480 482 487 493 497 498
 #&gt; 
 #&gt; $train[[3]]
-#&gt;  [1]   9  20  21  32  39  44  45  46  53  55  60  61  66  92 100 104 126 132 133
-#&gt; [20] 140 147 149 150 161 163 168 170 187 189 191 195 201 214 218 219 224 227 235
-#&gt; [39] 238 244 246 251 253 254 274 280 283 287 289 292 298 310 313 322 327 347 352
-#&gt; [58] 367 373 376 377 386 387 394 395 409 416 430 433 444 449 450 459 472 474 475
-#&gt; [77] 479 491 495
+#&gt;  [1]   5  24  36  37  38  52  57  58  61  68  69  72  73  85  89  95  99 108 111
+#&gt; [20] 121 124 128 129 131 136 138 150 152 154 157 161 162 172 175 177 185 201 206
+#&gt; [39] 211 213 217 224 226 229 233 235 248 273 276 277 283 285 297 305 307 312 313
+#&gt; [58] 326 341 346 368 371 374 380 382 388 390 402 405 408 419 437 467 470 476 478
+#&gt; [77] 483 491 494
 #&gt; 
 #&gt; $train[[4]]
-#&gt;  [1]   4   6  10  11  15  29  34  35  40  54  59  64  65  69  72  78  84  90  96
-#&gt; [20] 123 128 131 137 145 166 183 192 193 197 199 210 211 232 239 250 255 256 260
-#&gt; [39] 269 271 272 276 294 300 301 305 306 309 312 316 320 333 337 357 361 363 364
-#&gt; [58] 366 383 397 405 410 413 419 420 424 426 429 432 435 438 458 463 464 486 487
-#&gt; [77] 499 500
+#&gt;  [1]   6   7   9  10  14  28  39  47  65  75  78  80  81  83  88  97 101 102 106
+#&gt; [20] 107 141 144 153 159 166 180 186 190 199 212 234 241 244 251 258 259 271 272
+#&gt; [39] 280 281 282 286 296 299 303 306 315 322 327 328 329 337 344 345 354 356 362
+#&gt; [58] 363 367 369 373 377 391 407 410 428 433 451 457 465 471 472 488 492
 #&gt; 
 #&gt; $train[[5]]
-#&gt;  [1]   8  14  17  25  48  51  52  76  77  81  83  89  91  95 102 106 107 112 117
-#&gt; [20] 120 122 134 138 139 148 171 172 176 179 184 188 194 205 206 207 209 215 222
-#&gt; [39] 226 230 273 291 304 308 314 315 319 324 325 326 331 334 339 345 354 355 356
-#&gt; [58] 372 380 388 401 415 422 425 431 434 437 440 443 451 455 461 468 469 478 481
-#&gt; [77] 484 489 490 492 494 496
+#&gt;  [1]   8  12  15  18  26  27  29  35  40  43  50  54  66  70  71  84  91  98 100
+#&gt; [20] 105 113 115 118 120 126 145 146 158 176 182 183 193 196 197 204 214 218 231
+#&gt; [39] 245 247 250 255 257 260 262 265 267 269 275 291 293 295 300 325 330 331 335
+#&gt; [58] 339 350 352 360 375 381 404 414 418 422 427 435 436 439 440 441 442 446 455
+#&gt; [77] 461 464 477 486 495 496 499 500
 #&gt; 
 #&gt; </div></pre>
   </div>

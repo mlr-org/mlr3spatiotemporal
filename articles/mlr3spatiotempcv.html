@@ -123,12 +123,12 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3spatiotempcv"</span>)</pre></body></html></div>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a><span class="header-section-number">1</span> Introduction</h1>
+<a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>This package provides resampling methods for the {mlr3} package framework suited for spatial and temporal data.</p>
 <p>Calling <code><a href="https://mlr3spatiotempcv.mlr-org.com/reference">library("mlr3spatiotempcv")</a></code>, makes the spatial resampling methods and example tasks available to the user.</p>
 <div id="task-types" class="section level3">
 <h3 class="hasAnchor">
-<a href="#task-types" class="anchor"></a><span class="header-section-number">1.0.1</span> Task types</h3>
+<a href="#task-types" class="anchor"></a>Task types</h3>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">mlr_reflections</span>$<span class="no">task_types</span>
 <span class="co">#&gt;       type          package          task        learner        prediction</span>
 <span class="co">#&gt; 1: classif             mlr3   TaskClassif LearnerClassif PredictionClassif</span>
@@ -143,7 +143,7 @@
 </div>
 <div id="task-column-roles" class="section level3">
 <h3 class="hasAnchor">
-<a href="#task-column-roles" class="anchor"></a><span class="header-section-number">1.0.2</span> Task column roles</h3>
+<a href="#task-column-roles" class="anchor"></a>Task column roles</h3>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># note the addtional "coordinates" slot</span>
 <span class="no">mlr_reflections</span>$<span class="no">task_col_roles</span>
 <span class="co">#&gt; $regr</span>
@@ -164,7 +164,7 @@
 </div>
 <div id="resampling-methods" class="section level3">
 <h3 class="hasAnchor">
-<a href="#resampling-methods" class="anchor"></a><span class="header-section-number">1.0.3</span> Resampling methods</h3>
+<a href="#resampling-methods" class="anchor"></a>Resampling methods</h3>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://mlr3.mlr-org.com/reference/as.data.table.html">as.data.table</a></span>(<span class="no">mlr_resamplings</span>)
 <span class="co">#&gt;                      key                                  params iters</span>
 <span class="co">#&gt;  1:            bootstrap                           repeats,ratio    30</span>
@@ -189,85 +189,107 @@
 <p>Currently, the following resampling methods are implemented:</p>
 <table class="table">
 <colgroup>
-<col width="20%">
+<col width="39%">
 <col width="12%">
-<col width="12%">
-<col width="27%">
-<col width="28%">
+<col width="15%">
+<col width="32%">
 </colgroup>
 <thead><tr class="header">
 <th>Literature</th>
 <th>Package</th>
 <th>Reference</th>
-<th>Class Name</th>
 <th>mlr3 Sugar</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Spatial Buffering</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
+<td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>ResamplingSpCVBuffer</code></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv-buffer")</a></code></td>
 </tr>
 <tr class="even">
 <td>Spatial Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
+<td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>ResamplingSpCVBlock</code></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv-block")</a></code></td>
 </tr>
 <tr class="odd">
 <td>Spatial CV</td>
-<td><a href="https://github.com/giscience-fsu/sperrorest">sperrorest</a></td>
+<td>sperrorest</td>
 <td>Brenning 2012</td>
-<td><code>ResamplingSpCVCoords</code></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv-coords")</a></code></td>
 </tr>
 <tr class="even">
 <td>Environmental Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
+<td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>ResamplingSpCVEnv</code></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv-env")</a></code></td>
+</tr>
+<tr class="odd">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv-cluto")</a></code></td>
+</tr>
+<tr class="even">
+<td>Leave-Location-and-Time-Out</td>
+<td>CAST</td>
+<td>Meyer 2018</td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv-cstf")</a></code></td>
 </tr>
 <tr class="odd">
 <td>—</td>
 <td>—</td>
 <td>—</td>
 <td>—</td>
-<td>—</td>
 </tr>
 <tr class="even">
+<td>Repeated Spatial Blocking</td>
+<td>blockCV</td>
+<td>Valavi 2019</td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated-spcv-block")</a></code></td>
+</tr>
+<tr class="odd">
 <td>Repeated Spatial CV</td>
-<td><a href="https://github.com/giscience-fsu/sperrorest">sperrorest</a></td>
+<td>sperrorest</td>
 <td>Brenning 2012</td>
-<td><code>RepeatedResamplingSpCVCoords</code></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated-spcv-coords")</a></code></td>
+</tr>
+<tr class="even">
+<td>Repeated Env Blocking</td>
+<td>blockCV</td>
+<td>Valavi 2019</td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated-spcv-env")</a></code></td>
+</tr>
+<tr class="odd">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated-sptcv-cluto")</a></code></td>
+</tr>
+<tr class="even">
+<td>Repeated Leave-Location-and-Time-Out</td>
+<td>CAST</td>
+<td>Meyer 2018</td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated-sptcv-cstf")</a></code></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a><span class="header-section-number">1.1</span> Usage</h2>
-<p>To create a spatial task, use class <code>TaskClassifST</code> for classification and <code>TaskRegrST</code> for regression tasks.
-Please make sure that your dataset comes with coordinates since they are needed during the construction of the class (see the next code chunk).
-In addition, one can specify whether the coordinates should be used as features during the modeling.
-By default, coordinates are not used as features and will be removed from the feature dataset after the coordinates have been added as a method to the task.
-For optional plotting purposes, it is recommended to also pass the PROJ string specifying the used coordinate reference system via the <code>crs</code> argument.</p>
+<a href="#usage" class="anchor"></a>Usage</h2>
+<p>To create a spatial task, use class <code>TaskClassifST</code> for classification and <code>TaskRegrST</code> for regression tasks. Please make sure that your dataset comes with coordinates since they are needed during the construction of the class (see the next code chunk). In addition, one can specify whether the coordinates should be used as features during the modeling. By default, coordinates are not used as features and will be removed from the feature dataset after the coordinates have been added as a method to the task. For optional plotting purposes, it is recommended to also pass the PROJ string specifying the used coordinate reference system via the <code>crs</code> argument.</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">data</span> <span class="kw">=</span> <span class="kw pkg">mlr3</span><span class="kw ns">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/as_data_backend.html">as_data_backend</a></span>(<span class="no">ecuador</span>)
 
 <span class="no">ecuador</span> <span class="kw">=</span> <span class="no">TaskClassifST</span>$<span class="fu">new</span>(
   <span class="kw">id</span> <span class="kw">=</span> <span class="st">"ecuador"</span>, <span class="kw">backend</span> <span class="kw">=</span> <span class="no">data</span>, <span class="kw">target</span> <span class="kw">=</span> <span class="st">"slides"</span>,
   <span class="kw">positive</span> <span class="kw">=</span> <span class="st">"TRUE"</span>, <span class="kw">coordinate_names</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="kw">coords_as_features</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
   <span class="kw">crs</span> <span class="kw">=</span> <span class="st">"+proj=utm +zone=17 +south +datum=WGS84 +units=m +no_defs"</span>)</pre></body></html></div>
-<p>The “ecuador” dataset consists of a response variable named <code>slides</code> (boolean; see Figure <a href="#fig:lsl">1.1</a>) and various predictor variables that might have an influence on the occurrence of landslides such as slope, curvature or catchment area.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
-For a detailed overview of the dataset, please refer to <span class="citation">Brenning et al. (<a href="#ref-brenning_landslide_2015" role="doc-biblioref">2015</a>)</span> and/or Chapter 11 of <a href="https://geocompr.robinlovelace.net/spatial-cv.html">Geocomputation with R</a> <span class="citation">(Lovelace, Nowosad, and Muenchow <a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>The “ecuador” dataset consists of a response variable named <code>slides</code> (boolean; see Figure @ref(fig:lsl)) and various predictor variables that might have an influence on the occurrence of landslides such as slope, curvature or catchment area.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For a detailed overview of the dataset, please refer to <span class="citation">Brenning et al. (<a href="#ref-brenning_landslide_2015" role="doc-biblioref">2015</a>)</span> and/or Chapter 11 of <a href="https://geocompr.robinlovelace.net/spatial-cv.html">Geocomputation with R</a> <span class="citation">(Lovelace, Nowosad, and Muenchow <a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:lsl"></span>
 <img src="https://geocompr.robinlovelace.net/figures/lsl-map-1.png" alt="Landslide initiation points (red) and non-landslide points (blue) in Southern Ecuador. Figure taken from @lovelace_geocomputation_2019." width="70%"><p class="caption">
-Figure 1.1: Landslide initiation points (red) and non-landslide points (blue) in Southern Ecuador. Figure taken from <span class="citation">Lovelace, Nowosad, and Muenchow (<a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>.
+Landslide initiation points (red) and non-landslide points (blue) in Southern Ecuador. Figure taken from <span class="citation">Lovelace, Nowosad, and Muenchow (<a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>.
 </p>
 </div>
 <p>Printing a spatial task, also displays a preview of the coordinates.</p>
@@ -291,14 +313,11 @@ Figure 1.1: Landslide initiation points (red) and non-landslide points (blue) in
 <span class="co">#&gt; 749: 713322.5 9560562</span>
 <span class="co">#&gt; 750: 715392.5 9557932</span>
 <span class="co">#&gt; 751: 713802.5 9560862</span></pre></body></html></div>
-<p>After the task has been constructed, it can be used in conjunction with all available resampling methods.
-However, non-spatial methods should <strong>only be used to showcase the degree of overoptimistic performance estimates</strong> compared to a chosen spatiotemporal resampling method <span class="citation">(Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>After the task has been constructed, it can be used in conjunction with all available resampling methods. However, non-spatial methods should <strong>only be used to showcase the degree of overoptimistic performance estimates</strong> compared to a chosen spatiotemporal resampling method <span class="citation">(Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div id="resampling" class="section level3">
 <h3 class="hasAnchor">
-<a href="#resampling" class="anchor"></a><span class="header-section-number">1.1.1</span> Resampling</h3>
-<p>To showcase the usage with code, we will adapt the basic <a href="https://mlr3book.mlr-org.com/resampling.html">resampling example of the mlr3book</a> by using the “ecuador” example task that comes with the {mlr3spatiotempcv} package.
-To predict landslide occurence, we will use a simple decision tree.
-To emphasize that common, i.e., non-spatial, cross-validation is usually over-optimistic, we will first execute a 5-repeated 5-fold cross-validation with the help of the <code>"repeated-cv"</code> resampling method.</p>
+<a href="#resampling" class="anchor"></a>Resampling</h3>
+<p>To showcase the usage with code, we will adapt the basic <a href="https://mlr3book.mlr-org.com/resampling.html">resampling example of the mlr3book</a> by using the “ecuador” example task that comes with the {mlr3spatiotempcv} package. To predict landslide occurrence, we will use a simple decision tree. To emphasize that common, i.e., non-spatial, cross-validation is usually over-optimistic, we will first execute a 5-repeated 5-fold cross-validation with the help of the <code>"repeated-cv"</code> resampling method.</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">learner</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.rpart"</span>, <span class="kw">maxdepth</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">predict_type</span> <span class="kw">=</span> <span class="st">"prob"</span>)
 <span class="no">resampling_nsp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span>(<span class="st">"repeated_cv"</span>, <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">repeats</span> <span class="kw">=</span> <span class="fl">5</span>)
 <span class="no">rr_nsp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(
@@ -308,12 +327,7 @@ To emphasize that common, i.e., non-spatial, cross-validation is usually over-op
 <span class="no">rr_nsp</span>$<span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(<span class="kw">measures</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
 <span class="co">#&gt; classif.ce </span>
 <span class="co">#&gt;  0.3408706</span></pre></body></html></div>
-<p>However, as emphasized before, the “ecuador” landslides dataset is a spatial dataset, i.e., that each observation comes with xy-coordinates.
-And points close to each other tend to be more similar than points further apart.
-Spatial cross-validation takes this into account by putting points close to each other either into the training or the test dataset (see Figure <a href="#fig:ressp">1.2</a>).
-For more details on (spatial) cross-validation, please refer to <span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span> and <span class="citation">Schratz et al. (<a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>.
-For a gentle introduction to spatial cross-validation, please refer to Chapter 11 of <a href="https://geocompr.robinlovelace.net/spatial-cv.html">Geocomputation with R</a> <span class="citation">(Lovelace, Nowosad, and Muenchow <a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>.
-Hence, let’s do the cross-validation again, this time taking into account the spatial dimension.</p>
+<p>However, as emphasized before, the “ecuador” landslides dataset is a spatial dataset, i.e., that each observation comes with xy-coordinates. And points close to each other tend to be more similar than points further apart. Spatial cross-validation takes this into account by putting points close to each other either into the training or the test dataset (see Figure @ref(fig:ressp)). For more details on (spatial) cross-validation, please refer to <span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span> and <span class="citation">Schratz et al. (<a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>. For a gentle introduction to spatial cross-validation, please refer to Chapter 11 of <a href="https://geocompr.robinlovelace.net/spatial-cv.html">Geocomputation with R</a> <span class="citation">(Lovelace, Nowosad, and Muenchow <a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>. Hence, let’s do the cross-validation again, this time taking into account the spatial dimension.</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">resampling_sp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span>(<span class="st">"repeated-spcv-coords"</span>, <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">repeats</span> <span class="kw">=</span> <span class="fl">5</span>)
 
 <span class="no">rr_sp</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(
@@ -323,35 +337,31 @@ Hence, let’s do the cross-validation again, this time taking into account the 
 <span class="no">rr_sp</span>$<span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(<span class="kw">measures</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
 <span class="co">#&gt; classif.ce </span>
 <span class="co">#&gt;  0.3974651</span></pre></body></html></div>
-<p>We see that the classical non-spatial CV performs better.
-However, “better” in this case actually means overoptimistic and biased <span class="citation">(Burman, Chow, and Nolan <a href="#ref-burman1994" role="doc-biblioref">1994</a>; Cliff and Ord <a href="#ref-cliff1970" role="doc-biblioref">1970</a>; Racine <a href="#ref-racine2000" role="doc-biblioref">2000</a>; Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>.
-Hence, it is highly recommended to <strong>not</strong> use classical CV methods with spatiotemporal data but rather choose an appropriate spatiotemporal method.</p>
+<p>We see that the classical non-spatial CV performs better. However, “better” in this case actually means overoptimistic and biased <span class="citation">(Burman, Chow, and Nolan <a href="#ref-burman1994" role="doc-biblioref">1994</a>; Cliff and Ord <a href="#ref-cliff1970" role="doc-biblioref">1970</a>; Racine <a href="#ref-racine2000" role="doc-biblioref">2000</a>; Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>. Hence, it is highly recommended to <strong>not</strong> use classical CV methods with spatiotemporal data but rather choose an appropriate spatiotemporal method.</p>
 </div>
 </div>
 <div id="visualization" class="section level2">
 <h2 class="hasAnchor">
-<a href="#visualization" class="anchor"></a><span class="header-section-number">1.2</span> Visualization</h2>
+<a href="#visualization" class="anchor"></a>Visualization</h2>
 <p>This package follows the {mlr3} ecosystem idea of providing <code><a href="../reference/autoplot.html">autoplot()</a></code> methods for certain classes.</p>
 <p>For an exhaustive overview, have a look at the <a href="https://mlr3spatiotempcv.mlr-org.com/reference/autoplot_spatial_resampling.html">reference section for the autoplot method</a> on the pkgdown site of this package.</p>
 <p>To showcase the usage, we will visualize both resampling methods which we created for the comparison we just did above.</p>
 <div id="spatial" class="section level3">
 <h3 class="hasAnchor">
-<a href="#spatial" class="anchor"></a><span class="header-section-number">1.2.1</span> Spatial</h3>
-<p>Multiple options exists.
-If no specific fold is specified, all partitions will be returned distinguished by color.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="kw">object</span> <span class="kw">=</span> <span class="no">resampling_sp</span>, <span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>)</pre></body></html></div>
+<a href="#spatial" class="anchor"></a>Spatial</h3>
+<p>Multiple options exists. If no specific fold is specified, all partitions will be returned distinguished by color.</p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">resampling_sp</span>, <span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>, <span class="kw">crs</span> <span class="kw">=</span> <span class="fl">4326</span>)</pre></body></html></div>
 <div class="figure" style="text-align: center">
-<span id="fig:ressp"></span>
-<img src="mlr3spatiotempcv_files/figure-html/ressp-1.png" alt="Example for five spatially disjoint partitions constructed with the `repeated_cv` resampling method." width="525"><p class="caption">
-Figure 1.2: Example for five spatially disjoint partitions constructed with the <code>repeated_cv</code> resampling method.
+<img src="mlr3spatiotempcv_files/figure-html/ressp-1.png" alt="Example for five spatially disjoint partitions constructed with the `repeated_cv` resampling method." width="700"><p class="caption">
+Example for five spatially disjoint partitions constructed with the <code>repeated_cv</code> resampling method.
 </p>
 </div>
 </div>
 <div id="non-spatial" class="section level3">
 <h3 class="hasAnchor">
-<a href="#non-spatial" class="anchor"></a><span class="header-section-number">1.2.2</span> Non-spatial</h3>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="kw">object</span> <span class="kw">=</span> <span class="no">resampling_nsp</span>, <span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>)</pre></body></html></div>
-<p><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-1.png" width="525" style="display: block; margin: auto;"></p>
+<a href="#non-spatial" class="anchor"></a>Non-spatial</h3>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">resampling_nsp</span>, <span class="kw">task</span> <span class="kw">=</span> <span class="no">ecuador</span>, <span class="kw">crs</span> <span class="kw">=</span> <span class="fl">4326</span>)</pre></body></html></div>
+<p><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>
@@ -392,7 +402,9 @@ Figure 1.2: Example for five spatially disjoint partitions constructed with the 
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
