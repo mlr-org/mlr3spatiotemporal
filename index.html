@@ -35,7 +35,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org"></a>
-        <a class="navbar-brand" href="index.html">mlr3spatiotempcv <small>v0.0.0.9006</small></a>
+        <a class="navbar-brand" href="index.html">mlr3spatiotempcv <small>v0.0.0.9007</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -141,37 +141,37 @@ The package is in very early stages and breaking changes withour further notice 
 <td>Spatial Buffering</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>rsmp("spcv-buffer")</code></td>
+<td><code>rsmp("spcv_buffer")</code></td>
 </tr>
 <tr class="even">
 <td>Spatial Blocking</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>rsmp("spcv-block")</code></td>
+<td><code>rsmp("spcv_block")</code></td>
 </tr>
 <tr class="odd">
 <td>Spatial CV</td>
 <td>sperrorest</td>
 <td>Brenning 2012</td>
-<td><code>rsmp("spcv-coords")</code></td>
+<td><code>rsmp("spcv_coords")</code></td>
 </tr>
 <tr class="even">
 <td>Environmental Blocking</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>rsmp("spcv-env")</code></td>
+<td><code>rsmp("spcv_env")</code></td>
 </tr>
 <tr class="odd">
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><code>rsmp("sptcv-cluto")</code></td>
+<td><code>rsmp("sptcv_cluto")</code></td>
 </tr>
 <tr class="even">
 <td>Leave-Location-and-Time-Out</td>
 <td>CAST</td>
 <td>Meyer 2018</td>
-<td><code>rsmp("sptcv-cstf")</code></td>
+<td><code>rsmp("sptcv_cstf")</code></td>
 </tr>
 <tr class="odd">
 <td>—</td>
@@ -183,31 +183,31 @@ The package is in very early stages and breaking changes withour further notice 
 <td>Repeated Spatial Blocking</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>rsmp("repeated-spcv-block")</code></td>
+<td><code>rsmp("repeated_spcv_block")</code></td>
 </tr>
 <tr class="odd">
 <td>Repeated Spatial CV</td>
 <td>sperrorest</td>
 <td>Brenning 2012</td>
-<td><code>rsmp("repeated-spcv-coords")</code></td>
+<td><code>rsmp("repeated_spcv_coords")</code></td>
 </tr>
 <tr class="even">
 <td>Repeated Env Blocking</td>
 <td>blockCV</td>
 <td>Valavi 2019</td>
-<td><code>rsmp("repeated-spcv-env")</code></td>
+<td><code>rsmp("repeated_spcv_env")</code></td>
 </tr>
 <tr class="odd">
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><code>rsmp("repeated-sptcv-cluto")</code></td>
+<td><code>rsmp("repeated_sptcv_cluto")</code></td>
 </tr>
 <tr class="even">
 <td>Repeated Leave-Location-and-Time-Out</td>
 <td>CAST</td>
 <td>Meyer 2018</td>
-<td><code>rsmp("repeated-sptcv-cstf")</code></td>
+<td><code>rsmp("repeated_sptcv_cstf")</code></td>
 </tr>
 </tbody>
 </table>
@@ -263,17 +263,17 @@ The package is in very early stages and breaking changes withour further notice 
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(ggplot2)</span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a>task =<span class="st"> </span><span class="kw">tsk</span>(<span class="st">"ecuador"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>resampling =<span class="st"> </span><span class="kw">rsmp</span>(<span class="st">"spcv-coords"</span>, <span class="dt">folds =</span> <span class="dv">5</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>resampling =<span class="st"> </span><span class="kw">rsmp</span>(<span class="st">"spcv_coords"</span>, <span class="dt">folds =</span> <span class="dv">5</span>)</span>
 <span id="cb1-7"><a href="#cb1-7"></a>resampling<span class="op">$</span><span class="kw">instantiate</span>(task)</span>
 <span id="cb1-8"><a href="#cb1-8"></a></span>
 <span id="cb1-9"><a href="#cb1-9"></a><span class="kw">plot</span>(resampling, task, <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
-<p><img src="reference/figures/README-spcv-coords-all-partitions-1.png"><!-- --></p>
+<p><img src="reference/figures/README-spcv_coords-all-partitions-1.png"><!-- --></p>
 </div>
 <div id="visualization-of-a-specific-fold" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualization-of-a-specific-fold" class="anchor"></a>Visualization of a specific fold</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">plot</span>(resampling, task, <span class="dt">fold_id =</span> <span class="dv">1</span>, <span class="dt">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
-<p><img src="reference/figures/README-spcv-coords-fold-1.png"><!-- --></p>
+<p><img src="reference/figures/README-spcv_coords-fold-1.png"><!-- --></p>
 </div>
 <div id="spatiotemporal-visualization" class="section level3">
 <h3 class="hasAnchor">
@@ -282,7 +282,7 @@ The package is in very early stages and breaking changes withour further notice 
 <p>(See vignette <a href="https://mlr3spatiotempcv.mlr-org.com/articles/spatiotemp-viz.html">“Spatiotemporal Visualization”</a> for an interactive 3D HTML variant.)</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(plotly)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>task_st =<span class="st"> </span><span class="kw">tsk</span>(<span class="st">"cookfarm"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>resampling =<span class="st"> </span><span class="kw">rsmp</span>(<span class="st">"sptcv-cluto"</span>, <span class="dt">folds =</span> <span class="dv">5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>resampling =<span class="st"> </span><span class="kw">rsmp</span>(<span class="st">"sptcv_cluto"</span>, <span class="dt">folds =</span> <span class="dv">5</span>)</span>
 <span id="cb3-4"><a href="#cb3-4"></a>resampling<span class="op">$</span><span class="kw">instantiate</span>(task_st, <span class="dt">time_var =</span> <span class="st">"Date"</span>)</span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="kw">plot</span>(resampling, task_st, <span class="dt">fold_id =</span> <span class="dv">1</span>, <span class="dt">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="reference/figures/spt-viz.png"></p>

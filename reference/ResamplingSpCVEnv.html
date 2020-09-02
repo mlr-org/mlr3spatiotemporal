@@ -78,7 +78,7 @@ be specified in the param_set. By default, all numeric features are used." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9006</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9007</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -207,7 +207,7 @@ values stored in the <code>param_set</code>.</p></dd>
 <hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Create an "Environmental Block" resampling instance.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>ResamplingSpCVEnv</span>$<span class='fu'>new</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"spcv-env"</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>ResamplingSpCVEnv</span>$<span class='fu'>new</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"spcv_env"</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
@@ -244,7 +244,7 @@ A task to instantiate.</p></dd>
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
 
 <span class='co'># Instantiate Resampling</span>
-<span class='no'>rcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>rcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>4</span>)
 <span class='no'>rcv</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
 
 <span class='co'># Individual sets:</span>

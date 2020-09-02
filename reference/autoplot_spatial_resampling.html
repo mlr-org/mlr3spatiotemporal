@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Visualization of spatial resampling. — autoplot_spatial_resampling • mlr3spatiotempcv</title>
+<title>Visualization of spatiotemporal resampling methods. — autoplot_spatial_resampling • mlr3spatiotempcv</title>
 
 
 <!-- jquery -->
@@ -40,9 +40,10 @@
 
 
 
-<meta property="og:title" content="Visualization of spatial resampling. — autoplot_spatial_resampling" />
+<meta property="og:title" content="Visualization of spatiotemporal resampling methods. — autoplot_spatial_resampling" />
 <meta property="og:description" content="Generates plots for ResamplingSpCVBlock, ResamplingSpCVEnv,
-ResamplingSpCVBuffer and ResamplingSpCVCoords." />
+ResamplingSpCVBuffer, ResamplingSpCVCoords, [ResamplingSptCVCstf and
+ResamplingSptCVCluto." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -76,7 +77,7 @@ ResamplingSpCVBuffer and ResamplingSpCVCoords." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9006</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.0.0.9007</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -150,14 +151,15 @@ ResamplingSpCVBuffer and ResamplingSpCVCoords." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Visualization of spatial resampling.</h1>
+    <h1>Visualization of spatiotemporal resampling methods.</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/autoplot.R'><code>R/autoplot.R</code></a>, <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/autoplot_spcv_buffer.R'><code>R/autoplot_spcv_buffer.R</code></a>, <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/autoplot_spcv_cstf.R'><code>R/autoplot_spcv_cstf.R</code></a></small>
     <div class="hidden name"><code>autoplot_spatial_resampling.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Generates plots for <a href='ResamplingSpCVBlock.html'>ResamplingSpCVBlock</a>, <a href='ResamplingSpCVEnv.html'>ResamplingSpCVEnv</a>,
-<a href='ResamplingSpCVBuffer.html'>ResamplingSpCVBuffer</a> and <a href='ResamplingSpCVCoords.html'>ResamplingSpCVCoords</a>.</p>
+<a href='ResamplingSpCVBuffer.html'>ResamplingSpCVBuffer</a>, <a href='ResamplingSpCVCoords.html'>ResamplingSpCVCoords</a>, [ResamplingSptCVCstf and
+<a href='ResamplingSptCVCluto.html'>ResamplingSptCVCluto</a>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for ResamplingSpCVBlock</span>
@@ -479,7 +481,7 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-block"</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_block"</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
 
 <span class='co'>## Visualize all partitions</span>
@@ -500,7 +502,7 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
 <span class='co'>##########</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>features</span> <span class='kw'>=</span> <span class='st'>"dem"</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_env"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>features</span> <span class='kw'>=</span> <span class='st'>"dem"</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
 
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
@@ -512,7 +514,7 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
 <span class='co'>##########</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-coords"</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_coords"</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
 
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>)
@@ -526,7 +528,7 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
 <span class='no'>task_st</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv-cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv_cluto"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
 
 <span class='co'># plot</span>
@@ -552,7 +554,7 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
 <span class='co'>##########</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv-buffer"</span>, <span class='kw'>theRange</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_buffer"</span>, <span class='kw'>theRange</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
 
 <span class='fu'><a href='autoplot.html'>autoplot</a></span>(<span class='no'>resampling</span>, <span class='no'>task</span>, <span class='fl'>1</span>)
@@ -565,7 +567,7 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3spatiotempcv</span>)
 <span class='no'>task_st</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
-<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv-cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>resampling</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"sptcv_cstf"</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 <span class='no'>resampling</span>$<span class='fu'>instantiate</span>(<span class='no'>task_st</span>, <span class='st'>"Date"</span>)
 
 <span class='co'># plot</span>
