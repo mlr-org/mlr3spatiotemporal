@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   mlr3spatiotempcv: mlr3spatiotempcv.html
   spatiotemp-viz: spatiotemp-viz.html
-last_built: 2020-09-07T04:32Z
+last_built: 2020-09-07T04:53Z
 urls:
   reference: https://mlr3spatiotempcv.mlr-org.com/reference
   article: https://mlr3spatiotempcv.mlr-org.com/articles
