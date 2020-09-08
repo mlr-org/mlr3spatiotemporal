@@ -172,17 +172,18 @@ The <code>Date</code> column was appended from the <code>readings</code> dataset
 <p>See <a href='https://rdrr.io/pkg/GSIF/man/cookfarm.html'>GSIF::cookfarm</a> for more detailed information.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>cookfarm</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>cookfarm</span>)</pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> inheriting from TaskRegr.</p>
+    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> inheriting from <a href='https://mlr3.mlr-org.com/reference/TaskRegr.html'>TaskRegr</a>.</p>
     <h2 class="hasAnchor" id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 
     
-<pre><span class='no'>mlr_tasks</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"cookfarm"</span>)
-<span class='fu'>tsk</span>(<span class='st'>"cookfarm"</span>)</pre>
+<pre><span class='kw'>mlr_tasks</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"cookfarm"</span>)
+<span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"cookfarm"</span>)
+</pre>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -199,8 +200,8 @@ modeling the spatial and temporal variation of soil moisture in a dryland
 agricultural field. Submitted to Water Resources Research.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of Tasks: mlr_tasks</p>
-<p><code>as.data.table(mlr_tasks)</code> for a complete table of all (also dynamically created) Tasks.</p>
+    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Task.html'>Tasks</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_tasks.html'>mlr_tasks</a></p>
+<p><code><a href='https://mlr3.mlr-org.com/reference/as.data.table.html'>as.data.table(mlr_tasks)</a></code> for a complete table of all (also dynamically created) <a href='https://mlr3.mlr-org.com/reference/Task.html'>Tasks</a>.</p>
 <p>Other Task: 
 <code><a href='TaskClassifST.html'>TaskClassifST</a></code>,
 <code><a href='TaskRegrST.html'>TaskRegrST</a></code>,
@@ -222,7 +223,7 @@ agricultural field. Submitted to Water Resources Research.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

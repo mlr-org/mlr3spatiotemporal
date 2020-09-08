@@ -183,7 +183,7 @@ doi: <a href='https://doi.org/10.1101/357798'>10.1101/357798</a>
     <p><code><a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a></code> -&gt; <code>ResamplingSpCVBlock</code></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
-    <p><div class="r6-active-bindings"></p><dl'>
+    <p><div class="r6-active-bindings"></p><dl>
 <dt><code>iters</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
 Returns the number of resampling iterations, depending on the
 values stored in the <code>param_set</code>.</p></dd>
@@ -192,7 +192,7 @@ values stored in the <code>param_set</code>.</p></dd>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-<h3>Public methods</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
 <li><p><a href='#method-new'><code>ResamplingSpCVBlock$new()</code></a></p></li>
@@ -210,34 +210,34 @@ values stored in the <code>param_set</code>.</p></dd>
 </details>
 
 <hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Create an "Environmental Block" resampling instance.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>ResamplingSpCVBlock</span>$<span class='fu'>new</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"spcv_block"</span>)</pre><p></div></p>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Create an "Environmental Block" resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>ResamplingSpCVBlock</span><span class='op'>$</span><span class='fu'>new</span>(id = <span class='st'>"spcv_block"</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>id</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
 Identifier for the resampling strategy.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-instantiate"></a></p><h3>Method <code>instantiate()</code></h3>
-<p>Materializes fixed training and test splits for a given task.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>ResamplingSpCVBlock</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)</pre><p></div></p>
+<a id="method-instantiate"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>instantiate()</code></h3>
+<p>Materializes fixed training and test splits for a given task.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>ResamplingSpCVBlock</span><span class='op'>$</span><span class='fu'>instantiate</span>(<span class='kw'>task</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>task</code></dt><dd><p><a href='https://mlr3.mlr-org.com/reference/Task.html'>Task</a><br />
 A task to instantiate.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
-<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>ResamplingSpCVBlock</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>ResamplingSpCVBlock</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -245,15 +245,16 @@ A task to instantiate.</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mlr3</span>)
-<span class='no'>task</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://mlr3.mlr-org.com'>mlr3</a></span>)
+<span class='kw'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"ecuador"</span>)
 
 <span class='co'># Instantiate Resampling</span>
-<span class='no'>rcv</span> <span class='kw'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_block"</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
-<span class='no'>rcv</span>$<span class='fu'>instantiate</span>(<span class='no'>task</span>)
+<span class='kw'>rcv</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span>(<span class='st'>"spcv_block"</span>, range = <span class='fl'>1000</span>)
+<span class='kw'>rcv</span><span class='op'>$</span><span class='fu'>instantiate</span>(<span class='kw'>task</span>)
 
 <span class='co'># Individual sets:</span>
-<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;   [1]   9  20  22  30  31  36  40  80  81  83  92 101 111 134 173 176 177 179
+<span class='kw'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span>(<span class='fl'>1</span>)
+</div><div class='output co'>#&gt;   [1]   9  20  22  30  31  36  40  80  81  83  92 101 111 134 173 176 177 179
 #&gt;  [19] 184 189 197 205 226 228 237 254 256 276 284 291 293 297 304 311 315 333
 #&gt;  [37] 335 339 340 341 343 352 360 380 382 386 391 396 407 434 437 443 450 457
 #&gt;  [55] 481 500 513 521 536 556 568 587 597 606 608 614 615 616 622 634 648 659
@@ -291,12 +292,15 @@ A task to instantiate.</p></dd>
 #&gt; [631] 405 414 427 448 487 494 535 550 566 636 642 649 654 673 682 684 705 711
 #&gt; [649] 734 736   2  18  28  63  89 104 118 120 129 131 138 161 214 221 251 268
 #&gt; [667] 271 281 346 370 373 377 406 411 412 422 423 453 455 460 464 541 557 693
-#&gt; [685] 712 739</div><div class='input'><span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt;  [1]   3   5  19  46  54  65  79 109 113 125 128 130 132 142 145 163 181 182 191
+#&gt; [685] 712 739</div><div class='input'><span class='kw'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span>(<span class='fl'>1</span>)
+</div><div class='output co'>#&gt;  [1]   3   5  19  46  54  65  79 109 113 125 128 130 132 142 145 163 181 182 191
 #&gt; [20] 195 203 209 211 213 225 229 231 236 253 260 262 270 308 322 327 336 349 366
 #&gt; [39] 368 442 444 452 458 465 475 478 492 493 498 510 523 542 581 596 599 628 646
-#&gt; [58] 661 663 701 710 714 718 728 733</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='no'>rcv</span>$<span class='fu'>train_set</span>(<span class='fl'>1</span>), <span class='no'>rcv</span>$<span class='fu'>test_set</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; integer(0)</div><div class='input'>
+#&gt; [58] 661 663 701 710 714 718 728 733</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='kw'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span>(<span class='fl'>1</span>), <span class='kw'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span>(<span class='fl'>1</span>))
+</div><div class='output co'>#&gt; integer(0)</div><div class='input'>
 <span class='co'># Internal storage:</span>
-<span class='no'>rcv</span>$<span class='no'>instance</span></div><div class='output co'>#&gt;      row_id fold
+<span class='kw'>rcv</span><span class='op'>$</span><span class='kw'>instance</span>
+</div><div class='output co'>#&gt;      row_id fold
 #&gt;   1:      3    1
 #&gt;   2:      5    1
 #&gt;   3:     19    1
@@ -323,7 +327,7 @@ A task to instantiate.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
