@@ -363,7 +363,7 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 
 <span class="kw">rr_sp</span><span class="op">$</span><span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(measures = <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
 <span class="co">#&gt; classif.ce </span>
-<span class="co">#&gt;  0.3974651</span>
+<span class="co">#&gt;  0.4058174</span>
 </pre></div>
 <p>It can be seen that the non-spatial CV performed better. However, “better” in this case actually means overoptimistic and <strong>biased</strong> <span class="citation">(Burman, Chow, and Nolan <a href="#ref-burman1994" role="doc-biblioref">1994</a>; Cliff and Ord <a href="#ref-cliff1970" role="doc-biblioref">1970</a>; Racine <a href="#ref-racine2000" role="doc-biblioref">2000</a>; Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>. Hence, it is highly recommended to <strong>not</strong> use classical, non-spatial CV methods with spatiotemporal data but rather choose an appropriate spatiotemporal method.</p>
 </div>
