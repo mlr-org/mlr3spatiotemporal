@@ -226,13 +226,13 @@ Required for <code><a href='https://mlr3.mlr-org.com/reference/convert_task.html
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 <p>Create a new spatiotemporal resampling Task</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskClassifST</span><span class='op'>$</span><span class='fu'>new</span>(
-  <span class='kw'>id</span>,
-  <span class='kw'>backend</span>,
-  <span class='kw'>target</span>,
-  positive = <span class='kw'>NULL</span>,
-  extra_args = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(coords_as_features = <span class='fl'>FALSE</span>, crs = <span class='fl'>NA</span>, coordinate_names = <span class='fl'>NA</span>)
-)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskClassifST</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  <span class='va'>backend</span>,
+  <span class='va'>target</span>,
+  positive <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extra_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>coords_as_features <span class='op'>=</span> <span class='cn'>FALSE</span>, crs <span class='op'>=</span> <span class='cn'>NA</span>, coordinate_names <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
+<span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -271,7 +271,7 @@ The variables names of the coordinates in the data.</p></li>
 <p><hr>
 <a id="method-coordinates"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>coordinates()</code></h3>
 <p>Return the coordinates of the task</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskClassifST</span><span class='op'>$</span><span class='fu'>coordinates</span>(rows = <span class='kw'>NULL</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskClassifST</span><span class='op'>$</span><span class='fu'>coordinates</span><span class='op'>(</span>rows <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -281,7 +281,7 @@ The variables names of the coordinates in the data.</p></li>
 <p><hr>
 <a id="method-print"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
 <p>Print the task.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskClassifST</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>...</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskClassifST</span><span class='op'>$</span><span class='fu'>print</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -291,7 +291,7 @@ The variables names of the coordinates in the data.</p></li>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskClassifST</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskClassifST</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -302,19 +302,19 @@ The variables names of the coordinates in the data.</p></li>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>data</span> <span class='op'>=</span> <span class='kw'>mlr3</span>::<span class='fu'><a href='https://mlr3.mlr-org.com/reference/as_data_backend.html'>as_data_backend</a></span>(<span class='kw'>ecuador</span>)
-<span class='kw'>task</span> <span class='op'>=</span> <span class='kw'>TaskClassifST</span><span class='op'>$</span><span class='fu'>new</span>(<span class='st'>"ecuador"</span>,
-  backend = <span class='kw'>data</span>, target = <span class='st'>"slides"</span>,
-  positive = <span class='st'>"TRUE"</span>, extra_args = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(coordinate_names = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>))
-)
+    <pre class="examples"><div class='input'><span class='va'>data</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/as_data_backend.html'>as_data_backend</a></span><span class='op'>(</span><span class='va'>ecuador</span><span class='op'>)</span>
+<span class='va'>task</span> <span class='op'>=</span> <span class='va'>TaskClassifST</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>"ecuador"</span>,
+  backend <span class='op'>=</span> <span class='va'>data</span>, target <span class='op'>=</span> <span class='st'>"slides"</span>,
+  positive <span class='op'>=</span> <span class='st'>"TRUE"</span>, extra_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>coordinate_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='kw'>task</span><span class='op'>$</span><span class='kw'>task_type</span>
-</div><div class='output co'>#&gt; [1] "classif"</div><div class='input'><span class='kw'>task</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/stats/formula.html'>formula</a></span>()
+<span class='va'>task</span><span class='op'>$</span><span class='va'>task_type</span>
+</div><div class='output co'>#&gt; [1] "classif"</div><div class='input'><span class='va'>task</span><span class='op'>$</span><span class='fu'>formula</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; slides ~ .
-#&gt; NULL</div><div class='input'><span class='kw'>task</span><span class='op'>$</span><span class='kw'>class_names</span>
-</div><div class='output co'>#&gt; [1] "TRUE"  "FALSE"</div><div class='input'><span class='kw'>task</span><span class='op'>$</span><span class='kw'>positive</span>
-</div><div class='output co'>#&gt; [1] "TRUE"</div><div class='input'><span class='kw'>task</span><span class='op'>$</span><span class='kw'>negative</span>
-</div><div class='output co'>#&gt; [1] "FALSE"</div><div class='input'><span class='kw'>task</span><span class='op'>$</span><span class='fu'>coordinates</span>()
+#&gt; NULL</div><div class='input'><span class='va'>task</span><span class='op'>$</span><span class='va'>class_names</span>
+</div><div class='output co'>#&gt; [1] "TRUE"  "FALSE"</div><div class='input'><span class='va'>task</span><span class='op'>$</span><span class='va'>positive</span>
+</div><div class='output co'>#&gt; [1] "TRUE"</div><div class='input'><span class='va'>task</span><span class='op'>$</span><span class='va'>negative</span>
+</div><div class='output co'>#&gt; [1] "FALSE"</div><div class='input'><span class='va'>task</span><span class='op'>$</span><span class='fu'>coordinates</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;             x       y
 #&gt;   1: 712882.5 9560002
 #&gt;   2: 715232.5 9559582
@@ -326,7 +326,7 @@ The variables names of the coordinates in the data.</p></li>
 #&gt; 748: 713142.5 9560992
 #&gt; 749: 713322.5 9560562
 #&gt; 750: 715392.5 9557932
-#&gt; 751: 713802.5 9560862</div><div class='input'><span class='kw'>task</span><span class='op'>$</span><span class='kw'>coordinate_names</span>
+#&gt; 751: 713802.5 9560862</div><div class='input'><span class='va'>task</span><span class='op'>$</span><span class='va'>coordinate_names</span>
 </div><div class='output co'>#&gt; NULL</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

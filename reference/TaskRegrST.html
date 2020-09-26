@@ -225,12 +225,12 @@ Required for <code><a href='https://mlr3.mlr-org.com/reference/convert_task.html
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 <p>Create a new spatiotemporal resampling Task</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskRegrST</span><span class='op'>$</span><span class='fu'>new</span>(
-  <span class='kw'>id</span>,
-  <span class='kw'>backend</span>,
-  <span class='kw'>target</span>,
-  extra_args = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(coords_as_features = <span class='fl'>FALSE</span>, crs = <span class='fl'>NA</span>, coordinate_names = <span class='fl'>NA</span>)
-)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskRegrST</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  <span class='va'>backend</span>,
+  <span class='va'>target</span>,
+  extra_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>coords_as_features <span class='op'>=</span> <span class='cn'>FALSE</span>, crs <span class='op'>=</span> <span class='cn'>NA</span>, coordinate_names <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
+<span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -263,7 +263,7 @@ The variables names of the coordinates in the data.</p></li>
 <p><hr>
 <a id="method-coordinates"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>coordinates()</code></h3>
 <p>Return the coordinates of the task</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskRegrST</span><span class='op'>$</span><span class='fu'>coordinates</span>(rows = <span class='kw'>NULL</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskRegrST</span><span class='op'>$</span><span class='fu'>coordinates</span><span class='op'>(</span>rows <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -273,7 +273,7 @@ The variables names of the coordinates in the data.</p></li>
 <p><hr>
 <a id="method-print"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
 <p>Print the task.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskRegrST</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>...</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskRegrST</span><span class='op'>$</span><span class='fu'>print</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -283,7 +283,7 @@ The variables names of the coordinates in the data.</p></li>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='kw'>TaskRegrST</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>TaskRegrST</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>

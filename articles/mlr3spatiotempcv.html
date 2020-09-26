@@ -119,21 +119,20 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">42</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://mlr3.mlr-org.com">"mlr3"</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://mlr3spatiotempcv.mlr-org.com">"mlr3spatiotempcv"</a></span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3.mlr-org.com">"mlr3"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3spatiotempcv.mlr-org.com/">"mlr3spatiotempcv"</a></span><span class="op">)</span></pre></div>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>This package provides resampling methods for the {mlr3} package framework suited for spatial and temporal data.</p>
-<p>After attaching the namespace via <code><a href="https://mlr3spatiotempcv.mlr-org.com">library("mlr3spatiotempcv")</a></code>, the spatial resampling methods and example tasks provided by {mlr3spatiotempcv} are available to the user.</p>
+<p>After attaching the namespace via <code><a href="https://mlr3spatiotempcv.mlr-org.com/">library("mlr3spatiotempcv")</a></code>, the spatial resampling methods and example tasks provided by {mlr3spatiotempcv} are available to the user.</p>
 <p>This can be verified by printing the mlr3 dictionaries which got extended after loading {mlr3spatiotempcv}:</p>
 <div id="task-types" class="section level3">
 <h3 class="hasAnchor">
 <a href="#task-types" class="anchor"></a>Task types</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">mlr_reflections</span><span class="op">$</span><span class="kw">task_types</span>
+<span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_types</span>
 <span class="co">#&gt;       type          package          task        learner        prediction</span>
 <span class="co">#&gt; 1: classif             mlr3   TaskClassif LearnerClassif PredictionClassif</span>
 <span class="co">#&gt; 2: classif mlr3spatiotempcv TaskClassifST LearnerClassif PredictionClassif</span>
@@ -143,15 +142,14 @@
 <span class="co">#&gt; 1: MeasureClassif</span>
 <span class="co">#&gt; 2: MeasureClassif</span>
 <span class="co">#&gt; 3:    MeasureRegr</span>
-<span class="co">#&gt; 4:    MeasureRegr</span>
-</pre></div>
+<span class="co">#&gt; 4:    MeasureRegr</span></pre></div>
 </div>
 <div id="task-column-roles" class="section level3">
 <h3 class="hasAnchor">
 <a href="#task-column-roles" class="anchor"></a>Task column roles</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="co"># note the additional "coordinates" slot</span>
-<span class="kw">mlr_reflections</span><span class="op">$</span><span class="kw">task_col_roles</span>
+<span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_col_roles</span>
 <span class="co">#&gt; $regr</span>
 <span class="co">#&gt; [1] "feature"     "target"      "label"       "order"       "group"      </span>
 <span class="co">#&gt; [6] "weight"      "coordinates"</span>
@@ -166,14 +164,13 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $regr_st</span>
 <span class="co">#&gt; [1] "feature"     "target"      "label"       "order"       "group"      </span>
-<span class="co">#&gt; [6] "weight"      "coordinates" "coordinates"</span>
-</pre></div>
+<span class="co">#&gt; [6] "weight"      "coordinates" "coordinates"</span></pre></div>
 </div>
 <div id="resampling-methods" class="section level3">
 <h3 class="hasAnchor">
 <a href="#resampling-methods" class="anchor"></a>Resampling methods</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://mlr3.mlr-org.com/reference/as.data.table.html">as.data.table</a></span>(<span class="kw">mlr_resamplings</span>)
+<span class="fu"><a href="https://mlr3.mlr-org.com/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">mlr_resamplings</span><span class="op">)</span>
 <span class="co">#&gt;                      key                                  params iters</span>
 <span class="co">#&gt;  1:            bootstrap                           repeats,ratio    30</span>
 <span class="co">#&gt;  2:               custom                                             0</span>
@@ -193,8 +190,7 @@
 <span class="co">#&gt; 16:             spcv_env                          folds,features    10</span>
 <span class="co">#&gt; 17:          sptcv_cluto                                   folds    10</span>
 <span class="co">#&gt; 18:           sptcv_cstf                                   folds    10</span>
-<span class="co">#&gt; 19:          subsampling                           repeats,ratio    30</span>
-</pre></div>
+<span class="co">#&gt; 19:          subsampling                           repeats,ratio    30</span></pre></div>
 <p>The following HTML table lists the implemented methods in a more appealing way:</p>
 <table class="table">
 <colgroup>
@@ -292,15 +288,14 @@
 <p>During construction it can be can specified whether the coordinates should be used as features during modeling or not. By default, coordinates are not used as features and will be removed from the feature dataset after the coordinates have been added as a method to the task.</p>
 <p>It is good practice to also provide a coordinate reference system (CRS) along with the coordinates. If none is set, EPSG 4326 (WGS84) will be used as a fallback for plotting purposes. Note however that not providing a CRS during construction might lead to substantial spatial offsets.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">data</span> <span class="op">=</span> <span class="kw">mlr3</span>::<span class="fu"><a href="https://mlr3.mlr-org.com/reference/as_data_backend.html">as_data_backend</a></span>(<span class="kw">ecuador</span>)
+<span class="va">data</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/as_data_backend.html">as_data_backend</a></span><span class="op">(</span><span class="va">ecuador</span><span class="op">)</span>
 
-<span class="kw">ecuador</span> <span class="op">=</span> <span class="kw">TaskClassifST</span><span class="op">$</span><span class="fu">new</span>(
-  id = <span class="st">"ecuador"</span>, backend = <span class="kw">data</span>, target = <span class="st">"slides"</span>,
-  extra_args = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-    positive = <span class="st">"TRUE"</span>, coordinate_names = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="st">"y"</span>), coords_as_features = <span class="fl">FALSE</span>,
-    crs = <span class="st">"+proj=utm +zone=17 +south +datum=WGS84 +units=m +no_defs"</span>)
-)
-</pre></div>
+<span class="va">ecuador</span> <span class="op">=</span> <span class="va"><a href="../reference/TaskClassifST.html">TaskClassifST</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
+  id <span class="op">=</span> <span class="st">"ecuador"</span>, backend <span class="op">=</span> <span class="va">data</span>, target <span class="op">=</span> <span class="st">"slides"</span>,
+  extra_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    positive <span class="op">=</span> <span class="st">"TRUE"</span>, coordinate_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>, coords_as_features <span class="op">=</span> <span class="cn">FALSE</span>,
+    crs <span class="op">=</span> <span class="st">"+proj=utm +zone=17 +south +datum=WGS84 +units=m +no_defs"</span><span class="op">)</span>
+<span class="op">)</span></pre></div>
 <p>The “ecuador” dataset consists of a response variable named <code>slides</code> (boolean; see Figure @ref(fig:lsl)) and various predictor variables that might have an influence on the occurrence of landslides such as slope, curvature or catchment area.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For a detailed overview of the dataset, please refer to <span class="citation">Brenning et al. (<a href="#ref-brenning_landslide_2015" role="doc-biblioref">2015</a>)</span> and/or Chapter 11 of <a href="https://geocompr.robinlovelace.net/spatial-cv.html">Geocomputation with R</a> <span class="citation">(Lovelace, Nowosad, and Muenchow <a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="figure" style="text-align: center">
 <img src="https://geocompr.robinlovelace.net/figures/lsl-map-1.png" alt="Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Southern Ecuador. Figure taken from @lovelace_geocomputation_2019." width="70%"><p class="caption">
@@ -313,7 +308,7 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <a href="#task-properties" class="anchor"></a>Task properties</h2>
 <p>Spatiotemporal tasks share all properties of a normal classification or regression task. In addition, they store the coordinates alongside the dataset. They can be retrieved via the active binding <code>$coordinates()</code>. Printing a spatial task, also displays a preview of the coordinates.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">ecuador</span>
+<span class="va">ecuador</span>
 <span class="co">#&gt; &lt;TaskClassifST:ecuador&gt; (751 x 11)</span>
 <span class="co">#&gt; * Target: slides</span>
 <span class="co">#&gt; * Properties: twoclass</span>
@@ -332,8 +327,7 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <span class="co">#&gt; 748: 713142.5 9560992</span>
 <span class="co">#&gt; 749: 713322.5 9560562</span>
 <span class="co">#&gt; 750: 715392.5 9557932</span>
-<span class="co">#&gt; 751: 713802.5 9560862</span>
-</pre></div>
+<span class="co">#&gt; 751: 713802.5 9560862</span></pre></div>
 <p>After the task has been constructed, it can be used in conjunction with all available resampling methods, including non-spatial ones.</p>
 <p>Note however that non-spatial methods should <strong>only be used to showcase the degree of overoptimistic performance estimates</strong> when compared to spatiotemporal resampling methods <span class="citation">(Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div id="spatiotemporal-resampling" class="section level3">
@@ -342,29 +336,27 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <p>To stay close to upstream <a href="https://mlr3book.mlr-org.com/resampling.html">resampling example of the mlr3book</a>, this example will use the “ecuador” example task which comes bundled with the {mlr3spatiotempcv} package.</p>
 <p>The goal of this usecase is to predict landslide occurrence using a simple decision tree. To showcase that standard, i.e., non-spatial, cross-validation usually shows an over-optimistic performance, first a 5-repeated 5-fold cross-validation will be performed, using the <code>"repeated-cv"</code> resampling method.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.rpart"</span>, maxdepth = <span class="fl">3</span>, predict_type = <span class="st">"prob"</span>)
-<span class="kw">resampling_nsp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span>(<span class="st">"repeated_cv"</span>, folds = <span class="fl">5</span>, repeats = <span class="fl">5</span>)
-<span class="kw">rr_nsp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(
-  task = <span class="kw">ecuador</span>, learner = <span class="kw">learner</span>,
-  resampling = <span class="kw">resampling_nsp</span>)
+<span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.rpart"</span>, maxdepth <span class="op">=</span> <span class="fl">3</span>, predict_type <span class="op">=</span> <span class="st">"prob"</span><span class="op">)</span>
+<span class="va">resampling_nsp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"repeated_cv"</span>, folds <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="va">rr_nsp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span><span class="op">(</span>
+  task <span class="op">=</span> <span class="va">ecuador</span>, learner <span class="op">=</span> <span class="va">learner</span>,
+  resampling <span class="op">=</span> <span class="va">resampling_nsp</span><span class="op">)</span>
 
-<span class="kw">rr_nsp</span><span class="op">$</span><span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(measures = <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
+<span class="va">rr_nsp</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; classif.ce </span>
-<span class="co">#&gt;  0.3408706</span>
-</pre></div>
+<span class="co">#&gt;  0.3408706</span></pre></div>
 <p>Yet the “ecuador” landslides dataset is a spatial dataset, i.e., that each observation comes with xy-coordinates. Spatial points close to each other tend to be more similar than points with greater distance between each other. Spatial cross-validation takes this into account by putting points close to each other either into the training or the test dataset (see Figure @ref(fig:ressp)).</p>
 <p>For more details on (spatial) cross-validation, please refer to <span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span> and <span class="citation">Schratz et al. (<a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>. For a gentle introduction to spatial cross-validation, please refer to Chapter 11 of <a href="https://geocompr.robinlovelace.net/spatial-cv.html">Geocomputation with R</a> <span class="citation">(Lovelace, Nowosad, and Muenchow <a href="#ref-lovelace_geocomputation_2019" role="doc-biblioref">2019</a>)</span>. In the next code chunk we execute the cross-validation again, this time taking into account the spatial dimension by using a spatial resampling method.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">resampling_sp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span>(<span class="st">"repeated_spcv_coords"</span>, folds = <span class="fl">5</span>, repeats = <span class="fl">5</span>)
+<span class="va">resampling_sp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp</a></span><span class="op">(</span><span class="st">"repeated_spcv_coords"</span>, folds <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 
-<span class="kw">rr_sp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span>(
-  task = <span class="kw">ecuador</span>, learner = <span class="kw">learner</span>,
-  resampling = <span class="kw">resampling_sp</span>)
+<span class="va">rr_sp</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/resample.html">resample</a></span><span class="op">(</span>
+  task <span class="op">=</span> <span class="va">ecuador</span>, learner <span class="op">=</span> <span class="va">learner</span>,
+  resampling <span class="op">=</span> <span class="va">resampling_sp</span><span class="op">)</span>
 
-<span class="kw">rr_sp</span><span class="op">$</span><span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(measures = <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span>(<span class="st">"classif.ce"</span>))
+<span class="va">rr_sp</span><span class="op">$</span><span class="fu">aggregate</span><span class="op">(</span>measures <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">msr</a></span><span class="op">(</span><span class="st">"classif.ce"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; classif.ce </span>
-<span class="co">#&gt;  0.4058174</span>
-</pre></div>
+<span class="co">#&gt;  0.4058174</span></pre></div>
 <p>It can be seen that the non-spatial CV performed better. However, “better” in this case actually means overoptimistic and <strong>biased</strong> <span class="citation">(Burman, Chow, and Nolan <a href="#ref-burman1994" role="doc-biblioref">1994</a>; Cliff and Ord <a href="#ref-cliff1970" role="doc-biblioref">1970</a>; Racine <a href="#ref-racine2000" role="doc-biblioref">2000</a>; Schratz et al. <a href="#ref-schratz2019" role="doc-biblioref">2019</a>)</span>. Hence, it is highly recommended to <strong>not</strong> use classical, non-spatial CV methods with spatiotemporal data but rather choose an appropriate spatiotemporal method.</p>
 </div>
 </div>
@@ -383,8 +375,7 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <h3 class="hasAnchor">
 <a href="#spatial" class="anchor"></a>Spatial</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">resampling_sp</span>, task = <span class="kw">ecuador</span>, crs = <span class="fl">4326</span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resampling_sp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></pre></div>
 <div class="figure" style="text-align: center">
 <img src="mlr3spatiotempcv_files/figure-html/ressp-1.png" alt="Fig.2: Example for five spatially disjoint partitions constructed with the `spcv_coords` resampling method." width="700"><p class="caption">
 Fig.2: Example for five spatially disjoint partitions constructed with the <code>spcv_coords</code> resampling method.
@@ -395,8 +386,7 @@ Fig.2: Example for five spatially disjoint partitions constructed with the <code
 <h3 class="hasAnchor">
 <a href="#non-spatial" class="anchor"></a>Non-spatial</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">resampling_nsp</span>, task = <span class="kw">ecuador</span>, crs = <span class="fl">4326</span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resampling_nsp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></pre></div>
 <p><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"></p>
 </div>
 </div>
