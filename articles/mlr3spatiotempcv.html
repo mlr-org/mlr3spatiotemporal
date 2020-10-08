@@ -363,7 +363,7 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <div id="visualization" class="section level2">
 <h2 class="hasAnchor">
 <a href="#visualization" class="anchor"></a>Visualization</h2>
-<p>This package also provides generic S3 <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> methods for all implemented resampling methods.</p>
+<p>This package provides generic S3 <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> and <code><a href="../reference/autoplot.html">autoplot()</a></code> methods for all implemented resampling methods. While <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> only triggers the plotting as an side-effect, <code><a href="../reference/autoplot.html">autoplot()</a></code> is able to return the plots silently in a list or modify them on the fly (see below). Note that when plotting multiple folds, the returned object is of class <code>patchwork</code>. This enables all <a href="https://patchwork.data-imaginist.com/articles/guides/assembly.html">patchwork-powered modifications</a> to <code>ggplot2</code> plots, including overwriting axes for all objects contained in the returned list using the operator <code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code> instead of the usual <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> (see example below).</p>
 <p>For an exhaustive overview, have a look at the <a href="https://mlr3spatiotempcv.mlr-org.com/reference/index.html#section-visualization">reference section for the autoplot methods</a>.</p>
 <p>All methods can be visualized via the following logic:</p>
 <ul>
@@ -375,7 +375,9 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <h3 class="hasAnchor">
 <a href="#spatial" class="anchor"></a>Spatial</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resampling_sp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">resampling_sp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.97</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">79.06</span>, <span class="op">-</span><span class="fl">79.08</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></pre></div>
 <div class="figure" style="text-align: center">
 <img src="mlr3spatiotempcv_files/figure-html/ressp-1.png" alt="Fig.2: Example for five spatially disjoint partitions constructed with the `spcv_coords` resampling method." width="700"><p class="caption">
 Fig.2: Example for five spatially disjoint partitions constructed with the <code>spcv_coords</code> resampling method.
@@ -386,8 +388,10 @@ Fig.2: Example for five spatially disjoint partitions constructed with the <code
 <h3 class="hasAnchor">
 <a href="#non-spatial" class="anchor"></a>Non-spatial</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resampling_nsp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></pre></div>
-<p><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"></p>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resampling_nsp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.97</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">79.06</span>, <span class="op">-</span><span class="fl">79.08</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></pre></div>
+<p><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-2.png" width="700" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>
