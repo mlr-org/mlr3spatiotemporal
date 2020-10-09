@@ -375,12 +375,12 @@ Fig.1: Landslide initiation points (red) and non-landslide points (blue) in Sout
 <h3 class="hasAnchor">
 <a href="#spatial" class="anchor"></a>Spatial</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">resampling_sp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.97</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">resampling_sp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, fold_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">*</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.97</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span>
   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">79.06</span>, <span class="op">-</span><span class="fl">79.08</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></pre></div>
 <div class="figure" style="text-align: center">
-<img src="mlr3spatiotempcv_files/figure-html/ressp-1.png" alt="Fig.2: Example for five spatially disjoint partitions constructed with the `spcv_coords` resampling method." width="700"><p class="caption">
-Fig.2: Example for five spatially disjoint partitions constructed with the <code>spcv_coords</code> resampling method.
+<img src="mlr3spatiotempcv_files/figure-html/rspcv-1.png" alt="Fig.2: Plot of two spatially disjoint partitions instantiated with the `spcv_coords` resampling method." width="700"><p class="caption">
+Fig.2: Plot of two spatially disjoint partitions instantiated with the <code>spcv_coords</code> resampling method.
 </p>
 </div>
 </div>
@@ -388,10 +388,14 @@ Fig.2: Example for five spatially disjoint partitions constructed with the <code
 <h3 class="hasAnchor">
 <a href="#non-spatial" class="anchor"></a>Non-spatial</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resampling_nsp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.97</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">resampling_nsp</span>, task <span class="op">=</span> <span class="va">ecuador</span>, fold_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">*</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.97</span>, <span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span>
   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">79.06</span>, <span class="op">-</span><span class="fl">79.08</span>, <span class="op">-</span><span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></pre></div>
-<p><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-1.png" width="700" style="display: block; margin: auto;"><img src="mlr3spatiotempcv_files/figure-html/unnamed-chunk-9-2.png" width="700" style="display: block; margin: auto;"></p>
+<div class="figure" style="text-align: center">
+<img src="mlr3spatiotempcv_files/figure-html/rnspcv-1.png" alt="Fig.3: Plot of two non-spatial (= random) partitions instantiated with the `cv` resampling method." width="700"><p class="caption">
+Fig.3: Plot of two non-spatial (= random) partitions instantiated with the <code>cv</code> resampling method.
+</p>
+</div>
 </div>
 </div>
 </div>
