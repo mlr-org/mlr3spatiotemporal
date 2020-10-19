@@ -42,12 +42,13 @@
 
 <meta property="og:title" content="SpatioTemporal Regression Task — TaskRegrST" />
 <meta property="og:description" content="This task specializes Task and TaskSupervised for spatio-temporal
-regression problems. The target column is assumed to be a factor.
-The task_type is set to &quot;classif&quot; and &quot;spatiotemporal&quot;.
-#' A spatial example task is available via tsk(&quot;cookfarm&quot;).
-During initialization, coordinates need to be passed.
-By default, coordinates are not used as features.
-This can be changed by setting extra_args$coords_as_features = TRUE." />
+classification problems.
+A spatial example task is available via tsk(&quot;ecuador&quot;), a spatiotemporal
+one via tsk(&quot;cookfarm&quot;).
+The coordinate reference system passed during initialization must match the
+one which was used during data creation, otherwise offsets of multiple meters
+may occur. By default, coordinates are not used as features. This can be
+changed by setting extra_args$coords_as_features = TRUE." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -162,12 +163,13 @@ This can be changed by setting extra_args$coords_as_features = TRUE." />
 
     <div class="ref-description">
     <p>This task specializes <a href='https://mlr3.mlr-org.com/reference/Task.html'>Task</a> and <a href='https://mlr3.mlr-org.com/reference/TaskSupervised.html'>TaskSupervised</a> for spatio-temporal
-regression problems. The target column is assumed to be a factor.
-The <code>task_type</code> is set to <code>"classif"</code> and <code>"spatiotemporal"</code>.</p>
-<p>#' A spatial example task is available via <code><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk("cookfarm")</a></code>.
-During initialization, coordinates need to be passed.
-By default, coordinates are not used as features.
-This can be changed by setting <code>extra_args$coords_as_features = TRUE</code>.</p>
+classification problems.</p>
+<p>A spatial example task is available via <code><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk("ecuador")</a></code>, a spatiotemporal
+one via <code><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk("cookfarm")</a></code>.</p>
+<p>The coordinate reference system passed during initialization must match the
+one which was used during data creation, otherwise offsets of multiple meters
+may occur. By default, coordinates are not used as features. This can be
+changed by setting <code>extra_args$coords_as_features = TRUE</code>.</p>
     </div>
 
 

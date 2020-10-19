@@ -44,10 +44,12 @@
 <meta property="og:description" content="This task specializes Task and TaskSupervised for
 spatio-temporal classification problems. The target column is assumed to be a
 factor. The task_type is set to &quot;classif&quot; and &quot;spatiotemporal&quot;.
-A spatial example task is available via tsk(&quot;ecuador&quot;). During
-initialization, coordinates need to be passed. By default, coordinates are
-not used as features. This can be changed by setting
-extra_args$coords_as_features = TRUE." />
+A spatial example task is available via tsk(&quot;ecuador&quot;), a spatiotemporal
+one via tsk(&quot;cookfarm&quot;).
+The coordinate reference system passed during initialization must match the
+one which was used during data creation, otherwise offsets of multiple meters
+may occur. By default, coordinates are not used as features. This can be
+changed by setting extra_args$coords_as_features = TRUE." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -164,18 +166,19 @@ extra_args$coords_as_features = TRUE." />
     <p>This task specializes <a href='https://mlr3.mlr-org.com/reference/Task.html'>Task</a> and <a href='https://mlr3.mlr-org.com/reference/TaskSupervised.html'>TaskSupervised</a> for
 spatio-temporal classification problems. The target column is assumed to be a
 factor. The <code>task_type</code> is set to <code>"classif"</code> and <code>"spatiotemporal"</code>.</p>
-<p>A spatial example task is available via <code><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk("ecuador")</a></code>. During
-initialization, coordinates need to be passed. By default, coordinates are
-not used as features. This can be changed by setting
-<code>extra_args$coords_as_features = TRUE</code>.</p>
+<p>A spatial example task is available via <code><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk("ecuador")</a></code>, a spatiotemporal
+one via <code><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk("cookfarm")</a></code>.</p>
+<p>The coordinate reference system passed during initialization must match the
+one which was used during data creation, otherwise offsets of multiple meters
+may occur. By default, coordinates are not used as features. This can be
+changed by setting <code>extra_args$coords_as_features = TRUE</code>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Example spatial classification task: <code><a href='mlr_tasks_ecuador.html'>ecuador</a></code>.</p>
-<p>Other Task: 
+    <div class='dont-index'><p>Other Task: 
 <code><a href='TaskRegrST.html'>TaskRegrST</a></code>,
 <code><a href='mlr_tasks_cookfarm.html'>mlr_tasks_cookfarm</a></code>,
 <code><a href='mlr_tasks_diplodia.html'>mlr_tasks_diplodia</a></code>,
