@@ -46,7 +46,25 @@
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.html</loc>
   </url>
   <url>
-    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot_spatial_resampling.html</loc>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingCV.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSpCVBlock.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSpCVBuffer.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSpCVCoords.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSpCVEnv.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSptCVCluto.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSptCVCstf.html</loc>
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/mlr3spatiotempcv-package.html</loc>
