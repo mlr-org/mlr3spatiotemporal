@@ -122,13 +122,13 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>This package adds resampling methods for the {mlr3} package framework suited for spatial, temporal and spatiotemporal data.</p>
-<p>After attaching the package namespace via <code><a href="https://mlr3spatiotempcv.mlr-org.com/">library("mlr3spatiotempcv")</a></code>, the spatial resampling methods and example tasks provided by {mlr3spatiotempcv} are available to the user.</p>
-<p>This can be verified by printing the {mlr3} dictionaries after loading {mlr3spatiotempcv}.</p>
+<p>This package adds resampling methods for the {mlr3} package framework suited for spatial, temporal and spatiotemporal data. These methods can help to reduce the influence of <a href="https://mlr3book.mlr-org.com/spatiotemporal.html#spatiotemporal-intro">autocorrelation</a> on performance estimates when performing cross-validation. While this article gives a rather technical introduction to the package, a more applied approach can be found in the <a href="https://mlr3book.mlr-org.com/spatiotemporal.html#spatiotemporal">mlr3book section on “Spatiotemporal Analysis”</a>.</p>
+<p>After loading the package via <code><a href="https://mlr3spatiotempcv.mlr-org.com/">library("mlr3spatiotempcv")</a></code>, the spatiotemporal resampling methods and example tasks provided by {mlr3spatiotempcv} are available to the user.</p>
+<p>In mlr3, dictionaries are used for overview purposes of available methods. The following shows which dictionaries get appended with new entries.</p>
 </div>
-<div id="task-types" class="section level1">
+<div id="task-type" class="section level1">
 <h1 class="hasAnchor">
-<a href="#task-types" class="anchor"></a>Task Types</h1>
+<a href="#task-type" class="anchor"></a>Task Type</h1>
 <p>Additional task types:</p>
 <ul>
 <li><p><code>TaskClassifST</code></p></li>
@@ -173,7 +173,7 @@
 <div id="resampling-methods" class="section level1">
 <h1 class="hasAnchor">
 <a href="#resampling-methods" class="anchor"></a>Resampling Methods</h1>
-<p>Additonal resampling methods:</p>
+<p>Additional resampling methods:</p>
 <ul>
 <li><p><code>spcv_block</code></p></li>
 <li><p><code>spcv_buffer</code></p></li>
@@ -220,7 +220,7 @@
 <div id="upstream-packages-and-scientific-references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#upstream-packages-and-scientific-references" class="anchor"></a>Upstream Packages and Scientific References</h1>
-<p>The following table lists all implemented methods, their underlying R package and eventual scientific references.</p>
+<p>The following table lists all methods implemented in {mlr3spatiotempcv}, their upstream R package and scientific references.</p>
 <table class="table">
 <colgroup>
 <col width="25%">
@@ -310,8 +310,8 @@
 <tr class="odd">
 <td>Repeated Leave-Location-and-Time-Out</td>
 <td><a href="https://github.com/HannaMeyer/CAST">CAST</a></td>
-<td>[<span class="citation">Meyer et al. (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span>
-</td>
+<td>
+<span class="citation">Meyer et al. (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span> |</td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cstf")</a></code></td>
 </tr>
 <tr class="even">
@@ -322,11 +322,6 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div id="more-information" class="section level1">
-<h1 class="hasAnchor">
-<a href="#more-information" class="anchor"></a>More Information</h1>
-<p>Please see the <a href="https://mlr3book.mlr-org.com/spatiotemporal.html">“Spatiotemporal”</a> section in the mlr3book for more information including a detailed tutorial how to use the package.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
