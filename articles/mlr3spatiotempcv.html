@@ -134,8 +134,8 @@
 <li><p><code>TaskClassifST</code></p></li>
 <li><p><code>TaskRegrST</code></p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_types</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_types</span>
 <span class="co">#&gt;       type          package          task        learner        prediction</span>
 <span class="co">#&gt; 1: classif             mlr3   TaskClassif LearnerClassif PredictionClassif</span>
 <span class="co">#&gt; 2: classif mlr3spatiotempcv TaskClassifST LearnerClassif PredictionClassif</span>
@@ -145,7 +145,7 @@
 <span class="co">#&gt; 1: MeasureClassif</span>
 <span class="co">#&gt; 2: MeasureClassif</span>
 <span class="co">#&gt; 3:    MeasureRegr</span>
-<span class="co">#&gt; 4:    MeasureRegr</span></pre></div>
+<span class="co">#&gt; 4:    MeasureRegr</span></code></pre></div>
 </div>
 <div id="task-column-roles" class="section level1">
 <h1 class="hasAnchor">
@@ -154,8 +154,8 @@
 <ul>
 <li><code>coordinates</code></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_col_roles</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_col_roles</span>
 <span class="co">#&gt; $regr</span>
 <span class="co">#&gt; [1] "feature" "target"  "name"    "order"   "stratum" "group"   "weight" </span>
 <span class="co">#&gt; </span>
@@ -168,7 +168,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $regr_st</span>
 <span class="co">#&gt; [1] "feature"     "target"      "name"        "order"       "stratum"    </span>
-<span class="co">#&gt; [6] "group"       "weight"      "coordinates"</span></pre></div>
+<span class="co">#&gt; [6] "group"       "weight"      "coordinates"</span></code></pre></div>
 </div>
 <div id="resampling-methods" class="section level1">
 <h1 class="hasAnchor">
@@ -183,8 +183,8 @@
 <li><p><code>sptcv_cstf</code></p></li>
 </ul>
 <p>and their respective repeated versions.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">mlr_resamplings</span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">mlr_resamplings</span><span class="op">)</span>
 <span class="co">#&gt;                      key                                  params iters</span>
 <span class="co">#&gt;  1:            bootstrap                           repeats,ratio    30</span>
 <span class="co">#&gt;  2:               custom                                             0</span>
@@ -204,7 +204,7 @@
 <span class="co">#&gt; 16:             spcv_env                          folds,features    10</span>
 <span class="co">#&gt; 17:          sptcv_cluto                                   folds    10</span>
 <span class="co">#&gt; 18:           sptcv_cstf                                   folds    10</span>
-<span class="co">#&gt; 19:          subsampling                           repeats,ratio    30</span></pre></div>
+<span class="co">#&gt; 19:          subsampling                           repeats,ratio    30</span></code></pre></div>
 </div>
 <div id="examples-tasks" class="section level1">
 <h1 class="hasAnchor">
