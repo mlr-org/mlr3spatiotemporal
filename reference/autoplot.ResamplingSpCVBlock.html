@@ -271,11 +271,11 @@ If you want to change the colors, call <code>&lt;plot&gt; + &lt;color-palette&gt
   <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='img'><img src='autoplot.ResamplingSpCVBlock-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Visualize the train/test split of a single fold</span>
-<span class='co'># autoplot(resampling, task, fold_id = 1)</span>
-
+<span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='img'><img src='autoplot.ResamplingSpCVBlock-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Visualize train/test splits of multiple folds</span>
-<span class='co'># autoplot(resampling, task, fold_id = c(1, 2))</span>
-
+<span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='img'><img src='autoplot.ResamplingSpCVBlock-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># list of ggplot2 resamplings</span>
 <span class='va'>plot_list</span> <span class='op'>=</span> <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>,
   fold_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>, grid <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
