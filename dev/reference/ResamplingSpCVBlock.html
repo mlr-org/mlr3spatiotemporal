@@ -245,61 +245,22 @@ A task to instantiate.</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"ecuador"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'>mlr3misc</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3misc.mlr-org.com/reference/require_namespaces.html'>require_namespaces</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sf"</span>, <span class='st'>"blockCV"</span><span class='op'>)</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
+  <span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"ecuador"</span><span class='op'>)</span>
 
-<span class='co'># Instantiate Resampling</span>
-<span class='va'>rcv</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"spcv_block"</span>, range <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
-<span class='va'>rcv</span><span class='op'>$</span><span class='fu'>instantiate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
+  <span class='co'># Instantiate Resampling</span>
+  <span class='va'>rcv</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"spcv_block"</span>, range <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
+  <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>instantiate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
 
-<span class='co'># Individual sets:</span>
-<span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   [1]   9  20  22  30  31  36  40  80  81  83  92 101 111 134 173 176 177 179
-#&gt;  [19] 184 189 197 205 226 228 237 254 256 276 284 291 293 297 304 311 315 333
-#&gt;  [37] 335 339 340 341 343 352 360 380 382 386 391 396 407 434 437 443 450 457
-#&gt;  [55] 481 500 513 521 536 556 568 587 597 606 608 614 615 616 622 634 648 659
-#&gt;  [73] 672 675 685 695 700 713 717 722 745  27  29  37  38  41  43  49  53  58
-#&gt;  [91]  67  72  82  90  98 103 110 114 116 122 124 126 127 133 136 141 154 169
-#&gt; [109] 183 186 199 220 222 233 235 245 275 290 296 298 299 301 303 309 325 345
-#&gt; [127] 350 356 357 367 392 394 400 401 403 404 413 441 449 462 463 474 483 484
-#&gt; [145] 486 489 490 495 503 508 509 522 526 528 530 531 537 544 546 551 564 573
-#&gt; [163] 575 576 579 585 594 595 600 603 613 620 639 641 643 653 655 664 690 694
-#&gt; [181] 696 697 706 708 709 715 719 732 735 743   4   8  15  24  26  42  48  50
-#&gt; [199]  55  62  64  70  71  73  85  93 102 135 150 151 153 158 166 170 172 185
-#&gt; [217] 192 206 207 216 217 218 227 230 234 238 247 249 250 255 261 265 272 278
-#&gt; [235] 280 344 354 358 362 383 398 402 426 428 429 438 451 461 470 476 499 504
-#&gt; [253] 516 518 520 525 529 534 539 552 562 574 588 589 592 605 610 612 623 627
-#&gt; [271] 630 633 644 650 656 657 665 674 676 679 688 689 702 707 716 725 727 737
-#&gt; [289] 738 744 746 751  47  52  59  60  76  87  95  96  99 121 139 144 156 157
-#&gt; [307] 239 241 269 274 283 319 321 329 332 375 376 397 408 417 419 424 440 471
-#&gt; [325] 501 502 514 540 548 553 560 569 571 578 635 637 652 662 666 669 686 692
-#&gt; [343] 698 704 724 729 741 749   1   6  11  16  23  33  34  51  56  84 100 107
-#&gt; [361] 112 146 148 149 152 164 167 168 174 175 193 210 212 232 248 252 257 258
-#&gt; [379] 264 267 273 286 294 295 300 302 307 310 312 314 316 324 330 342 347 351
-#&gt; [397] 359 369 374 379 387 399 420 421 425 432 439 445 447 459 467 469 473 482
-#&gt; [415] 485 491 507 515 517 547 572 577 590 602 604 609 626 629 632 645 647 660
-#&gt; [433] 677 678 699 731  12  14  17  21  66  69  74  86  91  94  97 105 108 117
-#&gt; [451] 119 140 159 160 165 171 178 180 187 194 196 202 208 240 242 244 277 282
-#&gt; [469] 287 292 305 323 326 328 334 353 355 363 364 384 389 390 393 395 415 416
-#&gt; [487] 435 436 454 456 479 488 497 506 511 512 519 524 527 532 545 549 554 561
-#&gt; [505] 563 565 580 582 583 584 593 601 618 619 624 625 631 638 640 651 668 670
-#&gt; [523] 671 681 683 687 691 703 720 723 742 747  25  32 123 143 147 162 188 198
-#&gt; [541] 200 204 215 223 224 246 266 279 285 288 306 313 318 348 361 365 371 381
-#&gt; [559] 388 409 410 418 430 431 433 446 466 468 472 477 480 496 505 533 538 543
-#&gt; [577] 555 558 559 567 570 586 591 598 607 611 617 621 658 667 680 721 726 730
-#&gt; [595] 740 748 750   7  10  13  35  39  44  45  57  61  68  75  77  78  88 106
-#&gt; [613] 115 137 155 190 201 219 243 259 263 289 317 320 331 337 338 372 378 385
-#&gt; [631] 405 414 427 448 487 494 535 550 566 636 642 649 654 673 682 684 705 711
-#&gt; [649] 734 736   2  18  28  63  89 104 118 120 129 131 138 161 214 221 251 268
-#&gt; [667] 271 281 346 370 373 377 406 411 412 422 423 453 455 460 464 541 557 693
-#&gt; [685] 712 739</div><div class='input'><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1]   3   5  19  46  54  65  79 109 113 125 128 130 132 142 145 163 181 182 191
-#&gt; [20] 195 203 209 211 213 225 229 231 236 253 260 262 270 308 322 327 336 349 366
-#&gt; [39] 368 442 444 452 458 465 475 478 492 493 498 510 523 542 581 596 599 628 646
-#&gt; [58] 661 663 701 710 714 718 728 733</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; integer(0)</div><div class='input'>
-<span class='co'># Internal storage:</span>
-<span class='va'>rcv</span><span class='op'>$</span><span class='va'>instance</span>
+  <span class='co'># Individual sets:</span>
+  <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+
+  <span class='co'># Internal storage:</span>
+  <span class='va'>rcv</span><span class='op'>$</span><span class='va'>instance</span>
+<span class='op'>}</span>
 </div><div class='output co'>#&gt;      row_id fold
 #&gt;   1:      3    1
 #&gt;   2:      5    1
