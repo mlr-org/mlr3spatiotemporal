@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Getting Started • mlr3spatiotempcv</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
@@ -34,7 +40,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org"></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.1.1</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.2.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -122,8 +128,38 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>This package adds resampling methods for the {mlr3} package framework suited for spatial, temporal and spatiotemporal data. These methods can help to reduce the influence of <a href="https://mlr3book.mlr-org.com/spatiotemporal.html#spatiotemporal-intro">autocorrelation</a> on performance estimates when performing cross-validation. While this article gives a rather technical introduction to the package, a more applied approach can be found in the <a href="https://mlr3book.mlr-org.com/spatiotemporal.html#spatiotemporal">mlr3book section on “Spatiotemporal Analysis”</a>.</p>
-<p>After loading the package via <code><a href="https://mlr3spatiotempcv.mlr-org.com/">library("mlr3spatiotempcv")</a></code>, the spatiotemporal resampling methods and example tasks provided by {mlr3spatiotempcv} are available to the user.</p>
-<p>In mlr3, dictionaries are used for overview purposes of available methods. The following shows which dictionaries get appended with new entries.</p>
+<p>After loading the package via <code><a href="https://mlr3spatiotempcv.mlr-org.com/">library("mlr3spatiotempcv")</a></code>, the spatiotemporal resampling methods and example tasks provided by {mlr3spatiotempcv} are available to the user <strong>alongside the default {mlr3} resampling methods and tasks</strong>.</p>
+<div id="creating-a-spatial-task" class="section level2">
+<h2 class="hasAnchor">
+<a href="#creating-a-spatial-task" class="anchor"></a>Creating a spatial Task</h2>
+<p>To make use of spatial resampling methods, a {mlr3} task that is aware of its spatial characteristic needs to be created. Two child classes exist in {mlr3spatiotempcv} for this purpose:</p>
+<ul>
+<li><code>TaskClassifST</code></li>
+<li><code>TaskRegrST</code></li>
+</ul>
+<p>To create one of these, one can either pass a <code>sf</code> object as the “backend” directly:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create 'sf' object</span>
+<span class="va">data_sf</span> <span class="op">=</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">ecuador</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span>
+
+<span class="co"># create mlr3 task</span>
+<span class="va">task</span> <span class="op">=</span> <span class="va"><a href="../reference/TaskClassifST.html">TaskClassifST</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="st">"ecuador_sf"</span>,
+  backend <span class="op">=</span> <span class="va">data_sf</span>, target <span class="op">=</span> <span class="st">"slides"</span>, positive <span class="op">=</span> <span class="st">"TRUE"</span>
+<span class="op">)</span></code></pre></div>
+<p>or use a plain <code>data.frame</code>. In this case, the constructor of <code>TaskClassifST</code> needs a few more arguments:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/as_data_backend.html">as_data_backend</a></span><span class="op">(</span><span class="va">ecuador</span><span class="op">)</span>
+<span class="va">task</span> <span class="op">=</span> <span class="va"><a href="../reference/TaskClassifST.html">TaskClassifST</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="st">"ecuador"</span>,
+  backend <span class="op">=</span> <span class="va">data</span>, target <span class="op">=</span> <span class="st">"slides"</span>,
+  positive <span class="op">=</span> <span class="st">"TRUE"</span>, extra_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>coordinate_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Now this Task can be used as a normal {mlr3} task in any kind of modeling scenario. Have a look at the <a href="https://mlr3book.mlr-org.com/spatiotemporal.html#spatiotemporal">mlr3book section on “Spatiotemporal Analysis”</a> on how to apply a spatiotemporal resampling method to such a task.</p>
+</div>
+</div>
+<div id="contributed-assets-by-mlr3spatiotempcv" class="section level1">
+<h1 class="hasAnchor">
+<a href="#contributed-assets-by-mlr3spatiotempcv" class="anchor"></a>Contributed assets by {mlr3spatiotempcv}</h1>
+<p>In {mlr3}, dictionaries are used for overview purposes of available methods. The following sections show which dictionaries get appended with new entries when loading {mlr3spatiotempcv}.</p>
 </div>
 <div id="task-type" class="section level1">
 <h1 class="hasAnchor">
@@ -133,7 +169,7 @@
 <li><p><code>TaskClassifST</code></p></li>
 <li><p><code>TaskRegrST</code></p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_types</span>
 <span class="co">#&gt;       type          package          task        learner        prediction</span>
 <span class="co">#&gt; 1: classif             mlr3   TaskClassif LearnerClassif PredictionClassif</span>
@@ -153,21 +189,23 @@
 <ul>
 <li><code>coordinates</code></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mlr_reflections</span><span class="op">$</span><span class="va">task_col_roles</span>
 <span class="co">#&gt; $regr</span>
 <span class="co">#&gt; [1] "feature" "target"  "name"    "order"   "stratum" "group"   "weight" </span>
+<span class="co">#&gt; [8] "uri"    </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $classif</span>
 <span class="co">#&gt; [1] "feature" "target"  "name"    "order"   "stratum" "group"   "weight" </span>
+<span class="co">#&gt; [8] "uri"    </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $classif_st</span>
 <span class="co">#&gt; [1] "feature"     "target"      "name"        "order"       "stratum"    </span>
-<span class="co">#&gt; [6] "group"       "weight"      "coordinates"</span>
+<span class="co">#&gt; [6] "group"       "weight"      "uri"         "coordinates"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $regr_st</span>
 <span class="co">#&gt; [1] "feature"     "target"      "name"        "order"       "stratum"    </span>
-<span class="co">#&gt; [6] "group"       "weight"      "coordinates"</span></code></pre></div>
+<span class="co">#&gt; [6] "group"       "weight"      "uri"         "coordinates"</span></code></pre></div>
 </div>
 <div id="resampling-methods" class="section level1">
 <h1 class="hasAnchor">
@@ -182,7 +220,7 @@
 <li><p><code>sptcv_cstf</code></p></li>
 </ul>
 <p>and their respective repeated versions.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">mlr_resamplings</span><span class="op">)</span>
 <span class="co">#&gt;                      key                                  params iters</span>
 <span class="co">#&gt;  1:            bootstrap                           repeats,ratio    30</span>
