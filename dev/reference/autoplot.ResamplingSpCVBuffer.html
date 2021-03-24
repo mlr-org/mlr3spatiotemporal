@@ -48,7 +48,8 @@
 
 
 <meta property="og:title" content="Visualization Functions for SpCV Buffer Methods. — autoplot.ResamplingSpCVBuffer" />
-<meta property="og:description" content="Generic S3 plot() and autoplot() (ggplot2) methods." />
+<meta property="og:description" content="Generic S3 plot() and autoplot() (ggplot2) methods to
+visualize mlr3 spatiotemporal resampling objects." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -162,7 +163,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Generic S3 <code><a href='https://rdrr.io/r/graphics/plot.default.html'>plot()</a></code> and <code><a href='autoplot.html'>autoplot()</a></code> (ggplot2) methods.</p>
+    <p>Generic S3 <code><a href='https://rdrr.io/r/graphics/plot.default.html'>plot()</a></code> and <code><a href='autoplot.html'>autoplot()</a></code> (ggplot2) methods to
+visualize mlr3 spatiotemporal resampling objects.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for ResamplingSpCVBuffer</span>
@@ -202,8 +204,8 @@ Fold IDs to plot.</p></td>
       <th>plot_as_grid</th>
       <td><p><code>[logical(1)]</code><br />
 Should a gridded plot using via <a href='https://CRAN.R-project.org/package=patchwork'><span class="pkg">patchwork</span></a> be created? If <code>FALSE</code>
-only a list with all <a href='https://CRAN.R-project.org/package=ggplot2'><span class="pkg">ggplot2</span></a> resamplings is returned. Only applies
-if a numeric vector is passed to argument <code>fold_id</code>.</p></td>
+a list with of <a href='https://CRAN.R-project.org/package=ggplot2'><span class="pkg">ggplot2</span></a> objects is returned.
+Only applies if a numeric vector is passed to argument <code>fold_id</code>.</p></td>
     </tr>
     <tr>
       <th>train_color</th>
@@ -222,7 +224,7 @@ EPSG code of the CRS for x and y axes.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Not used.</p></td>
+      <td><p>Passed to <code>geom_sf()</code>. Helpful for adjusting point sizes and shapes.</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -231,6 +233,19 @@ mlr3 spatial resampling object of class <a href='ResamplingSpCVBuffer.html'>Resa
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'>
+<ul>
+<li><p>mlr3book chapter on on <a href='https://mlr3book.mlr-org.com/spatiotemporal.html#vis-spt-partitions'>"Spatiotemporal Visualization"</a>.</p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVBlock.html'>autoplot.ResamplingSpCVBlock()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVCoords.html'>autoplot.ResamplingSpCVCoords()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVEnv.html'>autoplot.ResamplingSpCVEnv()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingCV.html'>autoplot.ResamplingCV()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSptCVCstf.html'>autoplot.ResamplingSptCVCstf()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSptCVCluto.html'>autoplot.ResamplingSptCVCluto()</a></code></p></li>
+</ul>
+</div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -238,14 +253,18 @@ mlr3 spatial resampling object of class <a href='ResamplingSpCVBuffer.html'>Resa
   <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
   <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3spatiotempcv.mlr-org.com/'>mlr3spatiotempcv</a></span><span class='op'>)</span>
   <span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"ecuador"</span><span class='op'>)</span>
-  <span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"spcv_buffer"</span>, theRange <span class='op'>=</span> <span class='fl'>10000</span><span class='op'>)</span>
+  <span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"spcv_buffer"</span>, theRange <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
   <span class='va'>resampling</span><span class='op'>$</span><span class='fu'>instantiate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
 
-  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'>## single fold</span>
+  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fl'>1</span>, crs <span class='op'>=</span> <span class='fl'>4326</span><span class='op'>)</span> <span class='op'>+</span>
     <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+
+  <span class='co'>## multiple folds</span>
+  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>, crs <span class='op'>=</span> <span class='fl'>4326</span><span class='op'>)</span> <span class='op'>*</span>
+    <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='img'><img src='autoplot.ResamplingSpCVBuffer-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
+</div><div class='img'><img src='autoplot.ResamplingSpCVBuffer-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

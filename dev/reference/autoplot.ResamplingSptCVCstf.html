@@ -48,7 +48,8 @@
 
 
 <meta property="og:title" content="Visualization Functions for SptCV Cstf Methods. — autoplot.ResamplingSptCVCstf" />
-<meta property="og:description" content="Generic S3 plot() and autoplot() (ggplot2) methods." />
+<meta property="og:description" content="Generic S3 plot() and autoplot() (ggplot2) methods to
+visualize mlr3 spatiotemporal resampling objects." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -162,7 +163,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Generic S3 <code><a href='https://rdrr.io/r/graphics/plot.default.html'>plot()</a></code> and <code><a href='autoplot.html'>autoplot()</a></code> (ggplot2) methods.</p>
+    <p>Generic S3 <code><a href='https://rdrr.io/r/graphics/plot.default.html'>plot()</a></code> and <code><a href='autoplot.html'>autoplot()</a></code> (ggplot2) methods to
+visualize mlr3 spatiotemporal resampling objects.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for ResamplingSptCVCstf</span>
@@ -187,7 +189,7 @@
   <span class='va'>object</span>,
   <span class='va'>task</span>,
   fold_id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  repeats_id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  repeats_id <span class='op'>=</span> <span class='fl'>1</span>,
   plot_as_grid <span class='op'>=</span> <span class='cn'>TRUE</span>,
   train_color <span class='op'>=</span> <span class='st'>"#0072B5"</span>,
   test_color <span class='op'>=</span> <span class='st'>"#E18727"</span>,
@@ -229,8 +231,8 @@ Fold IDs to plot.</p></td>
       <th>plot_as_grid</th>
       <td><p><code>[logical(1)]</code><br />
 Should a gridded plot using via <a href='https://CRAN.R-project.org/package=patchwork'><span class="pkg">patchwork</span></a> be created? If <code>FALSE</code>
-only a list with all <a href='https://CRAN.R-project.org/package=ggplot2'><span class="pkg">ggplot2</span></a> resamplings is returned. Only applies
-if a numeric vector is passed to argument <code>fold_id</code>.</p></td>
+a list with of <a href='https://CRAN.R-project.org/package=ggplot2'><span class="pkg">ggplot2</span></a> objects is returned.
+Only applies if a numeric vector is passed to argument <code>fold_id</code>.</p></td>
     </tr>
     <tr>
       <th>train_color</th>
@@ -275,7 +277,7 @@ Font size of axis labels.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Not used.</p></td>
+      <td><p>Passed to <code>geom_sf()</code>. Helpful for adjusting point sizes and shapes.</p></td>
     </tr>
     <tr>
       <th>repeats_id</th>
@@ -290,6 +292,20 @@ mlr3 spatial resampling object of class <a href='ResamplingSptCVCstf.html'>Resam
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'>
+<ul>
+<li><p>mlr3book chapter on on <a href='https://mlr3book.mlr-org.com/spatiotemporal.html#vis-spt-partitions'>"Spatiotemporal Visualization"</a>.</p></li>
+<li><p>Vignette <a href='https://mlr3spatiotempcv.mlr-org.com/articles/spatiotemp-viz.html'>Spatiotemporal Visualization</a>.</p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVBlock.html'>autoplot.ResamplingSpCVBlock()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVBuffer.html'>autoplot.ResamplingSpCVBuffer()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVCoords.html'>autoplot.ResamplingSpCVCoords()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVEnv.html'>autoplot.ResamplingSpCVEnv()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingCV.html'>autoplot.ResamplingCV()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSptCVCluto.html'>autoplot.ResamplingSptCVCluto()</a></code></p></li>
+</ul>
+</div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -300,16 +316,11 @@ mlr3 spatial resampling object of class <a href='ResamplingSptCVCstf.html'>Resam
   <span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"sptcv_cstf"</span>, folds <span class='op'>=</span> <span class='fl'>5</span>, time_var <span class='op'>=</span> <span class='st'>"Date"</span><span class='op'>)</span>
   <span class='va'>resampling</span><span class='op'>$</span><span class='fu'>instantiate</span><span class='op'>(</span><span class='va'>task_st</span><span class='op'>)</span>
 
-  <span class='co'># plot</span>
   <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task_st</span><span class='op'>)</span>
-  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task_st</span>, <span class='fl'>1</span><span class='op'>)</span>
-  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task_st</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='co'># single fold</span>
+  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task_st</span>, fold_id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>Unfortunately plotly does not support a dynamic arrangement of multiple</span>
-#&gt; <span class='message'>subplots. See article 'Visualization of spatiotemporal clusters'</span>
-#&gt; <span class='message'>(https://mlr3spatiotempcv.mlr-org.com/articles/spatiotemp-viz) for a</span>
-#&gt; <span class='message'>manual workaround. Use the objects in the returned list to arrange a</span>
-#&gt; <span class='message'>custom grid.</span></div><div class='input'><span class='co'># }</span>
+<span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
