@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Spatiotemporal Folds Using Predefined Groups — ResamplingSptCVCstf • mlr3spatiotempcv</title>
+<title>"Leave-location-and-time-out" resampling. — ResamplingSptCVCstf • mlr3spatiotempcv</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,7 @@
 
 
 
-<meta property="og:title" content="Create Spatiotemporal Folds Using Predefined Groups — ResamplingSptCVCstf" />
+<meta property="og:title" content=""Leave-location-and-time-out" resampling. — ResamplingSptCVCstf" />
 <meta property="og:description" content="Implementation of CAST::CreateSpaceTimeFolds()." />
 <meta name="twitter:card" content="summary" />
 
@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.2.1.9001</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.2.1.9003</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -156,7 +156,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Spatiotemporal Folds Using Predefined Groups</h1>
+    <h1>"Leave-location-and-time-out" resampling.</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/ResamplingSptCVCstf.R'><code>R/ResamplingSptCVCstf.R</code></a></small>
     <div class="hidden name"><code>ResamplingSptCVCstf.Rd</code></div>
     </div>
@@ -295,68 +295,72 @@ Column name identifying a class unit (e.g. land cover).</p></dd>
 
 <span class='co'># Individual sets:</span>
 <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1]   1   3  11  16  20  21  25  31  32  33  34  53  55  56  59  76  92 116 149
-#&gt; [20] 155 156 168 173 174 178 179 192 200 210 221 236 237 239 240 242 256 264 270
-#&gt; [39] 274 287 288 301 302 304 309 314 316 317 333 338 340 342 351 353 355 357 364
-#&gt; [58] 389 395 396 403 406 409 411 413 417 420 421 424 430 431 434 445 450 453 454
-#&gt; [77] 456 469 475 479 485 489 490</div><div class='input'><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1]  82 117 122 134 139 140 160 164 171 203 222 223 228 253 415 429</div><div class='input'><span class='co'># check that no obs are in both sets</span>
+</div><div class='output co'>#&gt;  [1]  10  12  23  24  29  41  42  47  53  57  64  66  69  74  85  87  89  94  97
+#&gt; [20]  99 105 113 114 118 131 134 138 145 153 157 164 165 174 178 191 198 218 229
+#&gt; [39] 241 242 243 250 257 268 274 283 289 290 296 298 305 317 339 341 349 350 359
+#&gt; [58] 368 369 371 387 398 401 414 425 428 439 440 448 450 452 457 473 481 485 489
+#&gt; [77] 495</div><div class='input'><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]  17  78  79  83  93 162 170 171 172 213 216 255 293 374 377 392 419 453 454
+#&gt; [20] 484</div><div class='input'><span class='co'># check that no obs are in both sets</span>
 <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># good!</span>
 </div><div class='output co'>#&gt; integer(0)</div><div class='input'>
 <span class='co'># Internal storage:</span>
 <span class='va'>rcv</span><span class='op'>$</span><span class='va'>instance</span> <span class='co'># table</span>
 </div><div class='output co'>#&gt; $test
 #&gt; $test[[1]]
-#&gt;  [1]  82 117 122 134 139 140 160 164 171 203 222 223 228 253 415 429
+#&gt;  [1]  17  78  79  83  93 162 170 171 172 213 216 255 293 374 377 392 419 453 454
+#&gt; [20] 484
 #&gt; 
 #&gt; $test[[2]]
-#&gt;  [1]  19  30  79 109 130 151 167 209 261 319 365 387 394 462 473
+#&gt;  [1]  13  14  49  67  76  90 173 207 217 236 248 271 320 329 409 411 413 417
 #&gt; 
 #&gt; $test[[3]]
-#&gt;  [1]  63  64 125 163 169 205 207 225 249 298 318 343 366 370 412 426 448 460
+#&gt;  [1]  50  60  62  96 102 116 181 185 201 210 232 238 240 264 282 309 315 344 358
+#&gt; [20] 361 363 373 376 382 424 464
 #&gt; 
 #&gt; $test[[4]]
-#&gt;  [1]   2  42  48  87 110 114 127 142 147 170 181 219 230 268 289 311 376 378 379
-#&gt; [20] 384 386 392 443 481 484
+#&gt;  [1]  30  35  40  98 107 123 159 160 179 199 202 204 235 280 302 346 372 379 391
+#&gt; [20] 394 442 449 471 480 488 493
 #&gt; 
 #&gt; $test[[5]]
-#&gt;  [1]   4  67  86  93 187 189 198 215 320 323 332 347 358 361 383 400 432 449 459
+#&gt;  [1]   6  39  56  71  72 112 122 146 152 187 194 266 286 310 333 343 366 396 405
+#&gt; [20] 416 451 455 461
 #&gt; 
 #&gt; 
 #&gt; $train
 #&gt; $train[[1]]
-#&gt;  [1]   1   3  11  16  20  21  25  31  32  33  34  53  55  56  59  76  92 116 149
-#&gt; [20] 155 156 168 173 174 178 179 192 200 210 221 236 237 239 240 242 256 264 270
-#&gt; [39] 274 287 288 301 302 304 309 314 316 317 333 338 340 342 351 353 355 357 364
-#&gt; [58] 389 395 396 403 406 409 411 413 417 420 421 424 430 431 434 445 450 453 454
-#&gt; [77] 456 469 475 479 485 489 490
+#&gt;  [1]  10  12  23  24  29  41  42  47  53  57  64  66  69  74  85  87  89  94  97
+#&gt; [20]  99 105 113 114 118 131 134 138 145 153 157 164 165 174 178 191 198 218 229
+#&gt; [39] 241 242 243 250 257 268 274 283 289 290 296 298 305 317 339 341 349 350 359
+#&gt; [58] 368 369 371 387 398 401 414 425 428 439 440 448 450 452 457 473 481 485 489
+#&gt; [77] 495
 #&gt; 
 #&gt; $train[[2]]
-#&gt;  [1]  13  17  22  23  41  44  45  46  49  51  60  62  74  77  90  94  96 103 104
-#&gt; [20] 112 119 123 132 133 135 137 143 148 165 184 188 191 194 195 202 208 216 220
-#&gt; [39] 227 232 238 243 246 252 254 263 266 278 279 284 290 292 294 308 310 321 324
-#&gt; [58] 334 336 348 349 359 372 385 393 397 398 399 401 416 423 425 438 444 447 452
-#&gt; [77] 458 463 466 468 474 480 482 487 493 497 498
+#&gt;  [1]   3   8  16  25  34  36  43  75  80  88  92 100 106 110 115 121 127 129 135
+#&gt; [20] 137 140 141 143 148 150 156 161 175 180 188 195 196 211 220 223 224 225 227
+#&gt; [39] 230 233 239 245 260 263 270 273 279 288 292 295 300 301 303 307 314 316 319
+#&gt; [58] 323 324 325 328 335 336 351 354 356 375 381 383 386 397 399 403 404 407 412
+#&gt; [77] 421 422 430 437 441 447 456 470 474 482 486 494
 #&gt; 
 #&gt; $train[[3]]
-#&gt;  [1]   5  24  36  37  38  52  57  58  61  68  69  72  73  85  89  95  99 108 111
-#&gt; [20] 121 124 128 129 131 136 138 150 152 154 157 161 162 172 175 177 185 201 206
-#&gt; [39] 211 213 217 224 226 229 233 235 248 273 276 277 283 285 297 305 307 312 313
-#&gt; [58] 326 341 346 368 371 374 380 382 388 390 402 405 408 419 437 467 470 476 478
-#&gt; [77] 483 491 494
+#&gt;  [1]   2   5   9  15  18  19  22  27  32  38  70  73  77  82  84  86 108 125 130
+#&gt; [20] 142 144 149 151 154 155 167 168 169 182 183 186 189 203 205 208 209 212 226
+#&gt; [39] 237 246 258 259 261 278 291 331 342 347 348 355 364 370 389 390 393 395 402
+#&gt; [58] 444 445 459 460 468 472 478 479 483 497 499
 #&gt; 
 #&gt; $train[[4]]
-#&gt;  [1]   6   7   9  10  14  28  39  47  65  75  78  80  81  83  88  97 101 102 106
-#&gt; [20] 107 141 144 153 159 166 180 186 190 199 212 234 241 244 251 258 259 271 272
-#&gt; [39] 280 281 282 286 296 299 303 306 315 322 327 328 329 337 344 345 354 356 362
-#&gt; [58] 363 367 369 373 377 391 407 410 428 433 451 457 465 471 472 488 492
+#&gt;  [1]  20  21  26  28  33  37  44  45  52  54  58  59  61  91  95 109 111 119 124
+#&gt; [20] 128 136 139 147 158 163 166 177 200 214 221 228 231 244 247 252 253 254 262
+#&gt; [39] 275 276 277 285 299 304 306 311 313 322 340 352 353 357 362 367 378 380 384
+#&gt; [58] 385 388 400 408 410 415 426 427 429 431 433 436 443 465 469 477 491 492 496
+#&gt; [77] 500
 #&gt; 
 #&gt; $train[[5]]
-#&gt;  [1]   8  12  15  18  26  27  29  35  40  43  50  54  66  70  71  84  91  98 100
-#&gt; [20] 105 113 115 118 120 126 145 146 158 176 182 183 193 196 197 204 214 218 231
-#&gt; [39] 245 247 250 255 257 260 262 265 267 269 275 291 293 295 300 325 330 331 335
-#&gt; [58] 339 350 352 360 375 381 404 414 418 422 427 435 436 439 440 441 442 446 455
-#&gt; [77] 461 464 477 486 495 496 499 500
+#&gt;  [1]   1   4   7  11  31  46  48  51  55  63  65  68  81 101 103 104 117 120 126
+#&gt; [20] 132 133 176 184 190 192 193 197 206 215 219 222 234 249 251 256 265 267 269
+#&gt; [39] 272 281 284 287 294 297 308 312 318 321 326 327 330 332 334 337 338 345 360
+#&gt; [58] 365 406 418 420 423 432 434 435 438 446 458 462 463 466 467 475 476 487 490
+#&gt; [77] 498
 #&gt; 
 #&gt; </div></pre>
   </div>
