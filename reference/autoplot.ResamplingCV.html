@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.2.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.3.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -182,7 +182,7 @@
   <span class='va'>object</span>,
   <span class='va'>task</span>,
   fold_id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  repeats_id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  repeats_id <span class='op'>=</span> <span class='fl'>1</span>,
   plot_as_grid <span class='op'>=</span> <span class='cn'>TRUE</span>,
   train_color <span class='op'>=</span> <span class='st'>"#0072B5"</span>,
   test_color <span class='op'>=</span> <span class='st'>"#E18727"</span>,
@@ -219,8 +219,8 @@ Fold IDs to plot.</p></td>
       <th>plot_as_grid</th>
       <td><p><code>[logical(1)]</code><br />
 Should a gridded plot using via <a href='https://CRAN.R-project.org/package=patchwork'><span class="pkg">patchwork</span></a> be created? If <code>FALSE</code>
-only a list with all <a href='https://CRAN.R-project.org/package=ggplot2'><span class="pkg">ggplot2</span></a> resamplings is returned. Only applies
-if a numeric vector is passed to argument <code>fold_id</code>.</p></td>
+a list with of <a href='https://CRAN.R-project.org/package=ggplot2'><span class="pkg">ggplot2</span></a> objects is returned.
+Only applies if a numeric vector is passed to argument <code>fold_id</code>.</p></td>
     </tr>
     <tr>
       <th>train_color</th>
@@ -239,7 +239,8 @@ EPSG code of the CRS for x and y axes.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Not used.</p></td>
+      <td><p>Passed to <code>geom_sf()</code>. Helpful for adjusting point sizes and
+shapes.</p></td>
     </tr>
     <tr>
       <th>repeats_id</th>
@@ -254,6 +255,19 @@ mlr3 spatial resampling object of class <a href='https://mlr3.mlr-org.com/refere
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'>
+<ul>
+<li><p>mlr3book chapter on on <a href='https://mlr3book.mlr-org.com/spatiotemporal.html#vis-spt-partitions'>"Spatiotemporal Visualization"</a>.</p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVBlock.html'>autoplot.ResamplingSpCVBlock()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVBuffer.html'>autoplot.ResamplingSpCVBuffer()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVCoords.html'>autoplot.ResamplingSpCVCoords()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVEnv.html'>autoplot.ResamplingSpCVEnv()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSptCVCstf.html'>autoplot.ResamplingSptCVCstf()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSptCVCluto.html'>autoplot.ResamplingSptCVCluto()</a></code></p></li>
+</ul>
+</div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'>mlr3misc</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3misc.mlr-org.com/reference/require_namespaces.html'>require_namespaces</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sf"</span>, <span class='st'>"patchwork"</span>, <span class='st'>"ggtext"</span><span class='op'>)</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
@@ -265,8 +279,9 @@ mlr3 spatial resampling object of class <a href='https://mlr3.mlr-org.com/refere
 
   <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span><span class='op'>)</span> <span class='op'>+</span>
     <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, <span class='fl'>1</span><span class='op'>)</span>
-  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+  <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span>
+    <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='img'><img src='autoplot.ResamplingCV-1.png' alt='' width='700' height='433' /></div></pre>
   </div>

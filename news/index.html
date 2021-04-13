@@ -80,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.2.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.3.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -158,6 +158,47 @@
       <small>Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mlr3spatiotempcv-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#mlr3spatiotempcv-030" class="anchor"></a>mlr3spatiotempcv 0.3.0<small> 2021-04-13 </small>
+</h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New Features</h2>
+<ul>
+<li>
+<code><a href="../reference/autoplot.ResamplingSptCVCstf.html">autoplot.ResamplingSptCVCstf()</a></code>: add 2D plotting method (<a href='https://github.com/mlr-org/mlr3spatiotempcv/issues/106'>#106</a>)</li>
+<li>
+<code><a href="../reference/autoplot.ResamplingSptCVCstf.html">autoplot.ResamplingSptCVCstf()</a></code>: add arguments <code>show_omitted</code> and <code>static_image</code> (<a href='https://github.com/mlr-org/mlr3spatiotempcv/issues/100'>#100</a>)</li>
+<li>
+<code><a href="../reference/autoplot.html">autoplot()</a></code> (all methods): allow adjusting point size via <code>...</code> (<a href='https://github.com/mlr-org/mlr3spatiotempcv/issues/98'>#98</a>)</li>
+</ul>
+</div>
+<div id="maintenance" class="section level2">
+<h2 class="hasAnchor">
+<a href="#maintenance" class="anchor"></a>Maintenance</h2>
+<ul>
+<li>Remove {GSIF} package due to CRAN archival and host the <code>cookfarm</code> dataset standalone</li>
+<li>Use <code>Cstf</code> method for spatiotemporal viz vignette</li>
+<li>Fix help page content of <code>ResamplingRepeatedSptCVCstf</code> (beforehand the Cluto method was referenced accidentally)</li>
+<li>Fix segfault in <code>autoplot.ResamplingSpcvBlock</code> example when rendering pkgdown site (unclear why this happens when <code>show_labels = TRUE</code>)</li>
+<li>Update <code><a href="../reference/autoplot.html">autoplot()</a></code> examples and related documentation</li>
+<li>Remove duplicate resources in Tasks “see also” fields</li>
+<li>Skip a test on Solaris and macOS 3.6</li>
+<li>Optimize “Spatiotemporal Visualization” vignette</li>
+</ul>
+</div>
+</div>
+    <div id="mlr3spatiotempcv-021" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.1">
+<a href="#mlr3spatiotempcv-021" class="anchor"></a>mlr3spatiotempcv 0.2.1<small> 2021-03-20 </small>
+</h1>
+<ul>
+<li>Add support for <code>rasterLayer</code> argument in <code><a href="https://rdrr.io/pkg/blockCV/man/spatialBlock.html">blockCV::spatialBlock()</a></code> (<a href='https://github.com/mlr-org/mlr3spatiotempcv/issues/94'>#94</a>)</li>
+<li>Ensure that <code><a href="https://rdrr.io/pkg/blockCV/man/spatialBlock.html">blockCV::spatialBlock()</a></code> functions actually returns the same result when invoked via {mlr3spatiotempcv} (<a href='https://github.com/mlr-org/mlr3spatiotempcv/issues/93'>#93</a>). Among other issues, <code><a href="https://rdrr.io/pkg/blockCV/man/spatialBlock.html">blockCV::spatialBlock(selection = "checkerboard")</a></code> was ignored.</li>
+<li>Get coordinates names from {sf} objects dynamically. Before some functions would have errored if the coordinate names were not named “x” and “y”.</li>
+</ul>
+</div>
     <div id="mlr3spatiotempcv-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#mlr3spatiotempcv-020" class="anchor"></a>mlr3spatiotempcv 0.2.0<small> 2021-03-08 </small>
