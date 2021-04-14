@@ -187,8 +187,8 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-spatial-resampling-methods" class="hasAnchor"><a href="#section-spatial-resampling-methods" class="anchor"></a>Spatial Resampling Methods</h2>
-          <p class="section-desc"><p>Resampling methods to reduce the influence of spatial autocorrelation.</p></p>
+          <h2 id="section-spatiotemporal-blocking-methods" class="hasAnchor"><a href="#section-spatiotemporal-blocking-methods" class="anchor"></a>Spatiotemporal Blocking Methods</h2>
+          <p class="section-desc"><p>These methods use square/rectangular blocks for partitioning.</p></p>
         </th>
       </tr>
       
@@ -201,61 +201,19 @@
         <td>
           <p><code><a href="ResamplingSpCVBlock.html">ResamplingSpCVBlock</a></code> </p>
         </td>
-        <td><p>Spatial Block Cross Validation Resampling</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingSpCVBuffer.html">ResamplingSpCVBuffer</a></code> </p>
-        </td>
-        <td><p>Spatial Buffer Cross Validation Resampling</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingSpCVCoords.html">ResamplingSpCVCoords</a></code> </p>
-        </td>
-        <td><p>Spatial Cross Validation Resampling</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingSpCVDisc.html">ResamplingSpCVDisc</a></code> </p>
-        </td>
-        <td><p>Spatial "Disc" resampling with optional buffer zone</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingSpCVEnv.html">ResamplingSpCVEnv</a></code> </p>
-        </td>
-        <td><p>Environmental Block Cross Validation Resampling</p></td>
+        <td><p>(blockCV) Spatial block resampling</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="ResamplingRepeatedSpCVBlock.html">ResamplingRepeatedSpCVBlock</a></code> </p>
         </td>
-        <td><p>Repeated Spatial Cross Validation Resampling</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingRepeatedSpCVCoords.html">ResamplingRepeatedSpCVCoords</a></code> </p>
-        </td>
-        <td><p>Repeated Spatial Cross Validation Resampling</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingRepeatedSpCVDisc.html">ResamplingRepeatedSpCVDisc</a></code> </p>
-        </td>
-        <td><p>Repeated Spatial "Disc" resampling with optional buffer zone</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingRepeatedSpCVEnv.html">ResamplingRepeatedSpCVEnv</a></code> </p>
-        </td>
-        <td><p>Repeated Environmental Block Cross Validation Resampling</p></td>
+        <td><p>(blockCV) Repeated spatial block resampling</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-spatiotemporal-resampling-methods" class="hasAnchor"><a href="#section-spatiotemporal-resampling-methods" class="anchor"></a>Spatiotemporal Resampling Methods</h2>
-          <p class="section-desc"><p>Resampling methods to reduce the influence of spatiotemporal autocorrelation.</p></p>
+          <h2 id="section-spatiotemporal-buffering-methods" class="hasAnchor"><a href="#section-spatiotemporal-buffering-methods" class="anchor"></a>Spatiotemporal Buffering Methods</h2>
+          <p class="section-desc"><p>These methods support using buffering zones which eventually remove observations between train and test sets.</p></p>
         </th>
       </tr>
       
@@ -266,33 +224,138 @@
       <tr>
         
         <td>
-          <p><code><a href="ResamplingSptCVCluto.html">ResamplingSptCVCluto</a></code> </p>
+          <p><code><a href="ResamplingSpCVBuffer.html">ResamplingSpCVBuffer</a></code> </p>
         </td>
-        <td><p>Spatioemporal Cluster Resampling</p></td>
+        <td><p>(blockCV) Spatial buffering resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingSpCVDisc.html">ResamplingSpCVDisc</a></code> </p>
+        </td>
+        <td><p>(sperrorest) Spatial "disc" resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingRepeatedSpCVDisc.html">ResamplingRepeatedSpCVDisc</a></code> </p>
+        </td>
+        <td><p>(sperrorest) Repeated spatial "disc" resampling</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="ResamplingSptCVCstf.html">ResamplingSptCVCstf</a></code> </p>
         </td>
-        <td><p>"Leave-location-and-time-out" resampling.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ResamplingRepeatedSptCVCluto.html">ResamplingRepeatedSptCVCluto</a></code> </p>
-        </td>
-        <td><p>Repeated Spatiotemporal Cluster Resampling</p></td>
+        <td><p>(CAST) "Leave-location-and-time-out" resampling</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="ResamplingRepeatedSptCVCstf.html">ResamplingRepeatedSptCVCstf</a></code> </p>
         </td>
-        <td><p>Repeated "Leave-location-and-time-out" resampling.</p></td>
+        <td><p>(CAST) Repeated "leave-location-and-time-out" resampling</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-tasks" class="hasAnchor"><a href="#section-tasks" class="anchor"></a>Tasks</h2>
-          <p class="section-desc"><p>Spatiotemporal Task Classes for mlr3.</p></p>
+          <h2 id="section-spatiotemporal-clustering-methods" class="hasAnchor"><a href="#section-spatiotemporal-clustering-methods" class="anchor"></a>Spatiotemporal Clustering Methods</h2>
+          <p class="section-desc"><p>These methods make use of clustering methods (e.g. <code>k-means</code>) to create (equally-sized) partitions.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="ResamplingSpCVCoords.html">ResamplingSpCVCoords</a></code> </p>
+        </td>
+        <td><p>(sperrorest) Coordinate-based k-means clustering</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingRepeatedSpCVCoords.html">ResamplingRepeatedSpCVCoords</a></code> </p>
+        </td>
+        <td><p>(sperrorest) Repeated coordinate-based k-means clustering</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingSpCVDisc.html">ResamplingSpCVDisc</a></code> </p>
+        </td>
+        <td><p>(sperrorest) Spatial "disc" resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingRepeatedSpCVDisc.html">ResamplingRepeatedSpCVDisc</a></code> </p>
+        </td>
+        <td><p>(sperrorest) Repeated spatial "disc" resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingSptCVCluto.html">ResamplingSptCVCluto</a></code> </p>
+        </td>
+        <td><p>(skmeans) Spatiotemporal clustering resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingRepeatedSptCVCluto.html">ResamplingRepeatedSptCVCluto</a></code> </p>
+        </td>
+        <td><p>(skmeans) Repeated spatiotemporal clustering resampling</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-feature-space-clustering-methods" class="hasAnchor"><a href="#section-feature-space-clustering-methods" class="anchor"></a>Feature Space Clustering Methods</h2>
+          <p class="section-desc"><p>These methods cluster in the feature space and not (necessarily) in space or time.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="ResamplingSpCVEnv.html">ResamplingSpCVEnv</a></code> </p>
+        </td>
+        <td><p>(blockCV) "Environmental blocking" resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingRepeatedSpCVEnv.html">ResamplingRepeatedSpCVEnv</a></code> </p>
+        </td>
+        <td><p>(blockCV) Repeated "environmental blocking" resampling</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-factor-predefined-groups-partitioning-methods" class="hasAnchor"><a href="#section-factor-predefined-groups-partitioning-methods" class="anchor"></a>Factor/Predefined Groups Partitioning Methods</h2>
+          <p class="section-desc"><p>These methods use (multiple) factor-variables / predefined groups to create partitions</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="ResamplingSptCVCstf.html">ResamplingSptCVCstf</a></code> </p>
+        </td>
+        <td><p>(CAST) "Leave-location-and-time-out" resampling</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ResamplingRepeatedSptCVCstf.html">ResamplingRepeatedSptCVCstf</a></code> </p>
+        </td>
+        <td><p>(CAST) Repeated "leave-location-and-time-out" resampling</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-spatiotempral-tasks" class="hasAnchor"><a href="#section-spatiotempral-tasks" class="anchor"></a>Spatiotempral Tasks</h2>
+          <p class="section-desc"><p>Classification and regression tasks.</p></p>
         </th>
       </tr>
       
@@ -316,8 +379,8 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
-          <p class="section-desc"><p>Spatiotemporal example tasks included in {mlr3spatiotempcv}.</p></p>
+          <h2 id="section-spatiotempral-example-datasets" class="hasAnchor"><a href="#section-spatiotempral-example-datasets" class="anchor"></a>Spatiotempral Example Datasets</h2>
+          <p class="section-desc"><p>Tasks appended to the <code>mlr_tasks</code> dictionary.</p></p>
         </th>
       </tr>
       
@@ -347,7 +410,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-visualization" class="hasAnchor"><a href="#section-visualization" class="anchor"></a>Visualization</h2>
+          <h2 id="section-visualization-of-spatiotemporal-partitions" class="hasAnchor"><a href="#section-visualization-of-spatiotemporal-partitions" class="anchor"></a>Visualization of spatiotemporal partitions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -383,7 +446,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="autoplot.ResamplingSpCVDisc.html">autoplot(<i>&lt;ResamplingSpCVDisc&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSpCVDisc.html">plot(<i>&lt;ResamplingSpCVDisc&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSpCVDisc.html">plot(<i>&lt;ResamplingRepeatedSpCVDisc&gt;</i>)</a></code> </p>
+          <p><code><a href="autoplot.ResamplingSpCVDisc.html">autoplot(<i>&lt;ResamplingSpCVDisc&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSpCVDisc.html">autoplot(<i>&lt;ResamplingRepeatedSpCVDisc&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSpCVDisc.html">plot(<i>&lt;ResamplingSpCVDisc&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSpCVDisc.html">plot(<i>&lt;ResamplingRepeatedSpCVDisc&gt;</i>)</a></code> </p>
         </td>
         <td><p>Visualization Functions for SpCV Disc Method.</p></td>
       </tr><tr>
@@ -401,7 +464,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="autoplot.ResamplingSptCVCstf.html">autoplot(<i>&lt;ResamplingRepeatedSpCVDisc&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">autoplot(<i>&lt;ResamplingSptCVCstf&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">autoplot(<i>&lt;ResamplingRepeatedSptCVCstf&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">plot(<i>&lt;ResamplingSptCVCstf&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">plot(<i>&lt;ResamplingRepeatedSptCVCstf&gt;</i>)</a></code> </p>
+          <p><code><a href="autoplot.ResamplingSptCVCstf.html">autoplot(<i>&lt;ResamplingSptCVCstf&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">autoplot(<i>&lt;ResamplingRepeatedSptCVCstf&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">plot(<i>&lt;ResamplingSptCVCstf&gt;</i>)</a></code> <code><a href="autoplot.ResamplingSptCVCstf.html">plot(<i>&lt;ResamplingRepeatedSptCVCstf&gt;</i>)</a></code> </p>
         </td>
         <td><p>Visualization Functions for SptCV Cstf Methods.</p></td>
       </tr>
