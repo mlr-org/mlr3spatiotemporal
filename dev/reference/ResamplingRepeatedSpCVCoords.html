@@ -48,8 +48,8 @@
 
 
 <meta property="og:title" content="(sperrorest) Repeated coordinate-based k-means clustering — ResamplingRepeatedSpCVCoords" />
-<meta property="og:description" content="Spatial Cross validation following the &quot;k-means&quot; approach after
-Brenning 2012." />
+<meta property="og:description" content="partition_cv creates a represampling object for
+length(repetition)-repeated nfold-fold cross-validation." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -163,12 +163,25 @@ Brenning 2012." />
     </div>
 
     <div class="ref-description">
-    <p>Spatial Cross validation following the "k-means" approach after
-Brenning 2012.</p>
+    <p><code>partition_cv</code> creates a <a href='https://giscience-fsu.github.io/sperrorest/reference/as.represampling.html'>represampling</a> object for
+<code><a href='https://rdrr.io/r/base/length.html'>length(repetition)</a></code>-repeated <code>nfold</code>-fold cross-validation.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function does not actually perform a cross-validation or
+partition the data set itself; it simply creates a data structure
+containing the indices of training and test samples.</p>
+    <h2 class="hasAnchor" id="mlr-spatiotempcv-notes"><a class="anchor" href="#mlr-spatiotempcv-notes"></a>mlr3spatiotempcv notes</h2>
+
+    
+
+
+<p>The 'Description' and 'Details' fields are inherited from the respective
+upstream function.</p>
+<p>For a list of available arguments, please see <a href='https://giscience-fsu.github.io/sperrorest/reference/partition_cv.html'>sperrorest::partition_cv</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brenning A (2012).
@@ -211,7 +224,8 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create an "coordinate-based" repeated resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p>Create an "coordinate-based" repeated resampling instance.</p>
+<p>For a list of available arguments, please see <a href='https://giscience-fsu.github.io/sperrorest/reference/partition_cv.html'>sperrorest::partition_cv</a>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>ResamplingRepeatedSpCVCoords</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"repeated_spcv_coords"</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>

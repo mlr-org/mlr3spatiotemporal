@@ -48,11 +48,8 @@
 
 
 <meta property="og:title" content="(sperrorest) Spatial "disc" resampling — ResamplingSpCVDisc" />
-<meta property="og:description" content="partition_disc partitions the sample into training and tests
-set by selecting circular test areas (possibly surrounded by an exclusion
-buffer) and using the remaining samples as training samples
-(leave-one-disc-out cross-validation).
-This method is similar to ResamplingSpCVBuffer." />
+<meta property="og:description" content="partition_discpartitions the sample into training and tests set by selecting circular test areas (possibly surrounded by an exclusion buffer) and using the remaining samples as training samples (leave-one-disc-out cross-validation).partition_loo` creates training and
+test sets for leave-one-out cross-validation with (optional) buffer." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -166,11 +163,8 @@ This method is similar to ResamplingSpCVBuffer." />
     </div>
 
     <div class="ref-description">
-    <p><code>partition_disc</code> partitions the sample into training and tests
-set by selecting circular test areas (possibly surrounded by an exclusion
-buffer) and using the remaining samples as training samples
-(leave-one-disc-out cross-validation).</p>
-<p>This method is similar to <a href='ResamplingSpCVBuffer.html'>ResamplingSpCVBuffer</a>.</p>
+    <p>partition_disc<code>partitions the sample into training and tests set by selecting circular test areas (possibly surrounded by an exclusion buffer) and using the remaining samples as training samples (leave-one-disc-out cross-validation).</code>partition_loo` creates training and
+test sets for leave-one-out cross-validation with (optional) buffer.</p>
     </div>
 
 
@@ -181,6 +175,15 @@ buffer) and using the remaining samples as training samples
 locations. Test area discs may (and likely will) overlap independently of
 the value of <code>replace</code>. <code>replace</code> only controls the replacement of the
 center point of discs when drawing center points from the samples.</p>
+    <h2 class="hasAnchor" id="mlr-spatiotempcv-notes"><a class="anchor" href="#mlr-spatiotempcv-notes"></a>mlr3spatiotempcv notes</h2>
+
+    
+
+
+<p>The 'Description' and 'Note' fields are inherited from the respective
+upstream function.</p>
+<p>For a list of available arguments, please see <a href='https://giscience-fsu.github.io/sperrorest/reference/partition_disc.html'>sperrorest::partition_disc</a>.</p>
+<p>This method is similar to <a href='ResamplingSpCVBuffer.html'>ResamplingSpCVBuffer</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brenning A (2012).
@@ -224,7 +227,9 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create a "Spatial 'Disc' resampling" resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p>Create a "Spatial 'Disc' resampling" resampling instance.</p>
+<p>For a list of available arguments, please see
+<a href='https://giscience-fsu.github.io/sperrorest/reference/partition_disc.html'>sperrorest::partition_disc</a>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>ResamplingSpCVDisc</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"spcv_disc"</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>

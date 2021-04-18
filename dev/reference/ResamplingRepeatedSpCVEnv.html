@@ -48,10 +48,11 @@
 
 
 <meta property="og:title" content="(blockCV) Repeated "environmental blocking" resampling — ResamplingRepeatedSpCVEnv" />
-<meta property="og:description" content="Environmental Block Cross Validation. This strategy uses k-means
-clustering to specify blocks of similar environmental conditions. Only
-numeric features can be used. The features used for building blocks can
-be specified in the param_set. By default, all numeric features are used." />
+<meta property="og:description" content="Environmental blocking for cross-validation. This function uses clustering methods to specify sets of similar environmental
+conditions based on the input covariates. Species data corresponding to any of these groups or clusters are assigned to a
+fold. This function does the clustering in raster space and species data. Clustering is done using kmeans
+for both approaches. This function works on single or
+multiple raster files; multiple rasters need to be in a raster brick or stack format." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -165,14 +166,37 @@ be specified in the param_set. By default, all numeric features are used." />
     </div>
 
     <div class="ref-description">
-    <p>Environmental Block Cross Validation. This strategy uses k-means
-clustering to specify blocks of similar environmental conditions. Only
-numeric features can be used. The <code>features</code> used for building blocks can
-be specified in the <code>param_set</code>. By default, all numeric features are used.</p>
+    <p>Environmental blocking for cross-validation. This function uses clustering methods to specify sets of similar environmental
+conditions based on the input covariates. Species data corresponding to any of these groups or clusters are assigned to a
+fold. This function does the clustering in raster space and species data. Clustering is done using <code><a href='https://rdrr.io/r/stats/kmeans.html'>kmeans</a></code>
+for both approaches. This function works on single or
+multiple raster files; multiple rasters need to be in a raster brick or stack format.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>As k-means algorithms use Euclidean distance to estimate clusters, the input covariates should be quantitative variables. Since
+variables with wider ranges of values might dominate the clusters and bias the environmental clustering (Hastie et al., 2009),
+all the input rasters are first standardized within the function. This is done either by normalizing based on subtracting the
+mean and dividing by the standard deviation of each raster (the default) or optionally by standardizing using linear scaling
+to constrain all raster values between 0 and 1.</p>
+<p>By default, the clustering is done in the raster space. In this approach the clusters will be consistent throughout the region
+and across species (in the same region). However, this may result in a cluster(s) that covers none of the species records (the spatial location of response samples),
+espcially when species data is not dispersed throughout the region or the number of clusters (k or folds) is high. In this
+case, the number of folds is less than specified <code>k</code>. If <code>rasterBlock = FALSE</code>, the clustering will be done in
+species points and the number of the folds will be the same as <code>k</code>.</p>
+<p>Note that the input raster layer should cover all the species points, otherwise an error will rise. The records with no raster
+value should be deleted prior to the analysis or another raster layer would be provided.</p>
+    <h2 class="hasAnchor" id="mlr-spatiotempcv-notes"><a class="anchor" href="#mlr-spatiotempcv-notes"></a>mlr3spatiotempcv notes</h2>
+
+    
+
+
+<p>The 'Description' and 'Details' fields are inherited from the respective
+upstream function.</p>
+<p>For a list of available arguments, please see <a href='https://rdrr.io/pkg/blockCV/man/envBlock.html'>blockCV::envBlock</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Valavi R, Elith J, Lahoz-Monfort JJ, Guillera-Arroita G (2018).
@@ -215,7 +239,8 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create an "coordinate-based" repeated resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p>Create an "Environmental Block" repeated resampling instance.</p>
+<p>For a list of available arguments, please see <a href='https://rdrr.io/pkg/blockCV/man/envBlock.html'>blockCV::envBlock</a>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>ResamplingRepeatedSpCVEnv</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"repeated_spcv_env"</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>

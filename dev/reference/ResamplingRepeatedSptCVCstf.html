@@ -48,7 +48,7 @@
 
 
 <meta property="og:title" content="(CAST) Repeated "leave-location-and-time-out" resampling — ResamplingRepeatedSptCVCstf" />
-<meta property="og:description" content="Implementation of CAST::CreateSpaceTimeFolds()." />
+<meta property="og:description" content="Create spatial, temporal or spatio-temporal Folds for cross validation" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -162,7 +162,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Implementation of <code>CAST::CreateSpaceTimeFolds()</code>.</p>
+    <p>Create spatial, temporal or spatio-temporal Folds for cross validation</p>
     </div>
 
 
@@ -174,6 +174,22 @@ and are categorical. E.g This is the case for land cover classifications when
 training data come as training polygons. In this case the data should be split in a way
 that entire polygons are held back (spacevar="polygonID") but at the same time the distribution of classes
 should be similar in each fold (class="LUC").</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Standard k-fold cross-validation can lead to considerable
+misinterpretation in spatial-temporal modelling tasks. This function can be
+used to prepare a Leave-Location-Out, Leave-Time-Out or
+Leave-Location-and-Time-Out cross-validation as target-oriented validation
+strategies for spatial-temporal prediction tasks. See Meyer et al. (2018)
+for further information.</p>
+    <h2 class="hasAnchor" id="mlr-spatiotempcv-notes"><a class="anchor" href="#mlr-spatiotempcv-notes"></a>mlr3spatiotempcv notes</h2>
+
+    
+
+
+<p>The 'Description', 'Details' and 'Note' fields are inherited from the
+respective upstream function.</p>
+<p>For a list of available arguments, please see <a href='https://rdrr.io/pkg/CAST/man/CreateSpacetimeFolds.html'>CAST::CreateSpacetimeFolds</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Zhao Y, Karypis G (2002).
@@ -183,19 +199,6 @@ should be similar in each fold (class="LUC").</p>
     <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
     <p><code><a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a></code> -&gt; <code>ResamplingRepeatedSptCVCstf</code></p>
-    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
-
-    <p><div class="r6-fields"></p><dl>
-<dt><code>space_var</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Column name identifying the spatial units.</p></dd>
-
-<dt><code>time_var</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Column name identifying the temporal units.</p></dd>
-
-<dt><code>class</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Column name identifying a class unit (e.g. land cover).</p></dd>
-
-</dl><p></div></p>
     <h2 class="hasAnchor" id="active-bindings"><a class="anchor" href="#active-bindings"></a>Active bindings</h2>
 
     <p><div class="r6-active-bindings"></p><dl>
@@ -228,27 +231,15 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create a "Spacetime Folds" resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>ResamplingRepeatedSptCVCstf</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
-  id <span class='op'>=</span> <span class='st'>"repeated_sptcv_cstf"</span>,
-  space_var <span class='op'>=</span> <span class='cn'>NULL</span>,
-  time_var <span class='op'>=</span> <span class='cn'>NULL</span>,
-  class <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span></pre><p></div></p>
+<p>Create a "Spacetime Folds" resampling instance.</p>
+<p>For a list of available arguments, please see
+<a href='https://rdrr.io/pkg/CAST/man/CreateSpacetimeFolds.html'>CAST::CreateSpacetimeFolds</a>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>ResamplingRepeatedSptCVCstf</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"repeated_sptcv_cstf"</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
 <dt><code>id</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
 Identifier for the resampling strategy.</p></dd>
-
-<dt><code>space_var</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Column name identifying the spatial units.</p></dd>
-
-<dt><code>time_var</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Column name identifying the temporal units.</p></dd>
-
-<dt><code>class</code></dt><dd><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Column name identifying a class unit (e.g. land cover).</p></dd>
 
 </dl><p></div></p>
 <p><hr>
