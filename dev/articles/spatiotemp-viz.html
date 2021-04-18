@@ -125,6 +125,9 @@
 
     
     
+<div id="d-visualization-spatiotemporal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#d-visualization-spatiotemporal" class="anchor"></a>3D Visualization (spatiotemporal)</h2>
 <p>{mlr3spatiotempcv} makes use of {plotly} to create the 3D plots for visualizing spatiotemporal folds created via the CLUTO algorithm. Arranging multiple 3D plots in {plotly} is done via <a href="https://plotly.com/r/3d-subplots/">3D subplots</a>.</p>
 <p>Unfortunately, {plotly}’s subplot implementation is not dynamic. This means that multiple “scene” objects need to be specified in <code><a href="https://docs.ropensci.org/plotly/reference/layout.html">plotly::layout()</a></code> to determine the coordinates of the respective subplot. Depending on the number of chosen folds by the user in <code><a href="../reference/autoplot.html">autoplot()</a></code>, a different number of scenes with different coordinates needs to be given to align the plots properly.</p>
 <p>Hence, manual action is needed to create a properly aligned grid of 3D plots.</p>
@@ -170,11 +173,27 @@
 <p><img src="../man/figures/sptcv_cstf_multiplot.png" width="600" style="display: block; margin: auto;"></p>
 <p>Note: The image shown above is a static version created with <code><a href="https://docs.ropensci.org/plotly/reference/orca.html">plotly::orca()</a></code>.</p>
 <p>Subplot titles can unfortunately not created dynamically. However, there is a manual workaround via <a href="https://plotly.com/r/reference/#layout-annotations">annotations</a> show in this <a href="https://rpubs.com/bcd/subplot-titles">RPubs post</a>.</p>
+</div>
+<div id="examples-of-spatial-partitioning-2d" class="section level2">
+<h2 class="hasAnchor">
+<a href="#examples-of-spatial-partitioning-2d" class="anchor"></a>Examples of spatial partitioning (2D)</h2>
+<p>The following plots are based on a three fold partitioning of the <a href="">ecuador</a> example task (expect method <code>p_buffer</code> which is LOO-CV). The code which produced the plots can be found <a href="https://github.com/mlr-org/mlr3spatiotempcv/blob/main/vignettes/spatiotemp-viz.Rmd">here</a>.</p>
+<p><img src="spatiotemp-viz_files/figure-html/unnamed-chunk-4-1.png" width="960"></p>
+<ul>
+<li><p><strong>A</strong>: <code>"spcv_block"</code></p></li>
+<li><p><strong>B</strong>: <code>"spcv_coords"</code></p></li>
+<li><p><strong>C</strong>: <code>"spcv_env"</code></p></li>
+<li><p><strong>D</strong>: <code>"spcv_disc"</code></p></li>
+<li><p><strong>E</strong>: <code>"spcv_buffer"</code></p></li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
