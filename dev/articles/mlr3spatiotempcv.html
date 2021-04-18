@@ -216,6 +216,7 @@
 <li><p><code>spcv_block</code></p></li>
 <li><p><code>spcv_buffer</code></p></li>
 <li><p><code>spcv_coords</code></p></li>
+<li><p><code>spcv_disc</code></p></li>
 <li><p><code>spcv_env</code></p></li>
 <li><p><code>sptcv_cluto</code></p></li>
 <li><p><code>sptcv_cstf</code></p></li>
@@ -261,105 +262,75 @@
 <div id="upstream-packages-and-scientific-references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#upstream-packages-and-scientific-references" class="anchor"></a>Upstream Packages and Scientific References</h1>
-<p>The following table lists all methods implemented in {mlr3spatiotempcv}, their upstream R package and scientific references.</p>
+<p>The following table lists all methods implemented in {mlr3spatiotempcv}, their upstream R package and scientific references. All methods besides <code>"spcv_buffer"</code> also have a corresponding “repeated” method.</p>
 <table class="table">
 <colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
+<col width="24%">
+<col width="35%">
+<col width="14%">
 <col width="25%">
 </colgroup>
 <thead><tr class="header">
-<th>Literature</th>
-<th>Package</th>
+<th>Category</th>
+<th>(Package) Method Name</th>
 <th>Reference</th>
-<th>mlr3 Sugar</th>
+<th>mlr3 Notation</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Spatial Buffering</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
+<td>
+<strong>Buffering</strong>, spatial</td>
+<td>(blockCV) Spatial Buffering</td>
 <td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_buffer")</a></code></td>
 </tr>
 <tr class="even">
-<td>Spatial Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
+<td>
+<strong>Buffering</strong>, spatial</td>
+<td>(sperrorest) Spatial Disc</td>
+<td><span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_disc")</a></code></td>
+</tr>
+<tr class="odd">
+<td>
+<strong>Blocking</strong>, spatial</td>
+<td>(blockCV) Spatial Blocking</td>
 <td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_block")</a></code></td>
 </tr>
-<tr class="odd">
-<td>Spatial CV</td>
-<td><a href="https://github.com/giscience-fsu/sperrorest">sperrorest</a></td>
+<tr class="even">
+<td>
+<strong>Clustering</strong>, spatial</td>
+<td>(sperrorest) Spatial CV</td>
 <td><span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_coords")</a></code></td>
 </tr>
-<tr class="even">
-<td>Environmental Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
+<tr class="odd">
+<td>
+<strong>Clustering</strong>, feature-space</td>
+<td>(blockCV) Environmental Blocking</td>
 <td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_env")</a></code></td>
 </tr>
-<tr class="odd">
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cluto")</a></code></td>
-</tr>
 <tr class="even">
-<td>Leave-Location-and-Time-Out</td>
-<td><a href="https://github.com/HannaMeyer/CAST">CAST</a></td>
+<td><hr></td>
+<td><hr></td>
+<td><hr></td>
+<td><hr></td>
+</tr>
+<tr class="odd">
+<td>
+<strong>Grouping</strong>, spatiotemporal</td>
+<td>(CAST) Leave-Location-and-Time-Out</td>
 <td><span class="citation">Meyer et al. (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cstf")</a></code></td>
 </tr>
-<tr class="odd">
-<td>Spatiotemporal Clustering</td>
-<td><a href="https://github.com/cran/skmeans">skmeans</a></td>
-<td><span class="citation">Zhao and Karypis (<a href="#ref-zhao2002" role="doc-biblioref">2002</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cluto")</a></code></td>
-</tr>
 <tr class="even">
-<td><hr></td>
-<td><hr></td>
-<td><hr></td>
-<td><hr></td>
-</tr>
-<tr class="odd">
-<td>Repeated Spatial Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_spcv_block")</a></code></td>
-</tr>
-<tr class="even">
-<td>Repeated Spatial CV</td>
-<td><a href="https://github.com/giscience-fsu/sperrorest">sperrorest</a></td>
-<td><span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_spcv_coords")</a></code></td>
-</tr>
-<tr class="odd">
-<td>Repeated Env Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_spcv_env")</a></code></td>
-</tr>
-<tr class="even">
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cluto")</a></code></td>
-</tr>
-<tr class="odd">
-<td>Repeated Leave-Location-and-Time-Out</td>
-<td><a href="https://github.com/HannaMeyer/CAST">CAST</a></td>
 <td>
-<span class="citation">Meyer et al. (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span> |</td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cstf")</a></code></td>
-</tr>
-<tr class="even">
-<td>Repeated Spatiotemporal Clustering</td>
-<td><a href="https://github.com/cran/skmeans">skmeans</a></td>
+<strong>Clustering</strong>, spatiotemporal</td>
+<td>(skmeans) Spatiotemporal Clustering</td>
 <td><span class="citation">Zhao and Karypis (<a href="#ref-zhao2002" role="doc-biblioref">2002</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cluto")</a></code></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cluto")</a></code></td>
 </tr>
 </tbody>
 </table>
