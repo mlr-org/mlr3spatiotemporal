@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Visualization Functions for SpCV Disc Method. — autoplot.ResamplingSpCVDisc • mlr3spatiotempcv</title>
+<title>Visualization Functions for SpCV Tiles Method. — autoplot.ResamplingSpCVTiles • mlr3spatiotempcv</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,7 +47,7 @@
 
 
 
-<meta property="og:title" content="Visualization Functions for SpCV Disc Method. — autoplot.ResamplingSpCVDisc" />
+<meta property="og:title" content="Visualization Functions for SpCV Tiles Method. — autoplot.ResamplingSpCVTiles" />
 <meta property="og:description" content="Generic S3 plot() and autoplot() (ggplot2) methods to
 visualize mlr3 spatiotemporal resampling objects." />
 <meta name="twitter:card" content="summary" />
@@ -157,9 +157,9 @@ visualize mlr3 spatiotemporal resampling objects." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Visualization Functions for SpCV Disc Method.</h1>
+    <h1>Visualization Functions for SpCV Tiles Method.</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/autoplot.R'><code>R/autoplot.R</code></a></small>
-    <div class="hidden name"><code>autoplot.ResamplingSpCVDisc.Rd</code></div>
+    <div class="hidden name"><code>autoplot.ResamplingSpCVTiles.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -167,7 +167,7 @@ visualize mlr3 spatiotemporal resampling objects." />
 visualize mlr3 spatiotemporal resampling objects.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for ResamplingSpCVDisc</span>
+    <pre class="usage"><span class='co'># S3 method for ResamplingSpCVTiles</span>
 <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span>
   <span class='va'>object</span>,
   <span class='va'>task</span>,
@@ -181,7 +181,7 @@ visualize mlr3 spatiotemporal resampling objects.</p>
   <span class='va'>...</span>
 <span class='op'>)</span>
 
-<span class='co'># S3 method for ResamplingRepeatedSpCVDisc</span>
+<span class='co'># S3 method for ResamplingRepeatedSpCVTiles</span>
 <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span>
   <span class='va'>object</span>,
   <span class='va'>task</span>,
@@ -195,10 +195,10 @@ visualize mlr3 spatiotemporal resampling objects.</p>
   <span class='va'>...</span>
 <span class='op'>)</span>
 
-<span class='co'># S3 method for ResamplingSpCVDisc</span>
+<span class='co'># S3 method for ResamplingSpCVTiles</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S3 method for ResamplingRepeatedSpCVDisc</span>
+<span class='co'># S3 method for ResamplingRepeatedSpCVTiles</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -267,23 +267,8 @@ mlr3 spatial resampling object. One of class <a href='ResamplingSpCVBuffer.html'
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This method requires to set argument <code>fold_id</code> and no plot containing all
-partitions can be created. This is because the method does not make use of
-all observations but only a subset of them (many observations are left out).
-Hence, train and test sets of one fold are not re-used in other folds as in
-other methods and plotting these without a train/test indicator would not
-make sense.</p>
-    <h2 class="hasAnchor" id="-d-vs-d-plotting"><a class="anchor" href="#-d-vs-d-plotting"></a>2D vs 3D plotting</h2>
-
-    
-
-<p>This method has both a 2D and a 3D plotting method.
-The 2D method returns a <span class="pkg">ggplot</span> with x and y axes representing the spatial
-coordinates.
-The 3D method uses <span class="pkg">plotly</span> to create an interactive 3D plot.
-Set <code>plot3D = TRUE</code> to use the 3D method.</p>
-<p>Note that spatiotemporal datasets usually suffer from overplotting in 2D
-mode.</p>
+    <p>Specific combinations of arguments of <code>"spcv_tiles"</code> remove some
+observations, hence <code>show_omitted</code> has an effect in some cases.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
@@ -293,7 +278,7 @@ mode.</p>
 <li><p><code><a href='autoplot.ResamplingSpCVBlock.html'>autoplot.ResamplingSpCVBlock()</a></code></p></li>
 <li><p><code><a href='autoplot.ResamplingSpCVBuffer.html'>autoplot.ResamplingSpCVBuffer()</a></code></p></li>
 <li><p><code><a href='autoplot.ResamplingSpCVCoords.html'>autoplot.ResamplingSpCVCoords()</a></code></p></li>
-<li><p><code><a href='autoplot.ResamplingSpCVTiles.html'>autoplot.ResamplingSpCVTiles()</a></code></p></li>
+<li><p><code><a href='autoplot.ResamplingSpCVDisc.html'>autoplot.ResamplingSpCVDisc()</a></code></p></li>
 <li><p><code><a href='autoplot.ResamplingSpCVEnv.html'>autoplot.ResamplingSpCVEnv()</a></code></p></li>
 <li><p><code><a href='autoplot.ResamplingCV.html'>autoplot.ResamplingCV()</a></code></p></li>
 <li><p><code><a href='autoplot.ResamplingSptCVCluto.html'>autoplot.ResamplingSptCVCluto()</a></code></p></li>
@@ -306,8 +291,8 @@ mode.</p>
   <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3.mlr-org.com'>mlr3</a></span><span class='op'>)</span>
   <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mlr3spatiotempcv.mlr-org.com/'>mlr3spatiotempcv</a></span><span class='op'>)</span>
   <span class='va'>task</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"ecuador"</span><span class='op'>)</span>
-  <span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"spcv_disc"</span>,
-    folds <span class='op'>=</span> <span class='fl'>5</span>, radius <span class='op'>=</span> <span class='fl'>200L</span>, buffer <span class='op'>=</span> <span class='fl'>200L</span><span class='op'>)</span>
+  <span class='va'>resampling</span> <span class='op'>=</span> <span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"spcv_tiles"</span>,
+    nsplit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4L</span>, <span class='fl'>3L</span><span class='op'>)</span>, reassign <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
   <span class='va'>resampling</span><span class='op'>$</span><span class='fu'>instantiate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
 
   <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>,
@@ -315,7 +300,7 @@ mode.</p>
     show_omitted <span class='op'>=</span> <span class='cn'>TRUE</span>, size <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span> <span class='op'>*</span>
     <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='img'><img src='autoplot.ResamplingSpCVDisc-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
+</div><div class='img'><img src='autoplot.ResamplingSpCVTiles-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

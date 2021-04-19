@@ -217,6 +217,7 @@
 <li><p><code>spcv_buffer</code></p></li>
 <li><p><code>spcv_coords</code></p></li>
 <li><p><code>spcv_disc</code></p></li>
+<li><p><code>spcv_tiles</code></p></li>
 <li><p><code>spcv_env</code></p></li>
 <li><p><code>sptcv_cluto</code></p></li>
 <li><p><code>sptcv_cstf</code></p></li>
@@ -224,29 +225,56 @@
 <p>and their respective repeated versions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">mlr_resamplings</span><span class="op">)</span>
-<span class="co">#&gt;                      key                                      params iters</span>
-<span class="co">#&gt;  1:            bootstrap                               repeats,ratio    30</span>
-<span class="co">#&gt;  2:               custom                                                 0</span>
-<span class="co">#&gt;  3:                   cv                                       folds    10</span>
-<span class="co">#&gt;  4:              holdout                                       ratio     1</span>
-<span class="co">#&gt;  5:             insample                                                 1</span>
-<span class="co">#&gt;  6:                  loo                                                NA</span>
-<span class="co">#&gt;  7:          repeated_cv                               repeats,folds   100</span>
-<span class="co">#&gt;  8:  repeated_spcv_block folds,repeats,rows,cols,range,selection,...    10</span>
-<span class="co">#&gt;  9: repeated_spcv_coords                               folds,repeats    10</span>
-<span class="co">#&gt; 10:   repeated_spcv_disc    folds,radius,buffer,prob,replace,repeats    10</span>
-<span class="co">#&gt; 11:    repeated_spcv_env                      folds,repeats,features    10</span>
-<span class="co">#&gt; 12: repeated_sptcv_cluto                               folds,repeats    10</span>
-<span class="co">#&gt; 13:  repeated_sptcv_cstf      folds,repeats,space_var,time_var,class    10</span>
-<span class="co">#&gt; 14:           spcv_block folds,rows,cols,range,selection,rasterLayer    10</span>
-<span class="co">#&gt; 15:          spcv_buffer                   theRange,spDataType,addBG     0</span>
-<span class="co">#&gt; 16:          spcv_coords                                       folds    10</span>
-<span class="co">#&gt; 17:            spcv_disc            folds,radius,buffer,prob,replace    10</span>
-<span class="co">#&gt; 18:             spcv_env                              folds,features    10</span>
-<span class="co">#&gt; 19:          sptcv_cluto                                       folds    10</span>
-<span class="co">#&gt; 20:           sptcv_cstf              folds,space_var,time_var,class    10</span>
-<span class="co">#&gt; 21:          subsampling                               repeats,ratio    30</span>
-<span class="co">#&gt;                      key                                      params iters</span></code></pre></div>
+<span class="co">#&gt;                      key</span>
+<span class="co">#&gt;  1:            bootstrap</span>
+<span class="co">#&gt;  2:               custom</span>
+<span class="co">#&gt;  3:                   cv</span>
+<span class="co">#&gt;  4:              holdout</span>
+<span class="co">#&gt;  5:             insample</span>
+<span class="co">#&gt;  6:                  loo</span>
+<span class="co">#&gt;  7:          repeated_cv</span>
+<span class="co">#&gt;  8:  repeated_spcv_block</span>
+<span class="co">#&gt;  9: repeated_spcv_coords</span>
+<span class="co">#&gt; 10:   repeated_spcv_disc</span>
+<span class="co">#&gt; 11:    repeated_spcv_env</span>
+<span class="co">#&gt; 12:  repeated_spcv_tiles</span>
+<span class="co">#&gt; 13: repeated_sptcv_cluto</span>
+<span class="co">#&gt; 14:  repeated_sptcv_cstf</span>
+<span class="co">#&gt; 15:           spcv_block</span>
+<span class="co">#&gt; 16:          spcv_buffer</span>
+<span class="co">#&gt; 17:          spcv_coords</span>
+<span class="co">#&gt; 18:            spcv_disc</span>
+<span class="co">#&gt; 19:             spcv_env</span>
+<span class="co">#&gt; 20:           spcv_tiles</span>
+<span class="co">#&gt; 21:          sptcv_cluto</span>
+<span class="co">#&gt; 22:           sptcv_cstf</span>
+<span class="co">#&gt; 23:          subsampling</span>
+<span class="co">#&gt;                      key</span>
+<span class="co">#&gt;                                                          params iters</span>
+<span class="co">#&gt;  1:                                               repeats,ratio    30</span>
+<span class="co">#&gt;  2:                                                                 0</span>
+<span class="co">#&gt;  3:                                                       folds    10</span>
+<span class="co">#&gt;  4:                                                       ratio     1</span>
+<span class="co">#&gt;  5:                                                                 1</span>
+<span class="co">#&gt;  6:                                                                NA</span>
+<span class="co">#&gt;  7:                                               repeats,folds   100</span>
+<span class="co">#&gt;  8:                 folds,repeats,rows,cols,range,selection,...    10</span>
+<span class="co">#&gt;  9:                                               folds,repeats    10</span>
+<span class="co">#&gt; 10:                    folds,radius,buffer,prob,replace,repeats    10</span>
+<span class="co">#&gt; 11:                                      folds,repeats,features    10</span>
+<span class="co">#&gt; 12: dsplit,nsplit,rotation,user_rotation,offset,user_offset,...     0</span>
+<span class="co">#&gt; 13:                                               folds,repeats    10</span>
+<span class="co">#&gt; 14:                      folds,repeats,space_var,time_var,class    10</span>
+<span class="co">#&gt; 15:                 folds,rows,cols,range,selection,rasterLayer    10</span>
+<span class="co">#&gt; 16:                                   theRange,spDataType,addBG     0</span>
+<span class="co">#&gt; 17:                                                       folds    10</span>
+<span class="co">#&gt; 18:                            folds,radius,buffer,prob,replace    10</span>
+<span class="co">#&gt; 19:                                              folds,features    10</span>
+<span class="co">#&gt; 20: dsplit,nsplit,rotation,user_rotation,offset,user_offset,...     0</span>
+<span class="co">#&gt; 21:                                                       folds    10</span>
+<span class="co">#&gt; 22:                              folds,space_var,time_var,class    10</span>
+<span class="co">#&gt; 23:                                               repeats,ratio    30</span>
+<span class="co">#&gt;                                                          params iters</span></code></pre></div>
 </div>
 <div id="examples-tasks" class="section level1">
 <h1 class="hasAnchor">
@@ -300,32 +328,39 @@
 </tr>
 <tr class="even">
 <td>
+<strong>Blocking</strong>, spatial</td>
+<td>(sperrorest) Spatial Tiles</td>
+<td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_tiles")</a></code></td>
+</tr>
+<tr class="odd">
+<td>
 <strong>Clustering</strong>, spatial</td>
 <td>(sperrorest) Spatial CV</td>
 <td><span class="citation">Brenning (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_coords")</a></code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>
 <strong>Clustering</strong>, feature-space</td>
 <td>(blockCV) Environmental Blocking</td>
 <td><span class="citation">Valavi et al. (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_env")</a></code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><hr></td>
 <td><hr></td>
 <td><hr></td>
 <td><hr></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>
 <strong>Grouping</strong>, spatiotemporal</td>
 <td>(CAST) Leave-Location-and-Time-Out</td>
 <td><span class="citation">Meyer et al. (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cstf")</a></code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>
 <strong>Clustering</strong>, spatiotemporal</td>
 <td>(skmeans) Spatiotemporal Clustering</td>

@@ -16,6 +16,9 @@
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingRepeatedSpCVEnv.html</loc>
   </url>
   <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingRepeatedSpCVTiles.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingRepeatedSptCVCluto.html</loc>
   </url>
   <url>
@@ -35,6 +38,9 @@
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingSpCVEnv.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingSpCVTiles.html</loc>
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/ResamplingSptCVCluto.html</loc>
@@ -68,6 +74,9 @@
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSpCVEnv.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSpCVTiles.html</loc>
   </url>
   <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.ResamplingSptCVCluto.html</loc>
