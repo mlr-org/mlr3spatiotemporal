@@ -290,13 +290,13 @@
 <div id="upstream-packages-and-scientific-references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#upstream-packages-and-scientific-references" class="anchor"></a>Upstream Packages and Scientific References</h1>
-<p>The following table lists all methods implemented in {mlr3spatiotempcv}, their upstream R package and scientific references. All methods besides <code>"spcv_buffer"</code> also have a corresponding “repeated” method.</p>
+<p>The following table lists all spatiotemporal methods implemented in {mlr3spatiotempcv} (or {mlr3}), their upstream R package and scientific references. All methods besides <code>"spcv_buffer"</code> also have a corresponding “repeated” method.</p>
 <table class="table">
 <colgroup>
-<col width="24%">
-<col width="35%">
+<col width="23%">
+<col width="34%">
 <col width="14%">
-<col width="25%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
 <th>Category</th>
@@ -352,6 +352,23 @@
 <td><hr></td>
 <td><hr></td>
 <td><hr></td>
+</tr>
+<tr class="even">
+<td>
+<strong>Grouping</strong>, predefined inds</td>
+<td>(mlr3) not yet implemented</td>
+<td><pre><code>   -</code></pre></td>
+<td><pre><code>           -</code></pre></td>
+</tr>
+<tr class="odd">
+<td>
+<strong>Grouping</strong>, spatiotemporal</td>
+<td>(mlr3) via <code>col_roles</code> <code>"group"</code>
+</td>
+<td><pre><code>   -</code></pre></td>
+<td>
+<code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("cv")</a></code>, <code>Task$set_col_roles()</code>
+</td>
 </tr>
 <tr class="even">
 <td>
