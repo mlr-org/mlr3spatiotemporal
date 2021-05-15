@@ -55,6 +55,18 @@
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/TaskRegrST.html</loc>
   </url>
   <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/as_task_classif.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/as_task_classif_st.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/as_task_regr.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3spatiotempcv.mlr-org.com/reference/as_task_regr_st.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3spatiotempcv.mlr-org.com/reference/autoplot.html</loc>
   </url>
   <url>
