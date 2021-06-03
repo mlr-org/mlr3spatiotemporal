@@ -40,7 +40,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org"></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.3.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.4.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -111,7 +111,7 @@
 
       
 
-      </header><script src="mlr3spatiotempcv_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="mlr3spatiotempcv_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting Started</h1>
@@ -215,6 +215,8 @@
 <li><p><code>spcv_block</code></p></li>
 <li><p><code>spcv_buffer</code></p></li>
 <li><p><code>spcv_coords</code></p></li>
+<li><p><code>spcv_disc</code></p></li>
+<li><p><code>spcv_tiles</code></p></li>
 <li><p><code>spcv_env</code></p></li>
 <li><p><code>sptcv_cluto</code></p></li>
 <li><p><code>sptcv_cstf</code></p></li>
@@ -222,26 +224,56 @@
 <p>and their respective repeated versions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">mlr_resamplings</span><span class="op">)</span>
-<span class="co">#&gt;                      key                                      params iters</span>
-<span class="co">#&gt;  1:            bootstrap                               repeats,ratio    30</span>
-<span class="co">#&gt;  2:               custom                                                 0</span>
-<span class="co">#&gt;  3:                   cv                                       folds    10</span>
-<span class="co">#&gt;  4:              holdout                                       ratio     1</span>
-<span class="co">#&gt;  5:             insample                                                 1</span>
-<span class="co">#&gt;  6:                  loo                                                NA</span>
-<span class="co">#&gt;  7:          repeated_cv                               repeats,folds   100</span>
-<span class="co">#&gt;  8:  repeated_spcv_block folds,repeats,rows,cols,range,selection,...    10</span>
-<span class="co">#&gt;  9: repeated_spcv_coords                               folds,repeats    10</span>
-<span class="co">#&gt; 10:    repeated_spcv_env                      folds,repeats,features    10</span>
-<span class="co">#&gt; 11: repeated_sptcv_cluto                               folds,repeats    10</span>
-<span class="co">#&gt; 12:  repeated_sptcv_cstf                               folds,repeats    10</span>
-<span class="co">#&gt; 13:           spcv_block folds,rows,cols,range,selection,rasterLayer    10</span>
-<span class="co">#&gt; 14:          spcv_buffer                   theRange,spDataType,addBG     0</span>
-<span class="co">#&gt; 15:          spcv_coords                                       folds    10</span>
-<span class="co">#&gt; 16:             spcv_env                              folds,features    10</span>
-<span class="co">#&gt; 17:          sptcv_cluto                                       folds    10</span>
-<span class="co">#&gt; 18:           sptcv_cstf                                       folds    10</span>
-<span class="co">#&gt; 19:          subsampling                               repeats,ratio    30</span></code></pre></div>
+<span class="co">#&gt;                      key</span>
+<span class="co">#&gt;  1:            bootstrap</span>
+<span class="co">#&gt;  2:               custom</span>
+<span class="co">#&gt;  3:                   cv</span>
+<span class="co">#&gt;  4:              holdout</span>
+<span class="co">#&gt;  5:             insample</span>
+<span class="co">#&gt;  6:                  loo</span>
+<span class="co">#&gt;  7:          repeated_cv</span>
+<span class="co">#&gt;  8:  repeated_spcv_block</span>
+<span class="co">#&gt;  9: repeated_spcv_coords</span>
+<span class="co">#&gt; 10:   repeated_spcv_disc</span>
+<span class="co">#&gt; 11:    repeated_spcv_env</span>
+<span class="co">#&gt; 12:  repeated_spcv_tiles</span>
+<span class="co">#&gt; 13: repeated_sptcv_cluto</span>
+<span class="co">#&gt; 14:  repeated_sptcv_cstf</span>
+<span class="co">#&gt; 15:           spcv_block</span>
+<span class="co">#&gt; 16:          spcv_buffer</span>
+<span class="co">#&gt; 17:          spcv_coords</span>
+<span class="co">#&gt; 18:            spcv_disc</span>
+<span class="co">#&gt; 19:             spcv_env</span>
+<span class="co">#&gt; 20:           spcv_tiles</span>
+<span class="co">#&gt; 21:          sptcv_cluto</span>
+<span class="co">#&gt; 22:           sptcv_cstf</span>
+<span class="co">#&gt; 23:          subsampling</span>
+<span class="co">#&gt;                      key</span>
+<span class="co">#&gt;                                                          params iters</span>
+<span class="co">#&gt;  1:                                               repeats,ratio    30</span>
+<span class="co">#&gt;  2:                                                                 0</span>
+<span class="co">#&gt;  3:                                                       folds    10</span>
+<span class="co">#&gt;  4:                                                       ratio     1</span>
+<span class="co">#&gt;  5:                                                                 1</span>
+<span class="co">#&gt;  6:                                                                NA</span>
+<span class="co">#&gt;  7:                                               repeats,folds   100</span>
+<span class="co">#&gt;  8:                 folds,repeats,rows,cols,range,selection,...    10</span>
+<span class="co">#&gt;  9:                                               folds,repeats    10</span>
+<span class="co">#&gt; 10:                    folds,radius,buffer,prob,replace,repeats    10</span>
+<span class="co">#&gt; 11:                                      folds,repeats,features    10</span>
+<span class="co">#&gt; 12: dsplit,nsplit,rotation,user_rotation,offset,user_offset,...     0</span>
+<span class="co">#&gt; 13:                                               folds,repeats    10</span>
+<span class="co">#&gt; 14:                      folds,repeats,space_var,time_var,class    10</span>
+<span class="co">#&gt; 15:                 folds,rows,cols,range,selection,rasterLayer    10</span>
+<span class="co">#&gt; 16:                                   theRange,spDataType,addBG     0</span>
+<span class="co">#&gt; 17:                                                       folds    10</span>
+<span class="co">#&gt; 18:                            folds,radius,buffer,prob,replace    10</span>
+<span class="co">#&gt; 19:                                              folds,features    10</span>
+<span class="co">#&gt; 20: dsplit,nsplit,rotation,user_rotation,offset,user_offset,...     0</span>
+<span class="co">#&gt; 21:                                                       folds    10</span>
+<span class="co">#&gt; 22:                              folds,space_var,time_var,class    10</span>
+<span class="co">#&gt; 23:                                               repeats,ratio    30</span>
+<span class="co">#&gt;                                                          params iters</span></code></pre></div>
 </div>
 <div id="examples-tasks" class="section level1">
 <h1 class="hasAnchor">
@@ -257,105 +289,99 @@
 <div id="upstream-packages-and-scientific-references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#upstream-packages-and-scientific-references" class="anchor"></a>Upstream Packages and Scientific References</h1>
-<p>The following table lists all methods implemented in {mlr3spatiotempcv}, their upstream R package and scientific references.</p>
+<p>The following table lists all spatiotemporal methods implemented in {mlr3spatiotempcv} (or {mlr3}), their upstream R package and scientific references. All methods besides <code>"spcv_buffer"</code> also have a corresponding “repeated” method.</p>
 <table class="table">
 <colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
+<col width="23%">
+<col width="34%">
+<col width="14%">
+<col width="27%">
 </colgroup>
 <thead><tr class="header">
-<th>Literature</th>
-<th>Package</th>
+<th>Category</th>
+<th>(Package) Method Name</th>
 <th>Reference</th>
-<th>mlr3 Sugar</th>
+<th>mlr3 Notation</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Spatial Buffering</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation"><a href="#ref-valavi2018" role="doc-biblioref">Valavi et al.</a> (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
+<td>
+<strong>Buffering</strong>, spatial</td>
+<td>(blockCV) Spatial Buffering</td>
+<td><span class="citation">Valavi et al. (2018)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_buffer")</a></code></td>
 </tr>
 <tr class="even">
-<td>Spatial Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation"><a href="#ref-valavi2018" role="doc-biblioref">Valavi et al.</a> (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_block")</a></code></td>
+<td>
+<strong>Buffering</strong>, spatial</td>
+<td>(sperrorest) Spatial Disc</td>
+<td><span class="citation">Brenning (2012)</span></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_disc")</a></code></td>
 </tr>
 <tr class="odd">
-<td>Spatial CV</td>
-<td><a href="https://github.com/giscience-fsu/sperrorest">sperrorest</a></td>
-<td><span class="citation"><a href="#ref-brenning2012" role="doc-biblioref">Brenning</a> (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span></td>
+<td>
+<strong>Blocking</strong>, spatial</td>
+<td>(blockCV) Spatial Blocking</td>
+<td><span class="citation">Valavi et al. (2018)</span></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_block")</a></code></td>
+</tr>
+<tr class="even">
+<td>
+<strong>Blocking</strong>, spatial</td>
+<td>(sperrorest) Spatial Tiles</td>
+<td><span class="citation">Valavi et al. (2018)</span></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_tiles")</a></code></td>
+</tr>
+<tr class="odd">
+<td>
+<strong>Clustering</strong>, spatial</td>
+<td>(sperrorest) Spatial CV</td>
+<td><span class="citation">Brenning (2012)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_coords")</a></code></td>
 </tr>
 <tr class="even">
-<td>Environmental Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation"><a href="#ref-valavi2018" role="doc-biblioref">Valavi et al.</a> (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
+<td>
+<strong>Clustering</strong>, feature-space</td>
+<td>(blockCV) Environmental Blocking</td>
+<td><span class="citation">Valavi et al. (2018)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("spcv_env")</a></code></td>
 </tr>
 <tr class="odd">
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cluto")</a></code></td>
+<td><hr></td>
+<td><hr></td>
+<td><hr></td>
+<td><hr></td>
 </tr>
 <tr class="even">
-<td>Leave-Location-and-Time-Out</td>
-<td><a href="https://github.com/HannaMeyer/CAST">CAST</a></td>
-<td><span class="citation"><a href="#ref-meyer2018" role="doc-biblioref">Meyer et al.</a> (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span></td>
+<td>
+<strong>Grouping</strong>, predefined inds</td>
+<td>(mlr3) not yet implemented</td>
+<td><pre><code>   -</code></pre></td>
+<td><pre><code>           -</code></pre></td>
+</tr>
+<tr class="odd">
+<td>
+<strong>Grouping</strong>, spatiotemporal</td>
+<td>(mlr3) via <code>col_roles</code> <code>"group"</code>
+</td>
+<td><pre><code>   -</code></pre></td>
+<td>
+<code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("cv")</a></code>, <code>Task$set_col_roles()</code>
+</td>
+</tr>
+<tr class="even">
+<td>
+<strong>Grouping</strong>, spatiotemporal</td>
+<td>(CAST) Leave-Location-and-Time-Out</td>
+<td><span class="citation">Meyer et al. (2018)</span></td>
 <td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cstf")</a></code></td>
 </tr>
 <tr class="odd">
-<td>Spatiotemporal Clustering</td>
-<td><a href="https://github.com/cran/skmeans">skmeans</a></td>
-<td><span class="citation"><a href="#ref-zhao2002" role="doc-biblioref">Zhao and Karypis</a> (<a href="#ref-zhao2002" role="doc-biblioref">2002</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cluto")</a></code></td>
-</tr>
-<tr class="even">
-<td><hr></td>
-<td><hr></td>
-<td><hr></td>
-<td><hr></td>
-</tr>
-<tr class="odd">
-<td>Repeated Spatial Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation"><a href="#ref-valavi2018" role="doc-biblioref">Valavi et al.</a> (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_spcv_block")</a></code></td>
-</tr>
-<tr class="even">
-<td>Repeated Spatial CV</td>
-<td><a href="https://github.com/giscience-fsu/sperrorest">sperrorest</a></td>
-<td><span class="citation"><a href="#ref-brenning2012" role="doc-biblioref">Brenning</a> (<a href="#ref-brenning2012" role="doc-biblioref">2012</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_spcv_coords")</a></code></td>
-</tr>
-<tr class="odd">
-<td>Repeated Env Blocking</td>
-<td><a href="https://github.com/rvalavi/blockCV">blockCV</a></td>
-<td><span class="citation"><a href="#ref-valavi2018" role="doc-biblioref">Valavi et al.</a> (<a href="#ref-valavi2018" role="doc-biblioref">2018</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_spcv_env")</a></code></td>
-</tr>
-<tr class="even">
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cluto")</a></code></td>
-</tr>
-<tr class="odd">
-<td>Repeated Leave-Location-and-Time-Out</td>
-<td><a href="https://github.com/HannaMeyer/CAST">CAST</a></td>
 <td>
-<span class="citation"><a href="#ref-meyer2018" role="doc-biblioref">Meyer et al.</a> (<a href="#ref-meyer2018" role="doc-biblioref">2018</a>)</span> |</td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cstf")</a></code></td>
-</tr>
-<tr class="even">
-<td>Repeated Spatiotemporal Clustering</td>
-<td><a href="https://github.com/cran/skmeans">skmeans</a></td>
-<td><span class="citation"><a href="#ref-zhao2002" role="doc-biblioref">Zhao and Karypis</a> (<a href="#ref-zhao2002" role="doc-biblioref">2002</a>)</span></td>
-<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("repeated_sptcv_cluto")</a></code></td>
+<strong>Clustering</strong>, spatiotemporal</td>
+<td>(skmeans) Spatiotemporal Clustering</td>
+<td><span class="citation">Zhao and Karypis (2002)</span></td>
+<td><code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">rsmp("sptcv_cluto")</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -363,18 +389,18 @@
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-brenning2012" class="csl-entry">
-Brenning, Alexander. 2012. <span>“<span class="nocase">Spatial cross-validation and bootstrap for the assessment of prediction rules in remote sensing: The R package sperrorest</span>.”</span> In <em>2012 <span>IEEE</span> International Geoscience and Remote Sensing Symposium</em>. <span>IEEE</span>. <a href="https://doi.org/10.1109/igarss.2012.6352393">https://doi.org/10.1109/igarss.2012.6352393</a>.
+<div id="refs" class="references">
+<div id="ref-brenning2012">
+<p>Brenning, Alexander. 2012. “Spatial cross-validation and bootstrap for the assessment of prediction rules in remote sensing: The R package sperrorest.” In <em>2012 IEEE International Geoscience and Remote Sensing Symposium</em>. IEEE. <a href="https://doi.org/10.1109/igarss.2012.6352393">https://doi.org/10.1109/igarss.2012.6352393</a>.</p>
 </div>
-<div id="ref-meyer2018" class="csl-entry">
-Meyer, Hanna, Christoph Reudenbach, Tomislav Hengl, Marwan Katurji, and Thomas Nauss. 2018. <span>“Improving Performance of Spatio-Temporal Machine Learning Models Using Forward Feature Selection and Target-Oriented Validation.”</span> <em>Environmental Modelling <span>&amp;</span> Software</em> 101 (March): 1–9. <a href="https://doi.org/10.1016/j.envsoft.2017.12.001">https://doi.org/10.1016/j.envsoft.2017.12.001</a>.
+<div id="ref-meyer2018">
+<p>Meyer, Hanna, Christoph Reudenbach, Tomislav Hengl, Marwan Katurji, and Thomas Nauss. 2018. “Improving Performance of Spatio-Temporal Machine Learning Models Using Forward Feature Selection and Target-Oriented Validation.” <em>Environmental Modelling &amp; Software</em> 101 (March): 1–9. <a href="https://doi.org/10.1016/j.envsoft.2017.12.001">https://doi.org/10.1016/j.envsoft.2017.12.001</a>.</p>
 </div>
-<div id="ref-valavi2018" class="csl-entry">
-Valavi, Roozbeh, Jane Elith, Jose J. Lahoz-Monfort, and Gurutzeta Guillera-Arroita. 2018. <span>“<span class="nocase">blockCV: an R package for generating spatially or environmentally separated folds for k-fold cross-validation of species distribution models</span>.”</span> <em><span>bioRxiv</span></em>, June. <a href="https://doi.org/10.1101/357798">https://doi.org/10.1101/357798</a>.
+<div id="ref-valavi2018">
+<p>Valavi, Roozbeh, Jane Elith, Jose J. Lahoz-Monfort, and Gurutzeta Guillera-Arroita. 2018. “blockCV: an R package for generating spatially or environmentally separated folds for k-fold cross-validation of species distribution models.” <em>bioRxiv</em>, June. <a href="https://doi.org/10.1101/357798">https://doi.org/10.1101/357798</a>.</p>
 </div>
-<div id="ref-zhao2002" class="csl-entry">
-Zhao, Ying, and George Karypis. 2002. <span>“Evaluation of Hierarchical Clustering Algorithms for Document Datasets.”</span> <em>11th Conference of Information and Knowledge Management (CIKM)</em>, 515–24. <a href="http://glaros.dtc.umn.edu/gkhome/node/167">http://glaros.dtc.umn.edu/gkhome/node/167</a>.
+<div id="ref-zhao2002">
+<p>Zhao, Ying, and George Karypis. 2002. “Evaluation of Hierarchical Clustering Algorithms for Document Datasets.” <em>11th Conference of Information and Knowledge Management (CIKM)</em>, 515–24. <a href="http://glaros.dtc.umn.edu/gkhome/node/167">http://glaros.dtc.umn.edu/gkhome/node/167</a>.</p>
 </div>
 </div>
 </div>

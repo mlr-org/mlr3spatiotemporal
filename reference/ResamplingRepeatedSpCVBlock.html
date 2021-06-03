@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Repeated Spatial Cross Validation Resampling — ResamplingRepeatedSpCVBlock • mlr3spatiotempcv</title>
+<title>(blockCV) Repeated spatial block resampling — ResamplingRepeatedSpCVBlock • mlr3spatiotempcv</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,17 @@
 
 
 
-<meta property="og:title" content="Repeated Spatial Cross Validation Resampling — ResamplingRepeatedSpCVBlock" />
-<meta property="og:description" content="Spatial Block Cross validation implemented by the blockCV
-package." />
+<meta property="og:title" content="(blockCV) Repeated spatial block resampling — ResamplingRepeatedSpCVBlock" />
+<meta property="og:description" content="This function creates spatially separated folds based on a pre-specified distance. It assigns blocks to the training and
+testing folds  randomly,  systematically or in a  checkerboard pattern. The distance (theRange)
+should be in metres, regardless of the unit of the reference system of
+the input data (for more information see the details section). By default,
+the function creates blocks according to the extent and shape of the study area, assuming that the user has considered the
+landscape for the given species and case study. Alternatively, blocks can solely be created based on species spatial data.
+Blocks can also be offset so the origin is not at the outer
+corner of the rasters. Instead of providing a distance, the blocks can also be created by specifying a number of rows and/or
+columns and divide the study area into vertical or horizontal bins, as presented in Wenger &amp;amp; Olden (2012) and Bahn &amp;amp; McGill (2012).
+Finally, the blocks can be specified by a user-defined spatial polygon layer." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -83,7 +91,7 @@ package." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.3.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.4.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -157,27 +165,55 @@ package." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Repeated Spatial Cross Validation Resampling</h1>
+    <h1>(blockCV) Repeated spatial block resampling</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/ResamplingRepeatedSpCVBlock.R'><code>R/ResamplingRepeatedSpCVBlock.R</code></a></small>
     <div class="hidden name"><code>ResamplingRepeatedSpCVBlock.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Spatial Block Cross validation implemented by the <code>blockCV</code>
-package.</p>
+    <p>This function creates spatially separated folds based on a pre-specified distance. It assigns blocks to the training and
+testing folds  <strong>randomly</strong>,  <strong>systematically</strong> or in a  <strong>checkerboard pattern</strong>. The distance (<code>theRange</code>)
+should be in <strong>metres</strong>, regardless of the unit of the reference system of
+the input data (for more information see the details section). By default,
+the function creates blocks according to the extent and shape of the study area, assuming that the user has considered the
+landscape for the given species and case study. Alternatively, blocks can solely be created based on species spatial data.
+Blocks can also be offset so the origin is not at the outer
+corner of the rasters. Instead of providing a distance, the blocks can also be created by specifying a number of rows and/or
+columns and divide the study area into vertical or horizontal bins, as presented in Wenger &amp; Olden (2012) and Bahn &amp; McGill (2012).
+Finally, the blocks can be specified by a user-defined spatial polygon layer.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>By default <code><a href='https://rdrr.io/pkg/blockCV/man/spatialBlock.html'>blockCV::spatialBlock()</a></code> does not allow the creation of multiple
+    <p>To keep the consistency, all the functions use <strong>metres</strong> as their unit. In this function, when the input map
+has geographic coordinate system (decimal degrees), the block size is calculated based on deviding <code>theRange</code> by
+111325 (the standard distance of a degree in metres, on the Equator) to change the unit to degree. This value is optional
+and can be changed by user via <code>degMetre</code> argument.</p>
+<p>The <code>xOffset</code> and <code>yOffset</code> can be used to change the spatial position of the blocks. It can also be used to
+assess the sensitivity of analysis results to shifting in the blocking arrangements. These options are available when <code>theRange</code>
+is defined. By default the region is located in the middle of the blocks and by setting the offsets, the blocks will shift.</p>
+<p>Roberts et. al. (2017) suggest that blocks should be substantially bigger than the range of spatial
+autocorrelation (in model residual) to obtain realistic error estimates, while a buffer with the size of
+the spatial autocorrelation range would result in a good estimation of error. This is because of the so-called
+edge effect (O'Sullivan &amp; Unwin, 2014), whereby points located on the edges of the blocks of opposite sets are
+not separated spatially. Blocking with a buffering strategy overcomes this issue (see <code><a href='https://rdrr.io/pkg/blockCV/man/buffering.html'>buffering</a></code>).</p>
+    <h2 class="hasAnchor" id="mlr-spatiotempcv-notes"><a class="anchor" href="#mlr-spatiotempcv-notes"></a>mlr3spatiotempcv notes</h2>
+
+    
+
+
+<p>By default <code><a href='https://rdrr.io/pkg/blockCV/man/spatialBlock.html'>blockCV::spatialBlock()</a></code> does not allow the creation of multiple
 repetitions. <code>mlr3spatiotempcv</code> adds support for this when using the <code>range</code>
 argument for fold creation. When supplying a vector of <code><a href='https://rdrr.io/r/base/length.html'>length(repeats)</a></code> for
 argument <code>range</code>, these different settings will be used to create folds which
 differ among the repetitions.</p>
 <p>Multiple repetitions are not possible when using the "row &amp; cols" approach
 because the created folds will always be the same.</p>
+<p>The 'Description' and 'Details' fields are inherited from the respective
+upstream function.</p>
+<p>For a list of available arguments, please see <a href='https://rdrr.io/pkg/blockCV/man/spatialBlock.html'>blockCV::spatialBlock</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Valavi R, Elith J, Lahoz-Monfort JJ, Guillera-Arroita G (2018).
@@ -228,7 +264,8 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create an "coordinate-based" repeated resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p>Create an "spatial block" repeated resampling instance.</p>
+<p>For a list of available arguments, please see <a href='https://rdrr.io/pkg/blockCV/man/spatialBlock.html'>blockCV::spatialBlock</a>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>ResamplingRepeatedSpCVBlock</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"repeated_spcv_block"</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>

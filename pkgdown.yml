@@ -1,10 +1,10 @@
-pandoc: '2.13'
+pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   mlr3spatiotempcv: mlr3spatiotempcv.html
   spatiotemp-viz: spatiotemp-viz.html
-last_built: 2021-04-13T20:06Z
+last_built: 2021-06-03T22:18Z
 urls:
   reference: https://mlr3spatiotempcv.mlr-org.com/reference
   article: https://mlr3spatiotempcv.mlr-org.com/articles

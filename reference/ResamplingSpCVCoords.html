@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spatial Cross Validation Resampling — ResamplingSpCVCoords • mlr3spatiotempcv</title>
+<title>(sperrorest) Coordinate-based k-means clustering — ResamplingSpCVCoords • mlr3spatiotempcv</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,9 @@
 
 
 
-<meta property="og:title" content="Spatial Cross Validation Resampling — ResamplingSpCVCoords" />
-<meta property="og:description" content="Spatial Cross validation following the &quot;k-means&quot; approach after
-Brenning 2012." />
+<meta property="og:title" content="(sperrorest) Coordinate-based k-means clustering — ResamplingSpCVCoords" />
+<meta property="og:description" content="partition_cv creates a represampling object for
+length(repetition)-repeated nfold-fold cross-validation." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -83,7 +83,7 @@ Brenning 2012." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.3.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.4.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -157,18 +157,31 @@ Brenning 2012." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spatial Cross Validation Resampling</h1>
+    <h1>(sperrorest) Coordinate-based k-means clustering</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/R/ResamplingSpCVCoords.R'><code>R/ResamplingSpCVCoords.R</code></a></small>
     <div class="hidden name"><code>ResamplingSpCVCoords.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Spatial Cross validation following the "k-means" approach after
-Brenning 2012.</p>
+    <p><code>partition_cv</code> creates a <a href='https://giscience-fsu.github.io/sperrorest/reference/as.represampling.html'>represampling</a> object for
+<code><a href='https://rdrr.io/r/base/length.html'>length(repetition)</a></code>-repeated <code>nfold</code>-fold cross-validation.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function does not actually perform a cross-validation or
+partition the data set itself; it simply creates a data structure
+containing the indices of training and test samples.</p>
+    <h2 class="hasAnchor" id="mlr-spatiotempcv-notes"><a class="anchor" href="#mlr-spatiotempcv-notes"></a>mlr3spatiotempcv notes</h2>
+
+    
+
+
+<p>The 'Description' and 'Details' fields are inherited from the respective
+upstream function.</p>
+<p>For a list of available arguments, please see <a href='https://giscience-fsu.github.io/sperrorest/reference/partition_cv.html'>sperrorest::partition_cv</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brenning A (2012).
@@ -209,7 +222,8 @@ values stored in the <code>param_set</code>.</p></dd>
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create an "Environmental Block" resampling instance.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p>Create an "coordinate-based" repeated resampling instance.</p>
+<p>For a list of available arguments, please see <a href='https://giscience-fsu.github.io/sperrorest/reference/partition_cv.html'>sperrorest::partition_cv</a>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>ResamplingSpCVCoords</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"spcv_coords"</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
@@ -252,64 +266,64 @@ A task to instantiate.</p></dd>
 
 <span class='co'># Individual sets:</span>
 <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   [1]   7  12  13  14  17  21  35  44  46  54  65  66  75  78  79  86  88  91
-#&gt;  [19]  94 105 109 113 123 128 130 132 137 140 142 143 145 147 162 163 171 181
-#&gt;  [37] 182 188 191 195 196 202 204 209 211 213 223 225 229 240 242 253 259 262
-#&gt;  [55] 270 277 282 285 305 308 318 320 322 327 331 336 337 338 359 365 366 368
-#&gt;  [73] 371 378 381 384 395 409 416 418 431 446 448 452 458 465 467 472 475 477
-#&gt;  [91] 478 489 493 494 496 498 505 511 527 533 535 538 542 547 554 565 566 567
-#&gt; [109] 570 580 581 583 591 599 602 618 619 621 631 636 638 646 658 663 667 668
-#&gt; [127] 670 671 680 681 684 691 701 703 705 714 720 723 734 740 747 750   2   4
-#&gt; [145]   8  15  18  24  25  26  28  32  48  50  63  64  70  85  89  97 102 104
-#&gt; [163] 118 120 129 131 135 138 150 151 153 158 161 166 172 192 200 206 207 214
-#&gt; [181] 215 216 217 221 224 227 234 238 246 251 255 261 265 266 268 271 272 278
-#&gt; [199] 279 280 281 287 288 306 313 344 346 348 354 358 362 370 373 377 388 402
-#&gt; [217] 406 411 412 422 423 426 428 429 430 433 435 438 451 455 460 461 468 470
-#&gt; [235] 476 480 488 499 512 518 525 529 532 541 543 555 558 559 561 562 563 582
-#&gt; [253] 586 589 592 598 607 611 617 623 633 651 656 683 693 707 712 726 727 730
-#&gt; [271] 737 738 746   3   5  10  19  29  37  39  42  45  49  55  57  58  61  62
-#&gt; [289]  68  77  90 103 106 110 115 122 125 126 127 133 136 155 169 170 183 190
-#&gt; [307] 201 203 218 219 220 222 230 231 236 243 245 260 263 289 290 303 309 317
-#&gt; [325] 325 345 349 350 356 357 372 383 385 394 400 403 404 405 413 414 427 442
-#&gt; [343] 444 449 453 463 464 474 483 486 487 490 492 502 503 509 510 523 528 531
-#&gt; [361] 537 539 544 546 550 552 557 564 573 575 578 585 594 596 613 620 627 628
-#&gt; [379] 639 641 642 643 644 649 652 653 654 655 657 661 662 664 673 682 688 690
-#&gt; [397] 692 696 706 708 710 711 715 718 724 728 729 732 733 735 736 739 741 743
-#&gt; [415] 744   1   6  11  16  23  33  34  36  47  51  52  56  59  60  76  84  87
-#&gt; [433]  93  95  96  99 100 107 111 112 117 121 139 144 146 148 149 152 156 157
-#&gt; [451] 164 165 167 168 174 175 178 184 193 198 210 212 232 239 241 248 249 250
-#&gt; [469] 252 256 257 258 264 267 269 273 274 283 286 294 295 297 300 302 307 310
-#&gt; [487] 312 314 316 319 321 324 329 330 332 342 347 351 361 363 364 369 374 375
-#&gt; [505] 376 379 382 387 391 393 397 399 407 408 410 417 419 420 421 424 425 432
-#&gt; [523] 439 440 445 447 459 466 469 471 473 481 482 485 491 497 501 504 507 514
-#&gt; [541] 515 516 517 534 540 545 548 553 560 569 571 572 577 588 590 604 609 624
-#&gt; [559] 626 629 630 632 635 637 640 645 647 650 660 665 666 669 674 676 677 678
-#&gt; [577] 686 689 695 698 699 700 702 704 716 721 731 742 745 748 749 751</div><div class='input'><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   [1]   9  20  22  27  30  31  38  40  41  43  53  67  69  71  72  73  74  80
-#&gt;  [19]  81  82  83  92  98 101 108 114 116 119 124 134 141 154 159 160 173 176
-#&gt;  [37] 177 179 180 185 186 187 189 194 197 199 205 208 226 228 233 235 237 244
-#&gt;  [55] 247 254 275 276 284 291 292 293 296 298 299 301 304 311 315 323 326 328
-#&gt;  [73] 333 334 335 339 340 341 343 352 353 355 360 367 380 386 389 390 392 396
-#&gt;  [91] 398 401 415 434 436 437 441 443 450 454 456 457 462 479 484 495 500 506
-#&gt; [109] 508 513 519 520 521 522 524 526 530 536 549 551 556 568 574 576 579 584
-#&gt; [127] 587 593 595 597 600 601 603 605 606 608 610 612 614 615 616 622 625 634
-#&gt; [145] 648 659 672 675 679 685 687 694 697 709 713 717 719 722 725</div><div class='input'><span class='co'># check that no obs are in both sets</span>
+</div><div class='output co'>#&gt;   [1]   2   3   4   5  10  18  19  26  28  29  37  39  45  48  49  50  57  58
+#&gt;  [19]  61  64  68  77  85  89  90 103 106 110 115 120 122 125 126 127 129 131
+#&gt;  [37] 133 135 136 138 150 151 153 155 158 169 170 172 183 190 201 203 206 207
+#&gt;  [55] 216 218 219 220 222 227 231 234 236 238 243 245 255 260 263 265 268 271
+#&gt;  [73] 272 281 289 290 303 309 317 325 344 345 346 349 350 356 357 358 362 370
+#&gt;  [91] 372 373 385 394 400 403 404 405 412 413 414 422 423 426 427 428 429 442
+#&gt; [109] 444 449 453 455 460 463 464 470 474 476 483 486 487 490 492 502 503 509
+#&gt; [127] 510 518 523 525 528 529 531 544 557 562 564 573 575 585 592 594 596 612
+#&gt; [145] 613 623 628 634 641 642 643 644 649 653 655 661 664 673 690 693 706 707
+#&gt; [163] 708 710 712 715 718 724 727 728 732 733 735 736 737 739 743 746   7   8
+#&gt; [181]  12  13  14  15  17  21  24  25  32  35  44  46  54  63  65  66  75  78
+#&gt; [199]  79  86  88  91  94  97 104 105 109 113 118 123 128 130 132 137 140 142
+#&gt; [217] 143 145 147 161 162 163 166 171 181 182 188 191 192 195 196 200 202 204
+#&gt; [235] 209 211 213 214 215 221 223 224 225 229 240 242 246 251 253 259 261 262
+#&gt; [253] 266 270 277 279 280 282 285 287 288 305 306 308 313 318 320 322 327 331
+#&gt; [271] 336 337 338 348 354 365 366 368 371 377 378 381 384 388 395 402 406 409
+#&gt; [289] 411 416 418 430 431 433 435 446 448 451 452 458 461 465 468 472 475 477
+#&gt; [307] 478 480 488 493 494 496 498 499 505 511 512 527 532 533 535 538 541 542
+#&gt; [325] 543 554 555 558 559 561 563 566 567 570 580 581 583 586 591 598 599 602
+#&gt; [343] 607 611 617 618 619 621 631 636 638 646 651 658 663 667 671 680 681 683
+#&gt; [361] 684 691 701 703 705 714 720 723 726 730 734 740 747 750   9  20  22  27
+#&gt; [379]  30  31  38  40  41  43  53  67  69  70  71  72  73  74  80  81  82  83
+#&gt; [397]  92  98 101 102 108 114 116 119 124 134 141 154 159 160 173 176 177 179
+#&gt; [415] 180 185 186 187 189 194 197 199 205 208 217 226 228 233 235 237 244 247
+#&gt; [433] 254 275 276 278 284 291 292 293 296 298 299 301 304 311 315 323 326 328
+#&gt; [451] 333 334 335 339 340 341 343 352 353 355 359 360 367 380 386 389 390 392
+#&gt; [469] 396 398 401 415 434 436 437 438 441 443 450 454 456 457 462 467 479 484
+#&gt; [487] 489 495 500 506 508 513 519 520 521 522 526 530 536 547 551 556 565 568
+#&gt; [505] 574 576 579 582 587 589 593 595 597 600 601 603 605 606 608 610 614 615
+#&gt; [523] 616 622 625 633 648 656 659 668 670 672 675 679 685 694 697 709 713 717
+#&gt; [541] 719 722 725 738   1   6  11  16  23  33  34  36  51  56  84 100 107 111
+#&gt; [559] 112 117 146 148 149 164 165 167 168 174 175 178 184 193 198 210 212 232
+#&gt; [577] 248 252 256 257 258 264 273 286 294 295 297 302 307 310 312 314 316 324
+#&gt; [595] 330 342 347 351 361 363 364 369 374 379 382 387 391 393 399 407 410 420
+#&gt; [613] 421 425 432 439 445 447 459 466 469 471 481 482 485 491 497 507 515 517
+#&gt; [631] 524 545 549 572 577 584 590 609 624 626 629 632 640 645 647 660 677 678
+#&gt; [649] 687 695 699 700 721 731 742 745</div><div class='input'><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]  42  47  52  55  59  60  62  76  87  93  95  96  99 121 139 144 152 156 157
+#&gt; [20] 230 239 241 249 250 267 269 274 283 300 319 321 329 332 375 376 383 397 408
+#&gt; [39] 417 419 424 440 473 501 504 514 516 534 537 539 540 546 548 550 552 553 560
+#&gt; [58] 569 571 578 588 604 620 627 630 635 637 639 650 652 654 657 662 665 666 669
+#&gt; [77] 674 676 682 686 688 689 692 696 698 702 704 711 716 729 741 744 748 749 751</div><div class='input'><span class='co'># check that no obs are in both sets</span>
 <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='va'>rcv</span><span class='op'>$</span><span class='fu'>train_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='va'>rcv</span><span class='op'>$</span><span class='fu'>test_set</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># good!</span>
 </div><div class='output co'>#&gt; integer(0)</div><div class='input'>
 <span class='co'># Internal storage:</span>
 <span class='va'>rcv</span><span class='op'>$</span><span class='va'>instance</span> <span class='co'># table</span>
 </div><div class='output co'>#&gt;      row_id fold
-#&gt;   1:      9    1
-#&gt;   2:     20    1
-#&gt;   3:     22    1
-#&gt;   4:     27    1
-#&gt;   5:     30    1
+#&gt;   1:     42    1
+#&gt;   2:     47    1
+#&gt;   3:     52    1
+#&gt;   4:     55    1
+#&gt;   5:     59    1
 #&gt;  ---            
-#&gt; 747:    742    5
-#&gt; 748:    745    5
-#&gt; 749:    748    5
-#&gt; 750:    749    5
-#&gt; 751:    751    5</div></pre>
+#&gt; 747:    700    5
+#&gt; 748:    721    5
+#&gt; 749:    731    5
+#&gt; 750:    742    5
+#&gt; 751:    745    5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
