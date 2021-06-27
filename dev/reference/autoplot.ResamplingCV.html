@@ -173,7 +173,6 @@
   plot_as_grid <span class='op'>=</span> <span class='cn'>TRUE</span>,
   train_color <span class='op'>=</span> <span class='st'>"#0072B5"</span>,
   test_color <span class='op'>=</span> <span class='st'>"#E18727"</span>,
-  crs <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span>
 
@@ -186,7 +185,6 @@
   plot_as_grid <span class='op'>=</span> <span class='cn'>TRUE</span>,
   train_color <span class='op'>=</span> <span class='st'>"#0072B5"</span>,
   test_color <span class='op'>=</span> <span class='st'>"#E18727"</span>,
-  crs <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span>
 
@@ -231,11 +229,6 @@ The color to use for the training set observations.</p></td>
       <th>test_color</th>
       <td><p><code>[character(1)]</code><br />
 The color to use for the test set observations.</p></td>
-    </tr>
-    <tr>
-      <th>crs</th>
-      <td><p><code>[character]</code><br />
-EPSG code of the CRS for x and y axes.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -285,7 +278,7 @@ mlr3 spatial resampling object of class <a href='https://mlr3.mlr-org.com/refere
   <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task</span>, fold_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span>
     <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>79.085</span>, <span class='op'>-</span><span class='fl'>79.055</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='img'><img src='autoplot.ResamplingCV-1.png' alt='' width='700' height='433' /></div></pre>
+</div><div class='img'><img src='autoplot.ResamplingCV-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

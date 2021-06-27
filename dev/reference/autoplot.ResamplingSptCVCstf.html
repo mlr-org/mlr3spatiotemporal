@@ -176,7 +176,6 @@ visualize mlr3 spatiotemporal resampling objects.</p>
   train_color <span class='op'>=</span> <span class='st'>"#0072B5"</span>,
   test_color <span class='op'>=</span> <span class='st'>"#E18727"</span>,
   tickformat_date <span class='op'>=</span> <span class='st'>"%Y-%m"</span>,
-  crs <span class='op'>=</span> <span class='cn'>NULL</span>,
   nticks_x <span class='op'>=</span> <span class='fl'>3</span>,
   nticks_y <span class='op'>=</span> <span class='fl'>3</span>,
   point_size <span class='op'>=</span> <span class='fl'>3</span>,
@@ -197,7 +196,6 @@ visualize mlr3 spatiotemporal resampling objects.</p>
   train_color <span class='op'>=</span> <span class='st'>"#0072B5"</span>,
   test_color <span class='op'>=</span> <span class='st'>"#E18727"</span>,
   tickformat_date <span class='op'>=</span> <span class='st'>"%Y-%m"</span>,
-  crs <span class='op'>=</span> <span class='cn'>NULL</span>,
   nticks_x <span class='op'>=</span> <span class='fl'>3</span>,
   nticks_y <span class='op'>=</span> <span class='fl'>3</span>,
   point_size <span class='op'>=</span> <span class='fl'>3</span>,
@@ -252,12 +250,6 @@ The color to use for the test set observations.</p></td>
       <th>tickformat_date</th>
       <td><p><code>[character]</code><br />
 Date format for z-axis.</p></td>
-    </tr>
-    <tr>
-      <th>crs</th>
-      <td><p><code>[character]</code><br />
-EPSG code of the CRS for x and y axes.
-If not set, EPSG 4326 (WGS84) is used.</p></td>
     </tr>
     <tr>
       <th>nticks_x</th>
@@ -367,7 +359,7 @@ mode.</p>
   <span class='co'># fold can be shown by setting `show_omitted = TRUE`</span>
   <span class='fu'><a href='autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>resampling</span>, <span class='va'>task_st</span>, fold_id <span class='op'>=</span> <span class='fl'>1</span>, show_omitted <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>CRS not set, transforming to WGS84 (EPSG: 4326).</span></div><div class='input'><span class='co'># }</span>
+<span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
