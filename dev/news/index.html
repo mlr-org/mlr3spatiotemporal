@@ -80,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.4.1.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3spatiotempcv <small>v0.4.1.9001</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -158,14 +158,18 @@
       <small>Source: <a href='https://github.com/mlr-org/mlr3spatiotempcv/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="mlr3spatiotempcv-0419000" class="section level1">
-<h1 class="page-header" data-toc-text="0.4.1.9000">
-<a href="#mlr3spatiotempcv-0419000" class="anchor"></a>mlr3spatiotempcv 0.4.1.9000<small> Unreleased </small>
+    <div id="mlr3spatiotempcv-0419001" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.1.9001">
+<a href="#mlr3spatiotempcv-0419001" class="anchor"></a>mlr3spatiotempcv 0.4.1.9001<small> Unreleased </small>
 </h1>
+<div id="breaking" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking" class="anchor"></a>Breaking</h2>
 <ul>
-<li>upgrade tests to {vdiffr} 1.0.0</li>
-<li>add {rgdal} to suggests and required it in <code>"spcv_block"</code> since it is required in {blockCV} &gt;= 2.1.4 and {sf} &gt;= 1.0</li>
+<li>
+<code><a href="../reference/autoplot.html">autoplot()</a></code>: remove argument <code>crs</code>. The CRS is now inferred from the supplied Task. Setting a different CRS than the task might lead to spurious issues and the initial idea of changing the CRS for plotting to have proper axes labeling does not apply (anymore) (<a href='https://github.com/mlr-org/mlr3spatiotempcv/issues/144'>#144</a>)</li>
 </ul>
+</div>
 </div>
     <div id="mlr3spatiotempcv-041" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.1">
