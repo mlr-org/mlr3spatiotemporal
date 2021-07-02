@@ -919,7 +919,7 @@ autoplot.ResamplingSpCVTiles = function( # nolint
           crs = task$extra_args$crs)
         sf_df = reorder_levels(sf_df)
 
-        plot = ggplot() +
+        ggplot() +
           geom_sf(data = sf_df, aes(color = indicator), ...) +
           scale_color_manual(values = c(
             "Train" = "#0072B5",
@@ -937,7 +937,6 @@ autoplot.ResamplingSpCVTiles = function( # nolint
               valign = 0.5, halign = 0.5,
               padding = margin(2, 2, 2, 2), margin = margin(3, 3, 3, 3))
           )
-        return(invisible(plot))
       }
     }
     else {
@@ -1197,6 +1196,64 @@ autoplot.ResamplingRepeatedCV = function( # nolint
   )
 }
 
+# Custom CV --------------------------------------------------------------------
+
+#' @title Visualization Functions for Non-Spatial CV Methods.
+#'
+#' @description Generic S3 `plot()` and `autoplot()` (ggplot2) methods.
+#'
+#' @name autoplot.ResamplingCustomCV
+#' @param object `[Resampling]`\cr
+#'   mlr3 spatial resampling object of class [ResamplingCustomCV].
+#' @param x `[Resampling]`\cr
+#'   mlr3 spatial resampling object of class [ResamplingCustomCV].
+#' @inheritParams autoplot.ResamplingSpCVBlock
+#' @export
+#' @seealso
+#'   - mlr3book chapter on on ["Spatiotemporal Visualization"](https://mlr3book.mlr-org.com/spatiotemporal.html#vis-spt-partitions).
+#'   - [autoplot.ResamplingSpCVBlock()]
+#'   - [autoplot.ResamplingSpCVBuffer()]
+#'   - [autoplot.ResamplingSpCVCoords()]
+#'   - [autoplot.ResamplingSpCVEnv()]
+#'   - [autoplot.ResamplingSpCVDisc()]
+#'   - [autoplot.ResamplingSpCVTiles()]
+#'   - [autoplot.ResamplingCV()]
+#'   - [autoplot.ResamplingSptCVCstf()]
+#'   - [autoplot.ResamplingSptCVCluto()]
+#' @examples
+#' if (mlr3misc::require_namespaces(c("sf", "patchwork"), quietly = TRUE)) {
+#'   library(mlr3)
+#'   library(mlr3spatiotempcv)
+#'   task = tsk("ecuador")
+#'   breaks = quantile(task$data()$dem, seq(0, 1, length = 6))
+#'   zclass = cut(task$data()$dem, breaks, include.lowest = TRUE)
+#'
+#'   resampling = rsmp("custom_cv")
+#'   resampling$instantiate(task, f = zclass)
+#'
+#'   autoplot(resampling, task) +
+#'     ggplot2::scale_x_continuous(breaks = seq(-79.085, -79.055, 0.01))
+#'   autoplot(resampling, task, fold_id = 1)
+#'   autoplot(resampling, task, fold_id = c(1, 2)) *
+#'     ggplot2::scale_x_continuous(breaks = seq(-79.085, -79.055, 0.01))
+#' }
+autoplot.ResamplingCustomCV = function( # nolint
+  object,
+  task,
+  fold_id = NULL,
+  plot_as_grid = TRUE,
+  train_color = "#0072B5",
+  test_color = "#E18727",
+  ...) {
+  autoplot_custom_cv(
+    resampling = object,
+    task = task,
+    fold_id = fold_id,
+    plot_as_grid = plot_as_grid,
+    ... = ...
+  )
+}
+
 #' @importFrom graphics plot
 #' @rdname autoplot.ResamplingCV
 #' @export
@@ -1207,6 +1264,12 @@ plot.ResamplingCV = function(x, ...) {
 #' @rdname autoplot.ResamplingCV
 #' @export
 plot.ResamplingRepeatedCV = function(x, ...) {
+  print(autoplot(x, ...)) # nocov
+}
+
+#' @rdname autoplot.ResamplingCustomCV
+#' @export
+plot.ResamplingCustomCV = function(x, ...) {
   print(autoplot(x, ...)) # nocov
 }
 
@@ -1227,7 +1290,7 @@ autoplot_spatial = function(
   mlr3misc::require_namespaces(c("sf", "patchwork", "ggtext"))
 
   # we need to work with a clone, otherwise the object modifications
-  # will create issues in future calls using the same object
+  # will create issues in future calls usings the same object
   rsmp_autopl = resampling$clone()
 
   rsmp_autopl = assert_autoplot(rsmp_autopl, fold_id, task)
@@ -1378,7 +1441,7 @@ autoplot_spatial = function(
       ) +
       ggsci::scale_color_ucscgb() +
       labs(color = sprintf("Partition #, Rep %s", repeats_id))
-    return(invisible(plot))
+    return(plot)
   }
 }
 
@@ -1600,4 +1663,107 @@ autoplot_spatiotemp = function(
     )
   }
   return(pl)
+}
+
+# autoplot_custom_cv -----------------------------------------------------------
+
+autoplot_custom_cv = function(
+  resampling = NULL,
+  task = NULL,
+  fold_id = NULL,
+  repeats_id = NULL,
+  plot_as_grid = NULL,
+  train_color = NULL,
+  test_color = NULL,
+  ...) {
+
+  mlr3misc::require_namespaces(c("sf", "patchwork", "ggtext"))
+
+  # we need to work with a clone, otherwise the object modifications
+  # will create issues in future calls usings the same object
+  rsmp_autopl = resampling$clone()
+
+  rsmp_autopl = assert_autoplot(rsmp_autopl, fold_id, task)
+
+  # add the row_ids of the task to the coordinates
+  coords = task$coordinates()
+  coords$row_id = task$row_ids
+
+  # bring into correct format (complicated alternative to reshape::melt)
+  rsmp_autopl$instance = data.table::rbindlist(
+    lapply(rsmp_autopl$instance, as.data.table),
+    idcol = "fold")
+  setnames(rsmp_autopl$instance, c("fold", "row_id"))
+
+  coords_resamp = merge(coords, rsmp_autopl$instance, by = "row_id")
+  # we need integers and not characters for the upcoming map() calls
+  coords_resamp$fold = as.integer(as.factor(coords_resamp$fold))
+
+  if (!is.null(fold_id)) {
+
+    # Multiplot with train and test set for each fold --------------------------
+
+    plot_list = mlr3misc::map(fold_id, function(.x) {
+
+      dt = coords_resamp
+      dt$indicator = rep("foo", nrow(dt))
+      dt[, indicator := ifelse(fold == .x, "Test", "Train")]
+
+      sf_df = sf::st_as_sf(dt,
+          coords = task$extra_args$coordinate_names,
+          crs = task$extra_args$crs)
+
+      sf_df = reorder_levels(sf_df)
+
+      ggplot() +
+        geom_sf(data = sf_df, aes(color = indicator), ...) +
+        scale_color_manual(values = c(
+          "Train" = "#0072B5",
+          "Test" = "#E18727"
+        )) +
+        labs(color = "Set", title = sprintf(
+          "Fold %s", .x)) +
+        theme(
+          plot.title = ggtext::element_textbox(
+            size = 10,
+            color = "black", fill = "#ebebeb", box.color = "black",
+            height = unit(0.33, "inch"), width = unit(1, "npc"),
+            linetype = 1, r = unit(5, "pt"),
+            valign = 0.5, halign = 0.5,
+            padding = margin(2, 2, 2, 2), margin = margin(3, 3, 3, 3))
+        )
+    })
+
+    # Return a plot grid via patchwork? ----------------------------------------
+
+    if (!plot_as_grid) {
+      return(invisible(plot_list))
+    } else {
+
+      plot_list_pw = patchwork::wrap_plots(plot_list) +
+        patchwork::plot_layout(guides = "collect")
+      return(plot_list_pw)
+    }
+  } else {
+
+    # Create one plot colored by all test folds --------------------------------
+
+    sf_df = sf::st_as_sf(coords_resamp,
+        coords = task$extra_args$coordinate_names,
+        crs = task$extra_args$crs)
+
+    # order fold ids
+    sf_df = sf_df[order(sf_df$fold, decreasing = FALSE), ]
+    sf_df$fold = as.factor(as.character(sf_df$fold))
+    sf_df$fold = factor(sf_df$fold, levels = unique(as.character(sf_df$fold)))
+
+    plot = ggplot() +
+      geom_sf(
+        data = sf_df["fold"], show.legend = "point",
+        aes(color = fold)
+      ) +
+      ggsci::scale_color_ucscgb() +
+      labs(color = sprintf("Partition #, Rep %s", repeats_id))
+    return(plot)
+  }
 }

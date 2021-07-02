@@ -38,8 +38,8 @@ Imports:
     checkmate,
     data.table,
     ggplot2,
-    mlr3 (>= 0.7.0),
-    mlr3misc (>= 0.7.0),
+    mlr3 (>= 0.11.0.9000),
+    mlr3misc (>= 0.9.2),
     paradox,
     R6,
     utils
@@ -69,6 +69,9 @@ Suggests:
     withr
 VignetteBuilder:
     knitr
+Remotes: 
+    mlr-org/mlr3,
+    mlr-org/mlr3misc
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8

@@ -63,6 +63,33 @@ test_that("plot() works for 'repeated-cv'", {
   vdiffr::expect_doppelganger("RepCV - Fold 1, Rep 2", p5)
 })
 
+# custom cv --------------------------------------------------------------------
+
+test_that("plot() works for 'custom_cv'", {
+  skip_if_not_installed("vdiffr")
+  set.seed(42)
+
+  task = tsk("ecuador")
+  breaks = quantile(task$data()$dem, seq(0, 1, length = 6))
+  zclass = cut(task$data()$dem, breaks, include.lowest = TRUE)
+
+  resampling = rsmp("custom_cv")
+  resampling$instantiate(task, f = zclass)
+
+  # autoplot() is used instead of plot() to prevent side-effect plotting
+  p1 = autoplot(resampling, task)
+  p2 = autoplot(resampling, task, 1)
+  p3 = autoplot(resampling, task, c(1, 2))
+
+  expect_true(is.ggplot(p1))
+  expect_true(is.ggplot(p2))
+  expect_true(is.ggplot(p3))
+
+  vdiffr::expect_doppelganger("CV all test sets", p1)
+  vdiffr::expect_doppelganger("CV - Fold 1", p2)
+  vdiffr::expect_doppelganger("CV - Fold 1-2", p3)
+})
+
 # spcv_coords ------------------------------------------------------------------
 
 test_that("plot() works for 'spcv_coords'", {
