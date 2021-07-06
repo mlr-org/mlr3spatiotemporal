@@ -158,7 +158,7 @@ The use of $k=5$ or $k=10$ folds is most commonly seen in practice, and these pr
 The $k$-fold CV estimator of model performance is a nearly unbiased estimator of the conditional performance measure when the observations were drawn independently [@efron1983].
 Since $\widehat{\mathit{perf}}_{\mathcal{L}, CV}(f)$ still depends on the particular partitioning chosen for $L$, it is sometimes recommended to repeat the estimation using different random partitionings ($r$-repeated $k$-fold cross-validation) to reduce the influence of randomness when creating partitions [@vanwinckelen2012].
 
-In traditional cross-validation, the partitioning is based on uniform random sampling, which ignores spatial or temporal autocorrelation or any existing grouping structure as well as the structure of the prediction task, as outlined in the Introduction, and may result in over-optimistic performance estimates.
+In traditional cross-validation, the partitioning is based on uniform random sampling, which ignores spatial or temporal autocorrelation or any existing grouping structure as well as the structure of the prediction task, as outlined in section \@ref(introduction), and may result in over-optimistic performance estimates.
 Several approaches have therefore been proposed in the literature and implemented in software to accommodate a variety of predictive situations (Table \@ref(tab:sptcv-methods)).
 
 Approaches based on spatial blocking or grouping require either the construction of spatial zones, or the use of pre-existing spatial structures in the data.
@@ -200,7 +200,7 @@ These challenges result in substantial overhead and possible reproducibility iss
 Within the \pkg{mlr3} ecosystem, partitioning strategies are represented by their own objects of class \texttt{Resampling}, most of which are available within \pkg{mlr3} itself (e.g., regular random CV); other specialized strategies (e.g., \texttt{TaskClassifST} or \texttt{TaskRegrST}) are defined in extension packages such as \pkg{mlr3spatiotempcv}.
 In the machine learning pipeline, these objects define the data splits used for model evaluation and selection (hyperparameter tuning) by machine learning algorithms.
 Spatial and spatiotemporal partitioning techniques in \pkg{mlr3spatiotempcv} are currently mostly imported and interfaced from other packages, in particular \pkg{sperrorest}, \pkg{blockCV} and \pkg{CAST} [@blockCV; @brenning2012; @cast], in order to expose them to \pkg{mlr3} functionality.
-To reduce first-level dependencies, some methods were re-implemented instead of imported from upstream packages.
+To reduce first-level dependencies, some methods were re-implemented instead of importing them from upstream packages.
 
 Resampling objects in \pkg{mlr3spatiotmpcv} inherit from class \texttt{mlr3::Resampling} and can be created from established object classes for geospatial data in R, including simple features [@pebesma2018], which facilitates their integration into domain-specific workflows in the geospatial sciences.
 Support for projected (planar) and unprojected (geographic) coordinate reference systems (CRS) currently varies depending on the partitioning techniques used, since these inherit their behavior from the underlying upstream R package.
@@ -252,17 +252,19 @@ The available methods are further discussed in section \@ref(sec:disc).
 Spatial partitioning methods operate in a two-dimensional space and split observations into training and test set by their spatial location.
 Methods such as grid-based partitioning or clustering are used to create groups of observations which may then be aggregated further to form the final partition sets.
 
-Judging by their common characteristics and the available implementations, spatial partitioning methods can be coarsely categorized into (1) buffering, (2) blocking and (3) clustering methods.
-If a method had the potential to belong to multiple categories, a deliberate category assignment was made for one specific group which matched the main characteristic of the respective method best.
+Spatial partitioning methods can be roughly divided into three groups: (1) buffering, (2) blocking and (3) clustering methods (Table \@ref(tab:sptcv-methods)).
+If a method could have been placed into multiple categories, we deliberately assigned the group which matched best the main characteristic of the respective method.
 
 ### Buffering
 
 "Buffering" refers to the idea of removing observations between test and training set by drawing a circular buffer around one or more observations [@rest2014, @brenning2012, @blockCV].
 Within this buffer zone, all observations are removed from the training set, thereby reducing the similarity between training and test set.
 
-Buffering is mostly applied in the coordinate space due to the scattered appearance of observations in this space.
-However, there is no practical limitation that would prevent this method to be applied in a 2D + time setting.
-Because \pkg{mlr3spatiotempcv} supports two spatial-only "buffering" implementations, (1) "Spatial buffering" from package \pkg{blockCV} and (2) "Leave-one-disc-out cross-validation" from \pkg{sperrorest}, buffering was attributed to the category of spatial partitioning methods. 
+<!--JM: not entirely sure what scattered appearance refers to-->
+Buffering is most often applied in coordinate space due to the scattered appearance of observations in this space.
+However, this method could be easily extended to a 2D + time setting.
+<!-- JM: I guess you mean that you could have placed buffering also into spatiotemporal partition. I would advise to say so instead of letting the reader guess.-->
+Since \pkg{mlr3spatiotempcv} supports two spatial-only "buffering" implementations, (1) "Spatial buffering" from package \pkg{blockCV} and (2) "Leave-one-disc-out cross-validation" from \pkg{sperrorest}, buffering was attributed to the category of spatial partitioning methods (see Table \@ref(tab:sptcv-methods)). 
 
 #### Spatial buffering --- blockCV
 
@@ -282,6 +284,8 @@ Due to its similarity to a LOO CV, this method will result in as many train/test
 In the visualization of the first fold in Fig. \@ref(fig:buffer) a buffer zone of 1000 m was used without any custom presence/absence treatment of the data.
 
 ```{r buffer, fig.cap="Visualization of the 'Spatial buffering' method from package `blockCV`.", out.width="40%", fig.pos="ht"}
+library("mlr3")
+library("mlr3spatiotempcv")
 task = tsk("ecuador")
 resampling_buffer = rsmp("spcv_buffer", theRange = 1000)
 resampling_buffer$instantiate(task)
@@ -328,12 +332,12 @@ Implementations of blocking methods often provide additional options to fine tun
 
 #### Spatial blocking --- blockCV
 
-The "Spatial blocking" from package \pkg{blockCV} comes with various options to customize the zone creation.
-Besides the choice of relying on an initial random  (default) (`selection = "random"`), systematic (`selection = "systematic"`) or checkerboard pattern (`selection = "checkerboard"`) for the final partition aggregation, support for SDM specific background data is built-in.
-Supplying a numeric value in meters via argument `theRange` (named just `range` in {mlr3spatiotempcv}) will create a quadratic block pattern across the study area.
-Ultimately, users can also supply a user-defined polygon which defines the zones.
+The "Spatial blocking" from package \pkg{blockCV} comes with various blocking options such as random (default) (`selection = "random"`), systematic (`selection = "systematic"`) or checkerboard pattern (`selection = "checkerboard"`).
+Additionally, the user might supply a numeric value in meters via argument `theRange` (named just `range` in {mlr3spatiotempcv}) which will ensure a quadratic block pattern across the study area.
+<!--JM: to stay consistent please add the argument which lets the user indicate a user-defined polygon or are you referring to the rectangular block design specified with rows and cols? If so, say so. If not, clarify and additionally mention the rectangular block design here-->
+This kind of blocking might be of special interest for SDM studies as well as the possibility to supply a user-defined polygon with predefined blocking zones.
 
-After the initial block creation, multiple "blocks" are combined to form a partition, honoring the number of folds requested by the user.
+After the initial block creation, multiple "blocks" are combined to form a partition in correspondence with the number of folds requested by the user.
 For example, in a five-fold scenario with a grid of four columns and five rows, the method would combine one fifth of all blocks (= four blocks) into a single partition.
 
 The following subsections showcase some of the introduced options.
@@ -424,14 +428,13 @@ autoplot(resampling_tiles,
 
 ### Clustering
 
-The idea of cluster analysis, which originated in the 1930s in the anthropology field [@driver1932, @zubin1938], is to group objects with similar characteristics.
+The idea of cluster analysis, which originated in the 1930s in the field of anthropology [@driver1932, @zubin1938], is to group objects with similar characteristics.
 In the spatial context, the similarity of spatial coordinates is used to form such groups.
 Different cluster algorithms such as hierarchical, density-based, grid-based or centroid-based clustering exist [@gower1967].
 
 #### Coordinate-based clustering --- sperrorest
 
-The so-called "Spatial CV" method after [@russ2010; @brenning2012] and implemented in package \pkg{sperrorest} uses the coordinates of all observations to create clusters in the spatial domain.
-$k$-means clustering, which belongs to the centroid-based clustering family, has been proposed as a clustering method.
+The so-called "Spatial CV" method after [@russ2010; @brenning2012] and implemented in package \pkg{sperrorest} uses the coordinates of all observations to create clusters in the spatial domain with the help of the $k$-means clustering algorithm.^[$k$-means clustering belongs to the centroid-based clustering family.]
 To avoid confusion with other spatial partitioning methods, we refer to this as coordinate-based clustering, or as `spcv_coords` in \pkg{mlr3spatiotempcv}, instead of using the generic "Spatial CV" term.
 
 This approach is very versatile as it adapts to irregularly-shaped study areas and ensures that exactly $k$ partitions are created.
@@ -456,7 +459,7 @@ For the respective other spaces, usually only one of the space or time variable 
 ### Group-level resampling
 
 Group-level CV follows the principle of an inherit grouping structure of the observations, both in space and/or time, to determine (groups of) partitions.
-In contrast to blocking or clustering not the the spatial or temporal location is used but additional metadata such as the membership to a specific crop type [@brenning2006].
+In contrast to blocking or clustering not the spatial or temporal location is used but additional metadata such as the membership to a specific crop type [@brenning2006].
 The idea to follow an inherited grouping structure of the data is also referred to as "target-oriented validation" [@cast].
 Even though flexibility with respect to fold creation is limited due to the inherited grouping structure within the data, some implementations allow to specify the resulting number of folds by omitting parts of the dataset.
 
@@ -465,7 +468,7 @@ Even though flexibility with respect to fold creation is limited due to the inhe
 #### Leave-Location-And-Time-Out --- CAST
 
 Leave-Location-and-Time-Out (LLTO) from package \pkg{CAST} is a spatiotemporal resampling method [@meyer2018].
-It requires both a spatial and a temporal variable which are used to to separate observations in a multi-dimensional space.
+It requires both a spatial and a temporal variable which are used to separate observations in a multi-dimensional space.
 It comes with satellite methods named "Leave-time-out" (LTO) and "Leave-location-out" (LLO) which only operate in a two-dimensional space.
 
 In this example the `cookfarm` dataset is used because it contains the variable ("Date") which serves as the temporal component in the dataset.
@@ -480,7 +483,7 @@ In \pkg{mlr3spatiotempcv} the method is named `"sptcv_cstf"` which is an acronym
 
 To better showcase the partitioning of the "Leave-Time-Out" (LTO) method, the temporal variable `Date` was adjusted in this example.
 
-The following code uses the `cookfarm` dataset as the base, modifies to the `Date` variable to contain five unique levels and then creates a spatiotemporal regression task in \pkg{mlr3spatiotempcv} (Fig. \@ref(fig:lto)).
+The following code uses the `cookfarm` dataset as the base, modifies the `Date` variable in such a way that it contains five unique levels and then creates a spatiotemporal regression task in \pkg{mlr3spatiotempcv} (Fig. \@ref(fig:lto)).
 
 ```{r, results='hide'}
 data = cookfarm_sample
@@ -543,12 +546,13 @@ autoplot(resampling_cstf_time_loc,
   show_omitted = TRUE)
 ```
 
-```{r llto, echo=FALSE, out.width="70%", fig.cap="Three-dimensional visualization of method 'sptcv\\_cstf' and sub-method 'Leave-Location-And-Time-Out' (LLTO). The grey points show the points omitted by this method, i.e. the points which are not used in the training or test set in this fold.", fig.pos="ht"}
+```{r llto, echo=FALSE, out.width="70%", fig.cap="Three-dimensional visualization of method 'sptcv\\_cstf' and sub-method 'Leave-Location-And-Time-Out' (LLTO). The grey points show the points omitted by this method, i.e. the points which are neither used in the training nor test set in this fold.", fig.pos="ht"}
 knitr::include_graphics("llto.png")
 ```
 
 ### Custom (fixed) Resampling --- mlr3
 
+<!--JM: you might want to delete the FIXME-->
 Support for user-defined partitioning strategies is built into \pkg{mlr3} directly since version 0.12.0 FIXME.
 Labelled as "Custom CV", users are able to supply an external factor vector with the same length as number of observations.
 Each level of the factor vector will result in one partition.
@@ -571,7 +575,8 @@ autoplot(resampling_custom, size = 0.8, task = task) *
 ## Feature space clustering
 
 The last method from the \pkg{blockCV} package, "environmental blocking", makes use of *k-means* clustering [@hartigan1979a] in a possibly multivariate space.
-The user can select a variable via argument `feature` specifying which levels will be used to create clusters.
+<!--JM: pls rewrite next sentence. Do not use levels when you later on say the feature has to be numeric-->
+The user can select a variable via argument `features` which specifies which levels will be used to create clusters.
 Hereby, k-means will use Euclidean distance for cluster creation.
 Hence, the selected input variables should be of type numeric.
 To avoid a potential bias introduced by features with high variance when selecting multiple features, all features are standardized by default.
@@ -606,6 +611,7 @@ Considering the wealth and continuing development of spatial and spatiotemporal 
 At present, \pkg{mlr3spatiotempcv} also supports spatiotemporal partitioning using the versatile CLUTO clustering algorithm [@cluto].
 CLUTO is available in R through the \pkg{skmeans} package, which provides an interface to a downloadable compiled library with a restriction to non-commercial uses (see `?ResamplingSptCVCluto` in \pkg{mlr3spatiotempcv} for more information).
 With respect to functionality, \pkg{mlr3spatiotempcv} supports two-dimensional clustering based on coordinates and three-dimensional clustering on coordinates and time.
+<!--JM: not clear why feature clustering is not available when you already have presented the enviromental blocking based on specific features-->
 Feature clustering is not supported.
 
 # Case study: Comparing spatial and non-spatial resampling {#sec:case-study}

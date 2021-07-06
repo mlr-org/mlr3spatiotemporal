@@ -1,0 +1,45 @@
+# remarks JM
+
+- abstract: it is at least uncommon to cite other works in the abstract.
+If not explicitly required by the journal, I would refrain from it since you most likely cite all these works in the paper itself.
+- The last sentence of the abstract does not add much.
+Delete it or rewrite in a more compelling way.
+
+- I like the crop classification example, however, it is not entirely clear to me what agricultural districts are. 
+And though the crop classification introduces non-standard spatial resampling strategies, it does not make reference to the more common spatial resampling procedure (k-means clustering) where clustered coordinates are considered, which might be a more gentle introduction to spatial CV for readers who are not already familiar with the concepts.
+But I might be wrong.
+Looking at Table 1, the spatial blocking/tiles approach seems to be even more popular than the kmeans clustering approach.
+
+- Table 1: Wow, not too many papers have so far used spatial CV.
+Is this a comprehensive list?
+Have you somewhere listed the references by chosen strategy?
+If so, put it in the Appendix and reference the Appendix in the caption.
+Not entirely clear, what the footnotes refer to.
+These seem to be studies which have used the corresponding spatial CV approach but it is not all of them (e.g., spcv_block has been used by 28 papers but only 3 are referenced). 
+Please clarify.
+
+- I really do like the visualizations, great job! And they help the reader a lot to better grasp the differences between the resampling strategies.
+
+- In case, you didn't know: from 1.0.0 onwards, sf uses s2 by default, i.e. spherical geometries.
+Hence, I am not sure if there is really much more work to do (see https://r-spatial.github.io/sf/articles/sf7.html).
+I am referring to this sentence in the paper:
+
+>It is planned to provide a more consistent interface that supports all CRS and allows the use of distance measures in projected planar space or using great circle distances on the unprojected ellipsoid, in the case of unprojected CRS.
+
+- The leave-one-disc-out method seems to be quite promising since the direct neighbors between the training and test sets are removed thus removing spatial autocorrelation which might still be present when using the kmeans clustering approach.
+In the back of my mind, I knew that this was possible but I didn't know that this was already implemented in **sperrorest**.
+I wonder why AB has often preferred the kmeans clustering approach over the leave-one-disc-out approach.
+Maybe something which can be discussed.
+
+- Figure 7: spatial tiling. 
+It would be great if one could see the used rectangular blocks.
+- Figure 9: in fact, one only sees 4 time levels, not 5 as stated in the caption
+- LLTO: maybe you could expand a little bit on why observations need to be omitted.
+For readers new to the LLTO concept, the reasoning for this might not be entirely clear.
+
+
+- Valid inputs are PROJ4 strings
+Just for your information: PROJ strings are from now on discouraged if a CRS is available.
+Instead one should use CRS codes or WKT2 (see most recent comments at https://github.com/r-spatial/discuss/issues/43).
+In any case, please us the more generic PROJ notation without any version number instead of PROJ4. 
+For example, on my laptop I now use PROJ8.
